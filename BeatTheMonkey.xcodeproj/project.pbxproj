@@ -1,0 +1,443 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2BD0D85112E43E60009DB2F3 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BD0D85012E43E60009DB2F3 /* UIKit.framework */; };
+		2BD0D85312E43E60009DB2F3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BD0D85212E43E60009DB2F3 /* Foundation.framework */; };
+		2BD0D85512E43E60009DB2F3 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BD0D85412E43E60009DB2F3 /* CoreGraphics.framework */; };
+		2BD0D85B12E43E60009DB2F3 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2BD0D85912E43E60009DB2F3 /* InfoPlist.strings */; };
+		2BD0D85E12E43E60009DB2F3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BD0D85D12E43E60009DB2F3 /* main.m */; };
+		2BD0D86112E43E60009DB2F3 /* BeatTheMonkeyAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BD0D86012E43E60009DB2F3 /* BeatTheMonkeyAppDelegate.m */; };
+		2BD0D86412E43E60009DB2F3 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2BD0D86212E43E60009DB2F3 /* MainWindow.xib */; };
+		2BD0D86712E43E60009DB2F3 /* BeatTheMonkeyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BD0D86612E43E60009DB2F3 /* BeatTheMonkeyViewController.m */; };
+		2BD0D86A12E43E60009DB2F3 /* BeatTheMonkeyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2BD0D86812E43E60009DB2F3 /* BeatTheMonkeyViewController.xib */; };
+		2BD0D87112E43E60009DB2F3 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BD0D85012E43E60009DB2F3 /* UIKit.framework */; };
+		2BD0D87212E43E60009DB2F3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BD0D85212E43E60009DB2F3 /* Foundation.framework */; };
+		2BD0D87312E43E60009DB2F3 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BD0D85412E43E60009DB2F3 /* CoreGraphics.framework */; };
+		2BD0D87912E43E61009DB2F3 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2BD0D87712E43E61009DB2F3 /* InfoPlist.strings */; };
+		2BD0D87C12E43E61009DB2F3 /* BeatTheMonkeyTests.h in Resources */ = {isa = PBXBuildFile; fileRef = 2BD0D87B12E43E61009DB2F3 /* BeatTheMonkeyTests.h */; };
+		2BD0D87E12E43E61009DB2F3 /* BeatTheMonkeyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BD0D87D12E43E61009DB2F3 /* BeatTheMonkeyTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		2BD0D84C12E43E60009DB2F3 /* BeatTheMonkey.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BeatTheMonkey.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2BD0D85012E43E60009DB2F3 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		2BD0D85212E43E60009DB2F3 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		2BD0D85412E43E60009DB2F3 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		2BD0D85812E43E60009DB2F3 /* BeatTheMonkey-Info.plist */ = {isa = PBXFileReference; path = "BeatTheMonkey-Info.plist"; sourceTree = "<group>"; };
+		2BD0D85A12E43E60009DB2F3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		2BD0D85C12E43E60009DB2F3 /* BeatTheMonkey-Prefix.pch */ = {isa = PBXFileReference; path = "BeatTheMonkey-Prefix.pch"; sourceTree = "<group>"; };
+		2BD0D85D12E43E60009DB2F3 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		2BD0D85F12E43E60009DB2F3 /* BeatTheMonkeyAppDelegate.h */ = {isa = PBXFileReference; path = BeatTheMonkeyAppDelegate.h; sourceTree = "<group>"; };
+		2BD0D86012E43E60009DB2F3 /* BeatTheMonkeyAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BeatTheMonkeyAppDelegate.m; sourceTree = "<group>"; };
+		2BD0D86312E43E60009DB2F3 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
+		2BD0D86512E43E60009DB2F3 /* BeatTheMonkeyViewController.h */ = {isa = PBXFileReference; path = BeatTheMonkeyViewController.h; sourceTree = "<group>"; };
+		2BD0D86612E43E60009DB2F3 /* BeatTheMonkeyViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BeatTheMonkeyViewController.m; sourceTree = "<group>"; };
+		2BD0D86912E43E60009DB2F3 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/BeatTheMonkeyViewController.xib; sourceTree = "<group>"; };
+		2BD0D87012E43E60009DB2F3 /* BeatTheMonkeyTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BeatTheMonkeyTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2BD0D87612E43E61009DB2F3 /* BeatTheMonkeyTests-Info.plist */ = {isa = PBXFileReference; path = "BeatTheMonkeyTests-Info.plist"; sourceTree = "<group>"; };
+		2BD0D87812E43E61009DB2F3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		2BD0D87A12E43E61009DB2F3 /* BeatTheMonkeyTests-Prefix.pch */ = {isa = PBXFileReference; path = "BeatTheMonkeyTests-Prefix.pch"; sourceTree = "<group>"; };
+		2BD0D87B12E43E61009DB2F3 /* BeatTheMonkeyTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BeatTheMonkeyTests.h; sourceTree = "<group>"; };
+		2BD0D87D12E43E61009DB2F3 /* BeatTheMonkeyTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BeatTheMonkeyTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		2BD0D84912E43E60009DB2F3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2BD0D85112E43E60009DB2F3 /* UIKit.framework in Frameworks */,
+				2BD0D85312E43E60009DB2F3 /* Foundation.framework in Frameworks */,
+				2BD0D85512E43E60009DB2F3 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2BD0D86C12E43E60009DB2F3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2BD0D87112E43E60009DB2F3 /* UIKit.framework in Frameworks */,
+				2BD0D87212E43E60009DB2F3 /* Foundation.framework in Frameworks */,
+				2BD0D87312E43E60009DB2F3 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		2BD0D84112E43E5F009DB2F3 = {
+			isa = PBXGroup;
+			children = (
+				2BD0D85612E43E60009DB2F3 /* BeatTheMonkey */,
+				2BD0D87412E43E60009DB2F3 /* BeatTheMonkeyTests */,
+				2BD0D84F12E43E60009DB2F3 /* Frameworks */,
+				2BD0D84D12E43E60009DB2F3 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		2BD0D84D12E43E60009DB2F3 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2BD0D84C12E43E60009DB2F3 /* BeatTheMonkey.app */,
+				2BD0D87012E43E60009DB2F3 /* BeatTheMonkeyTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2BD0D84F12E43E60009DB2F3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2BD0D85012E43E60009DB2F3 /* UIKit.framework */,
+				2BD0D85212E43E60009DB2F3 /* Foundation.framework */,
+				2BD0D85412E43E60009DB2F3 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		2BD0D85612E43E60009DB2F3 /* BeatTheMonkey */ = {
+			isa = PBXGroup;
+			children = (
+				2BD0D85F12E43E60009DB2F3 /* BeatTheMonkeyAppDelegate.h */,
+				2BD0D86012E43E60009DB2F3 /* BeatTheMonkeyAppDelegate.m */,
+				2BD0D86212E43E60009DB2F3 /* MainWindow.xib */,
+				2BD0D86512E43E60009DB2F3 /* BeatTheMonkeyViewController.h */,
+				2BD0D86612E43E60009DB2F3 /* BeatTheMonkeyViewController.m */,
+				2BD0D86812E43E60009DB2F3 /* BeatTheMonkeyViewController.xib */,
+				2BD0D85712E43E60009DB2F3 /* Supporting Files */,
+			);
+			path = BeatTheMonkey;
+			sourceTree = "<group>";
+		};
+		2BD0D85712E43E60009DB2F3 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				2BD0D85812E43E60009DB2F3 /* BeatTheMonkey-Info.plist */,
+				2BD0D85912E43E60009DB2F3 /* InfoPlist.strings */,
+				2BD0D85C12E43E60009DB2F3 /* BeatTheMonkey-Prefix.pch */,
+				2BD0D85D12E43E60009DB2F3 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		2BD0D87412E43E60009DB2F3 /* BeatTheMonkeyTests */ = {
+			isa = PBXGroup;
+			children = (
+				2BD0D87B12E43E61009DB2F3 /* BeatTheMonkeyTests.h */,
+				2BD0D87D12E43E61009DB2F3 /* BeatTheMonkeyTests.m */,
+				2BD0D87512E43E60009DB2F3 /* Supporting Files */,
+			);
+			path = BeatTheMonkeyTests;
+			sourceTree = "<group>";
+		};
+		2BD0D87512E43E60009DB2F3 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				2BD0D87612E43E61009DB2F3 /* BeatTheMonkeyTests-Info.plist */,
+				2BD0D87712E43E61009DB2F3 /* InfoPlist.strings */,
+				2BD0D87A12E43E61009DB2F3 /* BeatTheMonkeyTests-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		2BD0D84B12E43E60009DB2F3 /* BeatTheMonkey */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2BD0D88112E43E61009DB2F3 /* Build configuration list for PBXNativeTarget "BeatTheMonkey" */;
+			buildPhases = (
+				2BD0D84812E43E60009DB2F3 /* Sources */,
+				2BD0D84912E43E60009DB2F3 /* Frameworks */,
+				2BD0D84A12E43E60009DB2F3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BeatTheMonkey;
+			productName = BeatTheMonkey;
+			productReference = 2BD0D84C12E43E60009DB2F3 /* BeatTheMonkey.app */;
+			productType = "com.apple.product-type.application";
+		};
+		2BD0D86F12E43E60009DB2F3 /* BeatTheMonkeyTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2BD0D88412E43E61009DB2F3 /* Build configuration list for PBXNativeTarget "BeatTheMonkeyTests" */;
+			buildPhases = (
+				2BD0D86B12E43E60009DB2F3 /* Sources */,
+				2BD0D86C12E43E60009DB2F3 /* Frameworks */,
+				2BD0D86D12E43E60009DB2F3 /* Resources */,
+				2BD0D86E12E43E60009DB2F3 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BeatTheMonkeyTests;
+			productName = BeatTheMonkeyTests;
+			productReference = 2BD0D87012E43E60009DB2F3 /* BeatTheMonkeyTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		2BD0D84312E43E5F009DB2F3 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				ORGANIZATIONNAME = LastStar.eu;
+			};
+			buildConfigurationList = 2BD0D84612E43E5F009DB2F3 /* Build configuration list for PBXProject "BeatTheMonkey" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 2BD0D84112E43E5F009DB2F3;
+			productRefGroup = 2BD0D84D12E43E60009DB2F3 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				2BD0D84B12E43E60009DB2F3 /* BeatTheMonkey */,
+				2BD0D86F12E43E60009DB2F3 /* BeatTheMonkeyTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		2BD0D84A12E43E60009DB2F3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2BD0D85B12E43E60009DB2F3 /* InfoPlist.strings in Resources */,
+				2BD0D86412E43E60009DB2F3 /* MainWindow.xib in Resources */,
+				2BD0D86A12E43E60009DB2F3 /* BeatTheMonkeyViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2BD0D86D12E43E60009DB2F3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2BD0D87912E43E61009DB2F3 /* InfoPlist.strings in Resources */,
+				2BD0D87C12E43E61009DB2F3 /* BeatTheMonkeyTests.h in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2BD0D86E12E43E60009DB2F3 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		2BD0D84812E43E60009DB2F3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2BD0D85E12E43E60009DB2F3 /* main.m in Sources */,
+				2BD0D86112E43E60009DB2F3 /* BeatTheMonkeyAppDelegate.m in Sources */,
+				2BD0D86712E43E60009DB2F3 /* BeatTheMonkeyViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2BD0D86B12E43E60009DB2F3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2BD0D87E12E43E61009DB2F3 /* BeatTheMonkeyTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		2BD0D85912E43E60009DB2F3 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2BD0D85A12E43E60009DB2F3 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		2BD0D86212E43E60009DB2F3 /* MainWindow.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2BD0D86312E43E60009DB2F3 /* en */,
+			);
+			name = MainWindow.xib;
+			sourceTree = "<group>";
+		};
+		2BD0D86812E43E60009DB2F3 /* BeatTheMonkeyViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2BD0D86912E43E60009DB2F3 /* en */,
+			);
+			name = BeatTheMonkeyViewController.xib;
+			sourceTree = "<group>";
+		};
+		2BD0D87712E43E61009DB2F3 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2BD0D87812E43E61009DB2F3 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		2BD0D87F12E43E61009DB2F3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_UNIVERSAL_IPHONE_OS)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 2;
+			};
+			name = Debug;
+		};
+		2BD0D88012E43E61009DB2F3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_UNIVERSAL_IPHONE_OS)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 2;
+			};
+			name = Release;
+		};
+		2BD0D88212E43E61009DB2F3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "BeatTheMonkey/BeatTheMonkey-Prefix.pch";
+				INFOPLIST_FILE = "BeatTheMonkey/BeatTheMonkey-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		2BD0D88312E43E61009DB2F3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "BeatTheMonkey/BeatTheMonkey-Prefix.pch";
+				INFOPLIST_FILE = "BeatTheMonkey/BeatTheMonkey-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALIDATE_PRODUCT = YES;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		2BD0D88512E43E61009DB2F3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/BeatTheMonkey.app/BeatTheMonkey";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "BeatTheMonkeyTests/BeatTheMonkeyTests-Prefix.pch";
+				INFOPLIST_FILE = "BeatTheMonkeyTests/BeatTheMonkeyTests-Info.plist";
+				OTHER_LDFLAGS = (
+					"-framework",
+					SenTestingKit,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		2BD0D88612E43E61009DB2F3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/BeatTheMonkey.app/BeatTheMonkey";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "BeatTheMonkeyTests/BeatTheMonkeyTests-Prefix.pch";
+				INFOPLIST_FILE = "BeatTheMonkeyTests/BeatTheMonkeyTests-Info.plist";
+				OTHER_LDFLAGS = (
+					"-framework",
+					SenTestingKit,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2BD0D84612E43E5F009DB2F3 /* Build configuration list for PBXProject "BeatTheMonkey" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2BD0D87F12E43E61009DB2F3 /* Debug */,
+				2BD0D88012E43E61009DB2F3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2BD0D88112E43E61009DB2F3 /* Build configuration list for PBXNativeTarget "BeatTheMonkey" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2BD0D88212E43E61009DB2F3 /* Debug */,
+				2BD0D88312E43E61009DB2F3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		2BD0D88412E43E61009DB2F3 /* Build configuration list for PBXNativeTarget "BeatTheMonkeyTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2BD0D88512E43E61009DB2F3 /* Debug */,
+				2BD0D88612E43E61009DB2F3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 2BD0D84312E43E5F009DB2F3 /* Project object */;
+}
