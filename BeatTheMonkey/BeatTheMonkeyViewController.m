@@ -10,56 +10,91 @@
 
 @implementation BeatTheMonkeyViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
+@synthesize game, options, infoButton;
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    NSLog(@"nibNameOrNil = %@, nibBundleOrNil = %@", nibNameOrNil, nibBundleOrNil);
     if (self) {
-        // Custom initialization
     }
     return self;
 }
 
-- (void)dealloc
-{
+- (void)dealloc {
+    [game release];
     [super dealloc];
 }
 
-- (void)didReceiveMemoryWarning
-{
+- (void)didReceiveMemoryWarning {
     // Releases the view if it doesn't have a superview.
     [super didReceiveMemoryWarning];
     
     // Release any cached data, images, etc that aren't in use.
 }
 
+- (IBAction)infoPressed:(id)sender {
+    FlipSideViewController *controller = [[FlipSideViewController alloc] initWithNibName:@"FlipSideViewController" bundle:nil];
+    controller.delegate = self;
+    controller.game = self.game;
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+        UIPopoverController *popover = [[UIPopoverController alloc] initWithContentViewController:controller];
+        popover.popoverContentSize = controller.view.bounds.size;
+        [popover presentPopoverFromRect:self.infoButton.frame inView:self.view permittedArrowDirections:UIPopoverArrowDirectionDown animated:YES];
+    } else {
+        controller.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+        [self presentModalViewController:controller animated:YES];
+    }
+    [controller release];
+}
+
+- (void)flipSideViewControllerDidFinish:(FlipSideViewController *)controller {
+    [self dismissModalViewControllerAnimated:YES];
+}
+
+#pragma mark - BTMGame Delegate methods
+
+- (void)btmGameHasFinished:(BTMGame *)aGame mistake:(BOOL)aMistake {
+    NSLog(@"Calling NSTimer 3");
+    [NSTimer scheduledTimerWithTimeInterval:[self.options intForKey:@"TimeToStart"] target:self.game
+                                   selector:@selector(startGame) userInfo:nil repeats:NO];
+}
+
+- (void)btmGameHasNewHighScore:(BTMGame *)aGame {
+    NSString *alertMessage = [NSString stringWithFormat:@"New High Score %d. Please enter your name:", aGame.thisScore];
+    UIAlertView *prompt = [[UIAlertView alloc] initWithTitle:@"Congratulations" message:alertMessage delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Save", nil];
+    [prompt addTextFieldWithValue:@"" label:nil];
+    [[prompt textField] setText:[[NSUserDefaults standardUserDefaults] stringForKey:@"HighestScoreName"]];
+    [prompt show];
+    [prompt release];
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if (buttonIndex == 1) {
+        [self.game addNewHighScoreWithName:[[alertView textField] text]];
+    } 
+    NSLog(@"Calling NSTimer 4");
+    [NSTimer scheduledTimerWithTimeInterval:1 target:self.game selector:@selector(startGame) userInfo:nil repeats:NO];
+}
+
 #pragma mark - View lifecycle
 
-/*
-// Implement loadView to create a view hierarchy programmatically, without using a nib.
-- (void)loadView
-{
+- (void)viewWillAppear:(BOOL)animated {
 }
-*/
 
-/*
-// Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
+    NSLog(@"width, height = %f, %f", self.view.bounds.size.width, self.view.bounds.size.height);
+    game = [[BTMGame alloc] initWithView:self.view andOptions:self.options];
+    game.delegate = self;
+    [game startGame];
 }
-*/
 
-- (void)viewDidUnload
-{
+- (void)viewDidUnload {
     [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    // Return YES for supported orientations
-    return YES;
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
+    return UIInterfaceOrientationIsLandscape(interfaceOrientation);
 }
 
 @end

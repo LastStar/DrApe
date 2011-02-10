@@ -7,16 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "NSDictionary+BTM.h"
 
 @class BeatTheMonkeyViewController;
 
 @interface BeatTheMonkeyAppDelegate : NSObject <UIApplicationDelegate> {
 @private
-
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
-
 @property (nonatomic, retain) IBOutlet BeatTheMonkeyViewController *viewController;
+@property (nonatomic, retain) NSDictionary *options;
 
 @end

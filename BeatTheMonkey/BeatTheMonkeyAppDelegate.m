@@ -7,40 +7,37 @@
 //
 
 #import "BeatTheMonkeyAppDelegate.h"
-
 #import "BeatTheMonkeyViewController.h"
+
+
+@interface BeatTheMonkeyAppDelegate()
+- (void)setupOptions;
+@end
 
 @implementation BeatTheMonkeyAppDelegate
 
+@synthesize window, viewController, options;
 
-@synthesize window;
+- (void)setupOptions {
+    NSString *settingsFileName = [NSString stringWithFormat:@"Settings-%@", (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad ? @"iPad" : @"iPhone")];
+    NSBundle *thisBundle = [NSBundle bundleForClass:[self class]];
+    NSString *pathForSettings = [thisBundle pathForResource:settingsFileName ofType:@"plist"];
+    NSLog(@"settingsFileName = %@", settingsFileName);
+    NSLog(@"pathForSettings = %@", pathForSettings);
+    self.options = [[NSDictionary alloc] initWithContentsOfFile:pathForSettings];
+}
 
-@synthesize viewController;
-
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
-{
-    // Override point for customization after application launch.
-     
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    NSLog(@"launchOptions = %@", launchOptions);
+    [self setupOptions];
+    [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone];
+    self.viewController.options = self.options;
     self.window.rootViewController = self.viewController;
     [self.window makeKeyAndVisible];
     return YES;
 }
 
-- (void)applicationWillResignActive:(UIApplication *)application
-{
-    /*
-     Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
-     Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
-     */
-}
-
-- (void)applicationWillTerminate:(UIApplication *)application
-{
-    // Save data if appropriate.
-}
-
 - (void)dealloc {
-
     [window release];
     [viewController release];
     [super dealloc];

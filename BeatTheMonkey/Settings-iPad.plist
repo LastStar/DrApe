@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>FontSize</key>
+	<integer>90</integer>
+	<key>TileSize</key>
+	<integer>100</integer>
+	<key>TileBorder</key>
+	<integer>20</integer>
+	<key>TilesX</key>
+	<integer>8</integer>
+	<key>TilesY</key>
+	<integer>5</integer>
+	<key>TilesCount</key>
+	<integer>7</integer>
+	<key>OffsetTop</key>
+	<integer>74</integer>
+	<key>OffsetLeft</key>
+	<integer>22</integer>
+	<key>PlayfieldPadding</key>
+	<integer>20</integer>
+	<key>TilePositions</key>
+	<integer>40</integer>
+	<key>TimeToHide</key>
+	<integer>1</integer>
+	<key>TimeToStart</key>
+	<integer>3</integer>
+</dict>
+</plist>
