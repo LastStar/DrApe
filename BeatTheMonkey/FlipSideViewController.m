@@ -14,14 +14,35 @@
 
 #pragma mark - Actions
 
+- (double)difficultyToTime:(NSUInteger)aDifficulty {
+    switch (aDifficulty) {
+        case 0:
+            return 2;
+        case 1:
+            return 1;
+        case 2:
+            return 0.5;
+        default:
+            return 2;
+    }
+}
+
+- (NSUInteger)timeToDifficulty:(double)aTime {
+    if (aTime==0.5) return 2;
+    else if (aTime==1) return 1;
+    else if (aTime==2) return 0;
+    else return 0;
+}
+
 - (IBAction)done:(id)sender {
     [self.delegate flipSideViewControllerDidFinish:self];
 }
 
 - (void)difficultySwitched:(id)sender {
-    NSInteger timeToHide = 3 - [sender selectedSegmentIndex];
-    [[NSUserDefaults standardUserDefaults] setInteger:timeToHide forKey:@"TimeToHide"];
+    double timeToHide = [self difficultyToTime:[sender selectedSegmentIndex]];
+    [[NSUserDefaults standardUserDefaults] setDouble:timeToHide forKey:@"TimeToHide"];
     [[NSUserDefaults standardUserDefaults] synchronize];
+    NSLog(@"timeToHide %f", timeToHide);
     self.game.timeToHide = timeToHide;
     self.changed = YES;
 }
@@ -63,23 +84,23 @@
         [self.infoButton setHidden:YES];
     }
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    NSInteger timeToHide = [userDefaults integerForKey:@"TimeToHide"];
+    double timeToHide = [userDefaults doubleForKey:@"TimeToHide"];
     NSInteger tilesCount = [userDefaults integerForKey:@"TilesCount"];
-    self.difficultyControl.selectedSegmentIndex = -timeToHide + 3;
-    self.tilesCountControl.selectedSegmentIndex =  tilesCount - 4;
+    NSLog(@"tilesCount = %d", tilesCount);
+    self.difficultyControl.selectedSegmentIndex = [self timeToDifficulty:timeToHide];
+    self.tilesCountControl.selectedSegmentIndex = tilesCount==0 ? 0 : tilesCount-4;
     self.changed = NO;
-    self.game.timeToHide = timeToHide;
-    self.game.tilesCount = tilesCount;
     NSString *highestScoreName = [userDefaults stringForKey:@"HighestScoreName"];
     NSUInteger highestScoreAmount = [userDefaults integerForKey:@"HighestScoreAmount"];
     if (highestScoreAmount == 0) {
         self.highScoreLabel.text = @"";
     } else {
-        self.highScoreLabel.text = [NSString stringWithFormat:@"Highest score %d achieved by %@", highestScoreAmount, highestScoreName];
+        self.highScoreLabel.text = [NSString stringWithFormat:@"Highest score %d by %@", highestScoreAmount, highestScoreName];
     }
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
+    NSLog(@"timeToHide viewWillDisappear %f", self.game.timeToHide);
     if (self.changed) {
         self.changed = NO;
         NSLog(@"Calling NSTimer 2");

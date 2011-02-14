@@ -57,6 +57,21 @@
     NSLog(@"Calling NSTimer 3");
     [NSTimer scheduledTimerWithTimeInterval:[self.options intForKey:@"TimeToStart"] target:self.game
                                    selector:@selector(startGame) userInfo:nil repeats:NO];
+    if (!aMistake) {
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, (self.view.bounds.size.height / 2) - 80, self.view.bounds.size.width, 160)];
+        label.text = [NSString stringWithFormat:@"%d", self.game.thisScore];
+        label.textColor = [UIColor whiteColor];
+        label.textAlignment = UITextAlignmentCenter;
+        label.font = [UIFont fontWithName:@"Helvetica" size:150];
+        label.backgroundColor = [UIColor blackColor];
+        [self.view addSubview:label];
+        [UIView animateWithDuration:0.5 animations:^(void) {
+            label.alpha = 0;
+        } completion:^(BOOL finished) {
+            [label removeFromSuperview];
+            [label release];
+        }];    
+    }
 }
 
 - (void)btmGameHasNewHighScore:(BTMGame *)aGame {

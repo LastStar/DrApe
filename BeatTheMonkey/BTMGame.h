@@ -30,7 +30,7 @@
 @property (nonatomic, assign) NSInteger tilesCount;
 @property (nonatomic, assign) NSInteger tilesPressed;
 @property (nonatomic, assign) NSUInteger thisScore;
-@property (nonatomic, assign) float timeToHide;
+@property (nonatomic, assign) double timeToHide;
 @property (nonatomic, assign) BOOL mistake;
 @property (nonatomic, assign) id<BTMGameDelegate> delegate;
 

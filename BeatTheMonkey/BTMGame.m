@@ -35,7 +35,7 @@
 }
 
 - (int)getRandomFreePosition {
-    if (BTM_DEBUG) { NSLog(@"self.positions count = %i", [self.positions count]); }
+    // if (BTM_DEBUG) { NSLog(@"self.positions count = %i", [self.positions count]); }
     int randomIndex = arc4random() % [self.positions count];
     // if (BTM_DEBUG) { NSLog(@"randomIndex %i", randomIndex); }
     int randomValue = [[self.positions objectAtIndex:randomIndex] intValue];
@@ -146,7 +146,7 @@
 }
 
 - (void)buttonPressed:(BTMTile *)sender {
-    if (BTM_DEBUG) { NSLog(@"tilesCount", self.tilesCount); }
+    if (BTM_DEBUG) { NSLog(@"tilesCount %d", self.tilesCount); }
     sender.enabled = NO;
     [sender setBackgroundColor:[UIColor blackColor]];
     if (self.nextTile != sender) {
