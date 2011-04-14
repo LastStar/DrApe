@@ -17,6 +17,8 @@
 @property (nonatomic, retain) NSDictionary *options;
 @property (nonatomic, retain) BTMGame *game;
 @property (nonatomic, retain) IBOutlet UIButton *infoButton;
+@property (nonatomic, retain) UILabel *scoreLabel;
+@property (nonatomic, retain) UIButton *startGameButton;
 
 - (IBAction)infoPressed:(id)sender;
 

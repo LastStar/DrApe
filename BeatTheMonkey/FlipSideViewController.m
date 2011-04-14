@@ -42,7 +42,7 @@
     double timeToHide = [self difficultyToTime:[sender selectedSegmentIndex]];
     [[NSUserDefaults standardUserDefaults] setDouble:timeToHide forKey:@"TimeToHide"];
     [[NSUserDefaults standardUserDefaults] synchronize];
-    NSLog(@"timeToHide %f", timeToHide);
+//    NSLog(@"timeToHide %f", timeToHide);
     self.game.timeToHide = timeToHide;
     self.changed = YES;
 }
@@ -64,9 +64,12 @@
 }
 
 - (void)dealloc {
+    [infoButton release];
+    [highScoreLabel release];
+    [difficultyControl release];
+    [tilesCountControl release];
+    [game release];
     [super dealloc];
-//    [self.highscores release];
-//    [self.game release];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -80,13 +83,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
-        NSLog(@"Hiding userInfo button");
+//        NSLog(@"Hiding userInfo button");
         [self.infoButton setHidden:YES];
     }
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     double timeToHide = [userDefaults doubleForKey:@"TimeToHide"];
     NSInteger tilesCount = [userDefaults integerForKey:@"TilesCount"];
-    NSLog(@"tilesCount = %d", tilesCount);
+//    NSLog(@"tilesCount = %d", tilesCount);
     self.difficultyControl.selectedSegmentIndex = [self timeToDifficulty:timeToHide];
     self.tilesCountControl.selectedSegmentIndex = tilesCount==0 ? 0 : tilesCount-4;
     self.changed = NO;
@@ -100,10 +103,10 @@
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
-    NSLog(@"timeToHide viewWillDisappear %f", self.game.timeToHide);
+//    NSLog(@"timeToHide viewWillDisappear %f", self.game.timeToHide);
     if (self.changed) {
         self.changed = NO;
-        NSLog(@"Calling NSTimer 2");
+//        NSLog(@"Calling NSTimer 2");
         [NSTimer scheduledTimerWithTimeInterval:0.7 target:self.game
                                        selector:@selector(startGame) userInfo:nil repeats:NO];
     }

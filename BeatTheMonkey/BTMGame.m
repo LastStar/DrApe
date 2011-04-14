@@ -55,20 +55,21 @@
     return CGRectMake(X, Y, tileSize, tileSize);
 }
 
-- (void)addTiles {
-    BTMTile *tile;
+- (void)removeOldTiles {
     [self.positions removeAllObjects];
-    for (BTMTile *tile in [self.tiles copy]) {
+    for (BTMTile *tile in self.tiles) {
         [tile removeFromSuperview];
-        [self.tiles removeObject:tile];
-    }
+    }   [self.tiles removeAllObjects];
     for (int i = 0; i < ([self.options intForKey:@"TilesX"] * [self.options intForKey:@"TilesY"]); i++) {
         [self.positions addObject:[NSNumber numberWithInt:i]];
     }
+}
+
+- (void)addTiles {
     for (int i = 1; i <= self.tilesCount; i++) {
-        tile = [BTMTile tileWithFrame:[self getRandomPosition]];
+        BTMTile *tile = [BTMTile tileWithFrame:[self getRandomPosition]];
         tile.titleLabel.font = [UIFont fontWithName:@"Helvetica" size:[self.options intForKey:@"FontSize"]];
-        [tile addTarget:self action:@selector(buttonPressed:) forControlEvents:UIControlEventTouchDown];
+        [tile addTarget:self action:@selector(buttonPressed:) forControlEvents:UIControlEventTouchUpInside];
         [tile setTitle:[NSString stringWithFormat:@"%i", i] forState:UIControlStateNormal];
         [tile setTag:i];
         [self.gameView addSubview:tile];
@@ -81,7 +82,8 @@
     self.thisScore = 0;
     self.startDate = [NSDate date];
     self.mistake = NO;
-    [self addTiles];
+    [self removeOldTiles];
+    [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(addTiles) userInfo:nil repeats:NO];
 }
 
 - (void)updateNextTile {
@@ -138,9 +140,11 @@
 
 - (void)showMistakenTiles {
     for (BTMTile *tile in self.tiles) {
+        [tile setTitle:[NSString stringWithFormat:@"%d", tile.tag] forState:UIControlStateNormal];
         if (tile.mistaken) {
-            [tile setTitle:[NSString stringWithFormat:@"%d", tile.tag] forState:UIControlStateNormal];
             tile.backgroundColor = [UIColor redColor];
+        } else {
+            tile.backgroundColor = [UIColor greenColor];
         }
     }
 }
@@ -162,11 +166,14 @@
 }   
 
 - (void)dealloc {
-    NSLog(@"deallocating the game");
-    [super dealloc];
+//    NSLog(@"deallocating the game");
     [gameView release];
     [tiles release];
     [positions release];
+    [nextTile release];
+    [options release];
+    [startDate release];
+    [super dealloc];
 }
 
 @end
