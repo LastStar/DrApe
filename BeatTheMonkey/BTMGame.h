@@ -14,24 +14,28 @@
 
 @interface BTMGame : NSObject {}
 
-- (BTMGame *)initWithView:(UIView *)aView andOptions:(NSDictionary *)anOptions;
+- (BTMGame *)initWithView:(UIView *)aView;
 - (void)startGame;
 - (void)finishGame;
 - (void)showMistakenTiles;
 - (void)addNewHighScoreWithName:(NSString *)aName;
-- (float)highestScore;
+- (double)difficultyToTime:(NSUInteger)aDifficulty;
 
 @property (nonatomic, retain) BTMTile *nextTile;
-@property (nonatomic, retain) NSDictionary *options;
 @property (nonatomic, retain) UIView *gameView;
 @property (nonatomic, retain) NSMutableArray *tiles;
 @property (nonatomic, retain) NSMutableArray *positions;
 @property (nonatomic, retain) NSDate *startDate;
-@property (nonatomic, assign) NSInteger tilesCount;
-@property (nonatomic, assign) NSInteger tilesPressed;
+@property (nonatomic, retain) NSString *highestScoreName;
+@property (nonatomic, assign) NSUInteger highestScoreAmount;
+@property (nonatomic, assign) NSUInteger tilesCount;
+@property (nonatomic, assign) NSUInteger tilesCountMin;
+@property (nonatomic, assign) NSUInteger tilesCountMax;
+@property (nonatomic, assign) NSUInteger tilesPressed;
 @property (nonatomic, assign) NSUInteger thisScore;
-@property (nonatomic, assign) double timeToHide;
+@property (nonatomic, assign) NSUInteger difficulty;
 @property (nonatomic, assign) BOOL mistake;
+@property (nonatomic, assign) BOOL automaticLevelUpgrading;
 @property (nonatomic, assign) id<BTMGameDelegate> delegate;
 
 @end

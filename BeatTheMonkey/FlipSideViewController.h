@@ -18,12 +18,14 @@
 @property (nonatomic, retain) IBOutlet UILabel *highScoreLabel;
 @property (nonatomic, retain) IBOutlet UISegmentedControl *difficultyControl;
 @property (nonatomic, retain) IBOutlet UISegmentedControl *tilesCountControl;
+@property (nonatomic, retain) IBOutlet UISwitch *levelUpgradingSwitch;
 @property (nonatomic, retain) BTMGame *game;
 @property (nonatomic, assign) BOOL changed;
 
 - (IBAction)done:(id)sender;
 - (IBAction)difficultySwitched:(id)sender;
 - (IBAction)tilesCountSwitched:(id)sender;
+- (IBAction)automaticLevelUpgradingChanged:(id)sender;
 
 @end
 

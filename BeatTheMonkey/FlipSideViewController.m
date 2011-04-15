@@ -7,51 +7,38 @@
 //
 
 #import "FlipSideViewController.h"
+#import "Utils.h"
 
 @implementation FlipSideViewController
 
-@synthesize changed, delegate, game, infoButton, highScoreLabel, difficultyControl, tilesCountControl;
+@synthesize changed, delegate, game, infoButton, highScoreLabel, difficultyControl, tilesCountControl, levelUpgradingSwitch;
 
 #pragma mark - Actions
 
-- (double)difficultyToTime:(NSUInteger)aDifficulty {
-    switch (aDifficulty) {
-        case 0:
-            return 2;
-        case 1:
-            return 1;
-        case 2:
-            return 0.5;
-        default:
-            return 2;
-    }
-}
-
-- (NSUInteger)timeToDifficulty:(double)aTime {
-    if (aTime==0.5) return 2;
-    else if (aTime==1) return 1;
-    else if (aTime==2) return 0;
-    else return 0;
+- (NSUInteger)segmentFromTilesCount {
+    return self.game.tilesCount - self.game.tilesCountMin;
 }
 
 - (IBAction)done:(id)sender {
     [self.delegate flipSideViewControllerDidFinish:self];
 }
 
+- (IBAction)automaticLevelUpgradingChanged:(id)sender {
+    [UD setBool:self.levelUpgradingSwitch.on forKey:@"AutomaticLevelUpgrading"];
+    [UD synchronize];
+    self.changed = YES;
+}
+
 - (void)difficultySwitched:(id)sender {
-    double timeToHide = [self difficultyToTime:[sender selectedSegmentIndex]];
-    [[NSUserDefaults standardUserDefaults] setDouble:timeToHide forKey:@"TimeToHide"];
-    [[NSUserDefaults standardUserDefaults] synchronize];
-//    NSLog(@"timeToHide %f", timeToHide);
-    self.game.timeToHide = timeToHide;
+    [UD setInteger:self.difficultyControl.selectedSegmentIndex forKey:@"Difficulty"];
+    [UD synchronize];
     self.changed = YES;
 }
 
 - (void)tilesCountSwitched:(id)sender {
     NSInteger tilesCount = [sender selectedSegmentIndex] + 4;
-    [[NSUserDefaults standardUserDefaults] setInteger:tilesCount forKey:@"TilesCount"];
-    [[NSUserDefaults standardUserDefaults] synchronize];
-    self.game.tilesCount = tilesCount;
+    [UD setInteger:tilesCount forKey:@"TilesCount"];
+    [UD synchronize];
     self.changed = YES;
 }
 
@@ -59,7 +46,9 @@
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {}
+    if (self) {
+// ...
+    }
     return self;
 }
 
@@ -79,34 +68,31 @@
     // Release any cached data, images, etc that aren't in use.
 }
 
-// Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
     [super viewDidLoad];
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
-//        NSLog(@"Hiding userInfo button");
-        [self.infoButton setHidden:YES];
+        self.infoButton.hidden = YES;
     }
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    double timeToHide = [userDefaults doubleForKey:@"TimeToHide"];
-    NSInteger tilesCount = [userDefaults integerForKey:@"TilesCount"];
-//    NSLog(@"tilesCount = %d", tilesCount);
-    self.difficultyControl.selectedSegmentIndex = [self timeToDifficulty:timeToHide];
-    self.tilesCountControl.selectedSegmentIndex = tilesCount==0 ? 0 : tilesCount-4;
+    [self.tilesCountControl removeAllSegments];
+    for (int i = self.game.tilesCountMin; i <= self.game.tilesCountMax; i++ ) {
+        NSString *segmentTitle = [NSString stringWithFormat:@"%d", i];
+        NSUInteger segmentIndex = (i - self.game.tilesCountMin);
+        [self.tilesCountControl insertSegmentWithTitle:segmentTitle atIndex:segmentIndex animated:NO];
+    }
+    self.difficultyControl.selectedSegmentIndex = self.game.difficulty;
+    self.tilesCountControl.selectedSegmentIndex = [self segmentFromTilesCount];
+    self.levelUpgradingSwitch.on = self.game.automaticLevelUpgrading;
     self.changed = NO;
-    NSString *highestScoreName = [userDefaults stringForKey:@"HighestScoreName"];
-    NSUInteger highestScoreAmount = [userDefaults integerForKey:@"HighestScoreAmount"];
-    if (highestScoreAmount == 0) {
+    if (self.game.highestScoreAmount == 0) {
         self.highScoreLabel.text = @"";
     } else {
-        self.highScoreLabel.text = [NSString stringWithFormat:@"Highest score %d by %@", highestScoreAmount, highestScoreName];
+        self.highScoreLabel.text = [NSString stringWithFormat:@"Highest score %d by %@", self.game.highestScoreAmount, self.game.highestScoreName];
     }
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
-//    NSLog(@"timeToHide viewWillDisappear %f", self.game.timeToHide);
     if (self.changed) {
         self.changed = NO;
-//        NSLog(@"Calling NSTimer 2");
         [NSTimer scheduledTimerWithTimeInterval:0.7 target:self.game
                                        selector:@selector(startGame) userInfo:nil repeats:NO];
     }
@@ -119,8 +105,7 @@
     self.game = nil;
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
     // Return YES for supported orientations
     return UIInterfaceOrientationIsLandscape(interfaceOrientation);
 }

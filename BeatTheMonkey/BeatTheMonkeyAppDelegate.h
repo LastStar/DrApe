@@ -11,12 +11,9 @@
 
 @class BeatTheMonkeyViewController;
 
-@interface BeatTheMonkeyAppDelegate : NSObject <UIApplicationDelegate> {
-@private
-}
+@interface BeatTheMonkeyAppDelegate : NSObject <UIApplicationDelegate> {}
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
 @property (nonatomic, retain) IBOutlet BeatTheMonkeyViewController *viewController;
-@property (nonatomic, retain) NSDictionary *options;
 
 @end

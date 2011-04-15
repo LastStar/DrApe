@@ -12,8 +12,6 @@
 		2B29C5481301997900816C84 /* FlipSideViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2B29C5471301997700816C84 /* FlipSideViewController.xib */; };
 		2B29C54B13019A4200816C84 /* FlipSideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B29C54A13019A3900816C84 /* FlipSideViewController.m */; };
 		2B361F7312FC0BC400617427 /* BTMTile.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B361F7212FC0BC400617427 /* BTMTile.m */; };
-		2B3B2ADA1300400700AEB9D9 /* Settings-iPad.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2B3B2AD91300400700AEB9D9 /* Settings-iPad.plist */; };
-		2B3B2ADC1300407B00AEB9D9 /* Settings-iPhone.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2B3B2ADB1300407B00AEB9D9 /* Settings-iPhone.plist */; };
 		2B3B2AE713013EF900AEB9D9 /* MainWindowIphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2B3B2AE613013EF900AEB9D9 /* MainWindowIphone.xib */; };
 		2B71C46713040CDF0058560B /* icon_ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B71C46613040CDF0058560B /* icon_ipad.png */; };
 		2B71C46A13040CFA0058560B /* icon_retina.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B71C46913040CFA0058560B /* icon_retina.png */; };
@@ -26,6 +24,7 @@
 		2BCCA424135827CD0084C965 /* gears_highlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BCCA420135827CD0084C965 /* gears_highlighted@2x.png */; };
 		2BCCA425135827CD0084C965 /* gears.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BCCA421135827CD0084C965 /* gears.png */; };
 		2BCCA426135827CD0084C965 /* gears@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BCCA422135827CD0084C965 /* gears@2x.png */; };
+		2BCCA42B13583E640084C965 /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BCCA42A13583E640084C965 /* Utils.m */; };
 		2BD0D85112E43E60009DB2F3 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BD0D85012E43E60009DB2F3 /* UIKit.framework */; };
 		2BD0D85312E43E60009DB2F3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BD0D85212E43E60009DB2F3 /* Foundation.framework */; };
 		2BD0D85512E43E60009DB2F3 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BD0D85412E43E60009DB2F3 /* CoreGraphics.framework */; };
@@ -53,8 +52,6 @@
 		2B29C54A13019A3900816C84 /* FlipSideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlipSideViewController.m; sourceTree = "<group>"; };
 		2B361F7112FC0BC400617427 /* BTMTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BTMTile.h; sourceTree = "<group>"; };
 		2B361F7212FC0BC400617427 /* BTMTile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BTMTile.m; sourceTree = "<group>"; };
-		2B3B2AD91300400700AEB9D9 /* Settings-iPad.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Settings-iPad.plist"; sourceTree = "<group>"; };
-		2B3B2ADB1300407B00AEB9D9 /* Settings-iPhone.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Settings-iPhone.plist"; sourceTree = "<group>"; };
 		2B3B2AE613013EF900AEB9D9 /* MainWindowIphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainWindowIphone.xib; sourceTree = "<group>"; };
 		2B71C46613040CDF0058560B /* icon_ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon_ipad.png; path = ../icon_ipad.png; sourceTree = "<group>"; };
 		2B71C46913040CFA0058560B /* icon_retina.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon_retina.png; path = ../icon_retina.png; sourceTree = "<group>"; };
@@ -67,6 +64,8 @@
 		2BCCA420135827CD0084C965 /* gears_highlighted@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "gears_highlighted@2x.png"; path = "Images/gears_highlighted@2x.png"; sourceTree = SOURCE_ROOT; };
 		2BCCA421135827CD0084C965 /* gears.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = gears.png; path = Images/gears.png; sourceTree = SOURCE_ROOT; };
 		2BCCA422135827CD0084C965 /* gears@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "gears@2x.png"; path = "Images/gears@2x.png"; sourceTree = SOURCE_ROOT; };
+		2BCCA42913583DFA0084C965 /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = Utils.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		2BCCA42A13583E640084C965 /* Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utils.m; sourceTree = "<group>"; };
 		2BD0D84C12E43E60009DB2F3 /* BeatTheMonkey.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BeatTheMonkey.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2BD0D85012E43E60009DB2F3 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		2BD0D85212E43E60009DB2F3 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -88,7 +87,7 @@
 		2BD0D87B12E43E61009DB2F3 /* BeatTheMonkeyTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BeatTheMonkeyTests.h; sourceTree = "<group>"; };
 		2BD0D87D12E43E61009DB2F3 /* BeatTheMonkeyTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BeatTheMonkeyTests.m; sourceTree = "<group>"; };
 		2BD0D88712E485FC009DB2F3 /* BTMGame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BTMGame.h; sourceTree = "<group>"; };
-		2BD0D88812E485FC009DB2F3 /* BTMGame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BTMGame.m; sourceTree = "<group>"; };
+		2BD0D88812E485FC009DB2F3 /* BTMGame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = BTMGame.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -177,6 +176,8 @@
 				2B29C506130160C100816C84 /* NSDictionary+BTM.m */,
 				2B361F7112FC0BC400617427 /* BTMTile.h */,
 				2B361F7212FC0BC400617427 /* BTMTile.m */,
+				2BCCA42913583DFA0084C965 /* Utils.h */,
+				2BCCA42A13583E640084C965 /* Utils.m */,
 				2BD0D86812E43E60009DB2F3 /* BeatTheMonkeyViewController.xib */,
 				2B29C50A13017D1C00816C84 /* BeatTheMonkeyIphoneViewController.xib */,
 				2B29C5471301997700816C84 /* FlipSideViewController.xib */,
@@ -195,8 +196,6 @@
 				2BD0D85912E43E60009DB2F3 /* InfoPlist.strings */,
 				2BD0D85C12E43E60009DB2F3 /* BeatTheMonkey-Prefix.pch */,
 				2BD0D85D12E43E60009DB2F3 /* main.m */,
-				2B3B2AD91300400700AEB9D9 /* Settings-iPad.plist */,
-				2B3B2ADB1300407B00AEB9D9 /* Settings-iPhone.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -293,8 +292,6 @@
 				2BD0D85B12E43E60009DB2F3 /* InfoPlist.strings in Resources */,
 				2BD0D86412E43E60009DB2F3 /* MainWindow.xib in Resources */,
 				2BD0D86A12E43E60009DB2F3 /* BeatTheMonkeyViewController.xib in Resources */,
-				2B3B2ADA1300400700AEB9D9 /* Settings-iPad.plist in Resources */,
-				2B3B2ADC1300407B00AEB9D9 /* Settings-iPhone.plist in Resources */,
 				2B3B2AE713013EF900AEB9D9 /* MainWindowIphone.xib in Resources */,
 				2B29C50B13017D1D00816C84 /* BeatTheMonkeyIphoneViewController.xib in Resources */,
 				2B29C5481301997900816C84 /* FlipSideViewController.xib in Resources */,
@@ -351,6 +348,7 @@
 				2B361F7312FC0BC400617427 /* BTMTile.m in Sources */,
 				2B29C507130160C200816C84 /* NSDictionary+BTM.m in Sources */,
 				2B29C54B13019A4200816C84 /* FlipSideViewController.m in Sources */,
+				2BCCA42B13583E640084C965 /* Utils.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

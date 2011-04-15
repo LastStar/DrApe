@@ -7,51 +7,88 @@
 //
 
 #import "BTMGame.h"
+#import "Utils.h"
 
-#define BTM_DEBUG          1 // debug mode?
 
 @interface BTMGame()
-- (void)updateNextTile;    
+- (void)updateNextTile;
+- (void)goToNextLevel;
+- (NSUInteger)calculateScoreFromTime:(NSTimeInterval)gameTime;
+- (void)setupOptions;
 @end
 
 @implementation BTMGame
 
-@synthesize nextTile, gameView, tilesCount, timeToHide, tiles, positions, tilesPressed, mistake, options, delegate, startDate, thisScore;
+@synthesize    nextTile = _nextTile,
+               gameView = _gameView,
+             tilesCount = _tilesCount,
+          tilesCountMin = _tilesCountMin,
+          tilesCountMax = _tilesCountMax,
+             difficulty = _difficulty,
+                  tiles = _tiles,
+              positions = _positions,
+           tilesPressed = _tilesPressed,
+                mistake = _mistake,
+               delegate = _delegate,
+              startDate = _startDate,
+              thisScore = _thisScore,
+       highestScoreName = _highestScoreName,
+     highestScoreAmount = _highestScoreAmount,
+automaticLevelUpgrading = _automaticLevelUpgrading;
 
-- (BTMGame *)initWithView:(UIView *)aView andOptions:(NSDictionary *)anOptions {
-    self.options = anOptions;
-    NSLog(@"Initializing BTMGame with anOptions = %@", self.options);
+#define THIS_VERSION 3
+- (void)setupOptions {
+    NSLog(@"LastOptionsVersion %i", [UD integerForKey:@"LastOptionsVersion"]);
+    if (![UD objectForKey:@"LastOptionsVersion"] || [UD integerForKey:@"LastOptionsVersion"] < THIS_VERSION) {
+        [UD setInteger:THIS_VERSION forKey:@"LastOptionsVersion"];
+        [UD setBool:AUTOMATIC_LEVEL_UPGRADING forKey:@"AutomaticLevelUpgrading"];
+        [UD setInteger:TILES_COUNT forKey:@"TilesCount"];
+        [UD setInteger:TILES_COUNT_MIN forKey:@"TilesCountMin"];
+        [UD setInteger:TILES_COUNT_MAX forKey:@"TilesCountMax"];
+        [UD setInteger:TILES_X forKey:@"TilesX"];
+        [UD setInteger:TILES_Y forKey:@"TilesY"];
+        [UD setInteger:DIFFICULTY forKey:@"Difficulty"];
+
+        if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad) {
+            [UD setInteger:IPAD_FONT_SIZE forKey:@"FontSize"]; 
+            [UD setInteger:IPAD_OFFSET_LEFT forKey:@"OffsetLeft"];
+            [UD setInteger:IPAD_OFFSET_TOP forKey:@"OffsetTop"];
+            [UD setInteger:IPAD_TILE_BORDER forKey:@"TileBorder"];
+            [UD setInteger:IPAD_TILE_SIZE forKey:@"TileSize"];
+        } else {
+            [UD setInteger:IPHONE_FONT_SIZE forKey:@"FontSize"]; 
+            [UD setInteger:IPHONE_OFFSET_LEFT forKey:@"OffsetLeft"];
+            [UD setInteger:IPHONE_OFFSET_TOP forKey:@"OffsetTop"];
+            [UD setInteger:IPHONE_TILE_BORDER forKey:@"TileBorder"];
+            [UD setInteger:IPHONE_TILE_SIZE forKey:@"TileSize"];        
+        }
+        [UD synchronize];
+    }
+}
+
+- (BTMGame *)initWithView:(UIView *)aView {
+    [self setupOptions];
     self.gameView = aView;
-    NSInteger userTilesCount = [[NSUserDefaults standardUserDefaults] integerForKey:@"TilesCount"];
-    self.tilesCount = userTilesCount > 0 ? userTilesCount : [self.options intForKey:@"TilesCount"];
-    NSInteger userTimeToHide = [[NSUserDefaults standardUserDefaults] integerForKey:@"TimeToHide"];
-    self.timeToHide = userTimeToHide > 0 ? userTimeToHide : [self.options intForKey:@"TimeToHide"];
-    self.nextTile = nil;
-    self.mistake = NO;
-    self.tilesPressed = 0;
     self.tiles = [NSMutableArray array];
     self.positions = [NSMutableArray array];
     return self;
 }
 
 - (int)getRandomFreePosition {
-    // if (BTM_DEBUG) { NSLog(@"self.positions count = %i", [self.positions count]); }
     int randomIndex = arc4random() % [self.positions count];
-    // if (BTM_DEBUG) { NSLog(@"randomIndex %i", randomIndex); }
     int randomValue = [[self.positions objectAtIndex:randomIndex] intValue];
-    // if (BTM_DEBUG) { NSLog(@"randomValue %i", randomValue); }
     [self.positions removeObjectAtIndex:randomIndex];
     return randomValue;
 }
 
 - (CGRect)getRandomPosition {
     int newPos = [self getRandomFreePosition];
-    NSUInteger tileSize   = [self.options intForKey:@"TileSize"];
-    NSUInteger tileBorder = [self.options intForKey:@"TileBorder"];
-    int xPos = newPos % [self.options intForKey:@"TilesX"];
-    int yPos = newPos / [self.options intForKey:@"TilesX"];
-    float X = xPos * (tileSize + tileBorder) + tileBorder + [self.options intForKey:@"OffsetLeft"];
-    float Y = yPos * (tileSize + tileBorder) + tileBorder + [self.options intForKey:@"OffsetTop"];
+    NSUInteger tileSize   = [UD integerForKey:@"TileSize"];
+    NSUInteger tileBorder = [UD integerForKey:@"TileBorder"];
+    int xPos = newPos % [UD integerForKey:@"TilesX"];
+    int yPos = newPos / [UD integerForKey:@"TilesX"];
+    CGFloat X = xPos * (tileSize + tileBorder) + tileBorder + [UD integerForKey:@"OffsetLeft"];
+    CGFloat Y = yPos * (tileSize + tileBorder) + tileBorder + [UD integerForKey:@"OffsetTop"];
     return CGRectMake(X, Y, tileSize, tileSize);
 }
 
@@ -60,7 +97,8 @@
     for (BTMTile *tile in self.tiles) {
         [tile removeFromSuperview];
     }   [self.tiles removeAllObjects];
-    for (int i = 0; i < ([self.options intForKey:@"TilesX"] * [self.options intForKey:@"TilesY"]); i++) {
+    NSUInteger positionsCount = [UD integerForKey:@"TilesX"] * [UD integerForKey:@"TilesY"];
+    for (int i = 0; i < positionsCount; i++) {
         [self.positions addObject:[NSNumber numberWithInt:i]];
     }
 }
@@ -68,7 +106,7 @@
 - (void)addTiles {
     for (int i = 1; i <= self.tilesCount; i++) {
         BTMTile *tile = [BTMTile tileWithFrame:[self getRandomPosition]];
-        tile.titleLabel.font = [UIFont fontWithName:@"Helvetica" size:[self.options intForKey:@"FontSize"]];
+        tile.titleLabel.font = [UIFont fontWithName:@"Helvetica" size:[UD doubleForKey:@"FontSize"]];
         [tile addTarget:self action:@selector(buttonPressed:) forControlEvents:UIControlEventTouchUpInside];
         [tile setTitle:[NSString stringWithFormat:@"%i", i] forState:UIControlStateNormal];
         [tile setTag:i];
@@ -77,17 +115,38 @@
     }   [self updateNextTile];
 }
 
+- (void)goToNextLevel {
+    NSLog(@"Going to next level.");
+    // TODO vyriesit, ze ak presiel komplet celu hru
+    if (self.tilesCount == self.tilesCountMax) { // going to next difficulty
+        [UD setInteger:(self.difficulty + 1) forKey:@"Difficulty"];
+        [UD setInteger:self.tilesCountMin forKey:@"TilesCount"];
+        [UD synchronize];
+    } else { // increase tiles count
+        [UD setInteger:(self.tilesCount + 1) forKey:@"TilesCount"];
+        [UD synchronize];
+    }
+}
+
 - (void)setup {
+    self.tilesCount = [UD integerForKey:@"TilesCount"];
+    self.difficulty = [UD integerForKey:@"Difficulty"] ;
+    self.automaticLevelUpgrading = [UD boolForKey:@"AutomaticLevelUpgrading"];
+    self.tilesCountMin = [UD integerForKey:@"TilesCountMin"];
+    self.tilesCountMax = [UD integerForKey:@"TilesCountMax"];
+    self.highestScoreName = [UD stringForKey:@"HighestScoreName"];
+    self.highestScoreAmount = [UD integerForKey:@"HighestScoreAmount"];
     self.tilesPressed = 0;
     self.thisScore = 0;
     self.startDate = [NSDate date];
     self.mistake = NO;
+    self.nextTile = nil;
+    
     [self removeOldTiles];
     [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(addTiles) userInfo:nil repeats:NO];
 }
 
 - (void)updateNextTile {
-    // if (BTM_DEBUG) NSLog(@"updateNextTile self.tilesPressed = %d", self.tilesPressed);
     self.nextTile = [self.tiles objectAtIndex:self.tilesPressed];
 }
 
@@ -101,46 +160,68 @@
 
 - (void)startGame {
     [self setup];
-    NSLog(@"Calling NSTimer 1");
-	[NSTimer scheduledTimerWithTimeInterval:self.timeToHide target:self
+	[NSTimer scheduledTimerWithTimeInterval:[self difficultyToTime:self.difficulty] target:self
                                    selector:@selector(hideTiles) userInfo:nil repeats:NO];
 }
 
 - (float)highestScore {
-    return [[NSUserDefaults standardUserDefaults] integerForKey:@"HighestScoreAmount"];
+    return [UD integerForKey:@"HighestScoreAmount"];
+}
+
+- (NSUInteger)calculateScoreFromTime:(NSTimeInterval)gameTime {
+    double diffCoef = self.difficulty + 1;
+    double timeCoef = gameTime;
+    double tileCoef = self.tilesCount;
+    NSLog(@"%f %f %f", diffCoef, timeCoef, tileCoef);
+    return round((tileCoef / timeCoef) * diffCoef * 100);
 }
 
 - (void)finishGame {
-    // if (BTM_DEBUG) { NSLog(@"self.tiles count = %i", [self.tiles count]); }
     NSTimeInterval gameTime = -[self.startDate timeIntervalSinceNow];
-    self.thisScore = (int)(1000 / (gameTime / self.tilesCount));
+    self.thisScore = [self calculateScoreFromTime:gameTime];
     NSLog(@"self.thisScore = %d", self.thisScore);
     if (self.mistake) {
         [self showMistakenTiles];
         if ([self.delegate respondsToSelector:@selector(btmGameHasFinished:mistake:)]) {
             [self.delegate btmGameHasFinished:self mistake:YES];
         }
-    } else if (self.thisScore > [self highestScore]) {
-        if ([self.delegate respondsToSelector:@selector(btmGameHasNewHighScore:)]) {
-            [self.delegate btmGameHasNewHighScore:self];
-        }
     } else {
-        if ([self.delegate respondsToSelector:@selector(btmGameHasFinished:mistake:)]) {
-            [self.delegate btmGameHasFinished:self mistake:NO];
+        if (self.automaticLevelUpgrading) { [self goToNextLevel]; }
+        if (self.thisScore > self.highestScoreAmount) {
+            if ([self.delegate respondsToSelector:@selector(btmGameHasNewHighScore:)]) {
+                [self.delegate btmGameHasNewHighScore:self];
+            }
+        } else {
+            if ([self.delegate respondsToSelector:@selector(btmGameHasFinished:mistake:)]) {
+                [self.delegate btmGameHasFinished:self mistake:NO];
+            }
         }
     }
 }
 
+- (double)difficultyToTime:(NSUInteger)aDifficulty {
+    switch (aDifficulty) {
+        case 0:
+            return 2;
+        case 1:
+            return 1.3;
+        case 2:
+            return 0.5;
+        default:
+            return 2;
+    }
+}
+
 - (void)addNewHighScoreWithName:(NSString *)aName {
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    [userDefaults setObject:aName forKey:@"HighestScoreName"];
-    [userDefaults setDouble:self.thisScore forKey:@"HighestScoreAmount"];
-    [userDefaults synchronize];
+    [UD setObject:aName forKey:@"HighestScoreName"];
+    [UD setDouble:self.thisScore forKey:@"HighestScoreAmount"];
+    [UD synchronize];
 }
 
 - (void)showMistakenTiles {
     for (BTMTile *tile in self.tiles) {
         [tile setTitle:[NSString stringWithFormat:@"%d", tile.tag] forState:UIControlStateNormal];
+        [tile setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         if (tile.mistaken) {
             tile.backgroundColor = [UIColor redColor];
         } else {
@@ -150,7 +231,6 @@
 }
 
 - (void)buttonPressed:(BTMTile *)sender {
-    if (BTM_DEBUG) { NSLog(@"tilesCount %d", self.tilesCount); }
     sender.enabled = NO;
     [sender setBackgroundColor:[UIColor blackColor]];
     if (self.nextTile != sender) {
@@ -166,13 +246,11 @@
 }   
 
 - (void)dealloc {
-//    NSLog(@"deallocating the game");
-    [gameView release];
-    [tiles release];
-    [positions release];
-    [nextTile release];
-    [options release];
-    [startDate release];
+    [_gameView release];
+    [_tiles release];
+    [_positions release];
+    [_nextTile release];
+    [_startDate release];
     [super dealloc];
 }
 

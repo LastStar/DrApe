@@ -7,11 +7,11 @@
 //
 
 #import "BeatTheMonkeyViewController.h"
+#import "Utils.h"
 
 @implementation BeatTheMonkeyViewController
 
 @synthesize game = _game,
-         options = _options,
       infoButton = _infoButton,
       scoreLabel = _scoreLabel,
  startGameButton = _startGameButton;
@@ -85,7 +85,7 @@
     NSString *alertMessage = [NSString stringWithFormat:@"New High Score %d. Please enter your name:", aGame.thisScore];
     UIAlertView *prompt = [[UIAlertView alloc] initWithTitle:@"Congratulations" message:alertMessage delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Save", nil];
     [prompt addTextFieldWithValue:@"" label:nil];
-    [[prompt textField] setText:[[NSUserDefaults standardUserDefaults] stringForKey:@"HighestScoreName"]];
+    [[prompt textField] setText:[UD stringForKey:@"HighestScoreName"]];
     [prompt show];
     [prompt release];
 }
@@ -106,7 +106,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 //    NSLog(@"width, height = %f, %f", self.view.bounds.size.width, self.view.bounds.size.height);
-    self.game = [[BTMGame alloc] initWithView:self.view andOptions:self.options];
+    self.game = [[BTMGame alloc] initWithView:self.view];
     self.game.delegate = self;
     
     self.scoreLabel = [[UILabel alloc] init];
