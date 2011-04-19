@@ -21,6 +21,7 @@
 #define TILES_X 8
 #define TILES_Y 5
 #define DIFFICULTY 0
+#define DIFFICULTY_MAX 2
 #define IPAD_FONT_SIZE 90
 #define IPAD_OFFSET_LEFT 22
 #define IPAD_OFFSET_TOP 74

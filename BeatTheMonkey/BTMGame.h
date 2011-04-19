@@ -29,8 +29,6 @@
 @property (nonatomic, retain) NSString *highestScoreName;
 @property (nonatomic, assign) NSUInteger highestScoreAmount;
 @property (nonatomic, assign) NSUInteger tilesCount;
-@property (nonatomic, assign) NSUInteger tilesCountMin;
-@property (nonatomic, assign) NSUInteger tilesCountMax;
 @property (nonatomic, assign) NSUInteger tilesPressed;
 @property (nonatomic, assign) NSUInteger thisScore;
 @property (nonatomic, assign) NSUInteger difficulty;

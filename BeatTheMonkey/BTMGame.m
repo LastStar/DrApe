@@ -22,8 +22,6 @@
 @synthesize    nextTile = _nextTile,
                gameView = _gameView,
              tilesCount = _tilesCount,
-          tilesCountMin = _tilesCountMin,
-          tilesCountMax = _tilesCountMax,
              difficulty = _difficulty,
                   tiles = _tiles,
               positions = _positions,
@@ -43,8 +41,6 @@ automaticLevelUpgrading = _automaticLevelUpgrading;
         [UD setInteger:THIS_VERSION forKey:@"LastOptionsVersion"];
         [UD setBool:AUTOMATIC_LEVEL_UPGRADING forKey:@"AutomaticLevelUpgrading"];
         [UD setInteger:TILES_COUNT forKey:@"TilesCount"];
-        [UD setInteger:TILES_COUNT_MIN forKey:@"TilesCountMin"];
-        [UD setInteger:TILES_COUNT_MAX forKey:@"TilesCountMax"];
         [UD setInteger:TILES_X forKey:@"TilesX"];
         [UD setInteger:TILES_Y forKey:@"TilesY"];
         [UD setInteger:DIFFICULTY forKey:@"Difficulty"];
@@ -118,11 +114,17 @@ automaticLevelUpgrading = _automaticLevelUpgrading;
 
 - (void)goToNextLevel {
     if (BTM_DEBUG) NSLog(@"Going to next level.");
-    // TODO vyriesit, ze ak presiel komplet celu hru
-    if (self.tilesCount == self.tilesCountMax) { // going to next difficulty
-        [UD setInteger:(self.difficulty + 1) forKey:@"Difficulty"];
-        [UD setInteger:self.tilesCountMin forKey:@"TilesCount"];
-        [UD synchronize];
+    if (self.tilesCount == TILES_COUNT_MAX) { // going to next difficulty
+        if (self.difficulty == DIFFICULTY_MAX) {
+            // TODO vyriesit, ze ak presiel komplet celu hru
+            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Congratulations" message:@"You finished the whole game" delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
+            [alertView show];
+            [alertView release];
+        } else {
+            [UD setInteger:(self.difficulty + 1) forKey:@"Difficulty"];
+            [UD setInteger:TILES_COUNT_MIN forKey:@"TilesCount"];
+            [UD synchronize];
+        }
     } else { // increase tiles count
         [UD setInteger:(self.tilesCount + 1) forKey:@"TilesCount"];
         [UD synchronize];
@@ -133,8 +135,6 @@ automaticLevelUpgrading = _automaticLevelUpgrading;
     self.tilesCount = [UD integerForKey:@"TilesCount"];
     self.difficulty = [UD integerForKey:@"Difficulty"] ;
     self.automaticLevelUpgrading = [UD boolForKey:@"AutomaticLevelUpgrading"];
-    self.tilesCountMin = [UD integerForKey:@"TilesCountMin"];
-    self.tilesCountMax = [UD integerForKey:@"TilesCountMax"];
     self.highestScoreName = [UD stringForKey:@"HighestScoreName"];
     self.highestScoreAmount = [UD integerForKey:@"HighestScoreAmount"];
     self.tilesPressed = 0;

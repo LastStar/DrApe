@@ -6,6 +6,7 @@
 //  Copyright 2011 LastStar.eu. All rights reserved.
 //
 
+#import <AudioToolbox/AudioToolbox.h>
 #import "BeatTheMonkeyViewController.h"
 #import "Utils.h"
 #import "AlertPrompt.h"
@@ -137,8 +138,20 @@
     [self.game startGame];
 }
 
-- (void)viewDidUnload {
-    [super viewDidUnload];
+- (void)motionEnded:(UIEventSubtype)motion
+		  withEvent:(UIEvent *)event {
+	if (motion == UIEventSubtypeMotionShake) {
+        AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
+        [self.game startGame];
+    }
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [self becomeFirstResponder];
+}
+
+- (BOOL)canBecomeFirstResponder {
+    return YES;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {

@@ -16,7 +16,7 @@
 #pragma mark - Actions
 
 - (NSUInteger)segmentFromTilesCount {
-    return self.game.tilesCount - self.game.tilesCountMin;
+    return self.game.tilesCount - TILES_COUNT_MIN;
 }
 
 - (IBAction)done:(id)sender {
@@ -74,9 +74,9 @@
         self.infoButton.hidden = YES;
     }
     [self.tilesCountControl removeAllSegments];
-    for (int i = self.game.tilesCountMin; i <= self.game.tilesCountMax; i++ ) {
+    for (int i = TILES_COUNT_MIN; i <= TILES_COUNT_MAX; i++ ) {
         NSString *segmentTitle = [NSString stringWithFormat:@"%d", i];
-        NSUInteger segmentIndex = (i - self.game.tilesCountMin);
+        NSUInteger segmentIndex = (i - TILES_COUNT_MIN);
         [self.tilesCountControl insertSegmentWithTitle:segmentTitle atIndex:segmentIndex animated:NO];
     }
     self.difficultyControl.selectedSegmentIndex = self.game.difficulty;
