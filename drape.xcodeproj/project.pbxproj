@@ -17,10 +17,10 @@
 		2B3C9348135D832C00F0C481 /* dr-ape_72x72.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B3C9347135D832C00F0C481 /* dr-ape_72x72.png */; };
 		2B3C934B135D839F00F0C481 /* AlertPrompt.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B3C934A135D839F00F0C481 /* AlertPrompt.m */; };
 		2B3C9353135D8F3900F0C481 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B3C9352135D8F3900F0C481 /* AudioToolbox.framework */; };
-		2B50DB39135DB321005B9414 /* BeatTheMonkeyIphoneViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2B50DB38135DB321005B9414 /* BeatTheMonkeyIphoneViewController.xib */; };
 		2B71C46713040CDF0058560B /* icon_ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B71C46613040CDF0058560B /* icon_ipad.png */; };
 		2B71C46A13040CFA0058560B /* icon_retina.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B71C46913040CFA0058560B /* icon_retina.png */; };
 		2B71C46C13040D010058560B /* icon_iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B71C46B13040D000058560B /* icon_iphone.png */; };
+		2BA98B18135DB543009E2D67 /* BeatTheMonkeyIphoneViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2BA98B17135DB543009E2D67 /* BeatTheMonkeyIphoneViewController.xib */; };
 		2BCCA41013571E7B0084C965 /* Default-Portrait~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BCCA40C13571DFB0084C965 /* Default-Portrait~ipad.png */; };
 		2BCCA41213571EC40084C965 /* Default-Landscape~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BCCA40E13571E040084C965 /* Default-Landscape~ipad.png */; };
 		2BCCA417135720B10084C965 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BCCA40813571DE30084C965 /* Default.png */; };
@@ -57,10 +57,10 @@
 		2B3C9349135D839F00F0C481 /* AlertPrompt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AlertPrompt.h; path = ../AlertPrompt.h; sourceTree = "<group>"; };
 		2B3C934A135D839F00F0C481 /* AlertPrompt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AlertPrompt.m; path = ../AlertPrompt.m; sourceTree = "<group>"; };
 		2B3C9352135D8F3900F0C481 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
-		2B50DB38135DB321005B9414 /* BeatTheMonkeyIphoneViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BeatTheMonkeyIphoneViewController.xib; path = Dr.Ape.xcodeproj/BeatTheMonkeyIphoneViewController.xib; sourceTree = SOURCE_ROOT; };
 		2B71C46613040CDF0058560B /* icon_ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon_ipad.png; path = ../icon_ipad.png; sourceTree = "<group>"; };
 		2B71C46913040CFA0058560B /* icon_retina.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon_retina.png; path = ../icon_retina.png; sourceTree = "<group>"; };
 		2B71C46B13040D000058560B /* icon_iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon_iphone.png; path = ../icon_iphone.png; sourceTree = "<group>"; };
+		2BA98B17135DB543009E2D67 /* BeatTheMonkeyIphoneViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BeatTheMonkeyIphoneViewController.xib; path = DrApe.xcodeproj/BeatTheMonkeyIphoneViewController.xib; sourceTree = SOURCE_ROOT; };
 		2BCCA40813571DE30084C965 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		2BCCA40A13571DF00084C965 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		2BCCA40C13571DFB0084C965 /* Default-Portrait~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait~ipad.png"; sourceTree = "<group>"; };
@@ -71,13 +71,13 @@
 		2BCCA422135827CD0084C965 /* gears@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "gears@2x.png"; path = "Images/gears@2x.png"; sourceTree = SOURCE_ROOT; };
 		2BCCA42913583DFA0084C965 /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = Utils.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		2BCCA42A13583E640084C965 /* Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utils.m; sourceTree = "<group>"; };
-		2BD0D84C12E43E60009DB2F3 /* Dr.Ape.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dr.Ape.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2BD0D84C12E43E60009DB2F3 /* drape.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = drape.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2BD0D85012E43E60009DB2F3 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		2BD0D85212E43E60009DB2F3 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		2BD0D85412E43E60009DB2F3 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		2BD0D85812E43E60009DB2F3 /* Dr.Ape-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Dr.Ape-Info.plist"; sourceTree = "<group>"; };
+		2BD0D85812E43E60009DB2F3 /* drape-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "drape-Info.plist"; sourceTree = "<group>"; };
 		2BD0D85A12E43E60009DB2F3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		2BD0D85C12E43E60009DB2F3 /* Dr.Ape-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Dr.Ape-Prefix.pch"; sourceTree = "<group>"; };
+		2BD0D85C12E43E60009DB2F3 /* drape-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "drape-Prefix.pch"; sourceTree = "<group>"; };
 		2BD0D85D12E43E60009DB2F3 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		2BD0D85F12E43E60009DB2F3 /* BeatTheMonkeyAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BeatTheMonkeyAppDelegate.h; sourceTree = "<group>"; };
 		2BD0D86012E43E60009DB2F3 /* BeatTheMonkeyAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BeatTheMonkeyAppDelegate.m; sourceTree = "<group>"; };
@@ -137,7 +137,7 @@
 		2BD0D84D12E43E60009DB2F3 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				2BD0D84C12E43E60009DB2F3 /* Dr.Ape.app */,
+				2BD0D84C12E43E60009DB2F3 /* drape.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -173,7 +173,7 @@
 				2B3C9349135D839F00F0C481 /* AlertPrompt.h */,
 				2B3C934A135D839F00F0C481 /* AlertPrompt.m */,
 				2BD0D86812E43E60009DB2F3 /* BeatTheMonkeyViewController.xib */,
-				2B50DB38135DB321005B9414 /* BeatTheMonkeyIphoneViewController.xib */,
+				2BA98B17135DB543009E2D67 /* BeatTheMonkeyIphoneViewController.xib */,
 				2B29C5471301997700816C84 /* FlipSideViewController.xib */,
 				2BD0D86212E43E60009DB2F3 /* MainWindow.xib */,
 				2B3B2AE613013EF900AEB9D9 /* MainWindowIphone.xib */,
@@ -186,9 +186,9 @@
 			isa = PBXGroup;
 			children = (
 				2B71C46813040CE90058560B /* Images */,
-				2BD0D85812E43E60009DB2F3 /* Dr.Ape-Info.plist */,
+				2BD0D85812E43E60009DB2F3 /* drape-Info.plist */,
 				2BD0D85912E43E60009DB2F3 /* InfoPlist.strings */,
-				2BD0D85C12E43E60009DB2F3 /* Dr.Ape-Prefix.pch */,
+				2BD0D85C12E43E60009DB2F3 /* drape-Prefix.pch */,
 				2BD0D85D12E43E60009DB2F3 /* main.m */,
 			);
 			name = "Supporting Files";
@@ -197,9 +197,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		2BD0D84B12E43E60009DB2F3 /* Dr.Ape */ = {
+		2BD0D84B12E43E60009DB2F3 /* drape */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2BD0D88112E43E61009DB2F3 /* Build configuration list for PBXNativeTarget "Dr.Ape" */;
+			buildConfigurationList = 2BD0D88112E43E61009DB2F3 /* Build configuration list for PBXNativeTarget "drape" */;
 			buildPhases = (
 				2BD0D84812E43E60009DB2F3 /* Sources */,
 				2BD0D84912E43E60009DB2F3 /* Frameworks */,
@@ -209,9 +209,9 @@
 			);
 			dependencies = (
 			);
-			name = Dr.Ape;
+			name = drape;
 			productName = BeatTheMonkey;
-			productReference = 2BD0D84C12E43E60009DB2F3 /* Dr.Ape.app */;
+			productReference = 2BD0D84C12E43E60009DB2F3 /* drape.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -222,7 +222,7 @@
 			attributes = {
 				ORGANIZATIONNAME = LastStar.eu;
 			};
-			buildConfigurationList = 2BD0D84612E43E5F009DB2F3 /* Build configuration list for PBXProject "Dr.Ape" */;
+			buildConfigurationList = 2BD0D84612E43E5F009DB2F3 /* Build configuration list for PBXProject "drape" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -234,7 +234,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				2BD0D84B12E43E60009DB2F3 /* Dr.Ape */,
+				2BD0D84B12E43E60009DB2F3 /* drape */,
 			);
 		};
 /* End PBXProject section */
@@ -263,7 +263,7 @@
 				2B3C9344135D828F00F0C481 /* dr-ape_114x114.png in Resources */,
 				2B3C9346135D832600F0C481 /* dr-ape_57x57.png in Resources */,
 				2B3C9348135D832C00F0C481 /* dr-ape_72x72.png in Resources */,
-				2B50DB39135DB321005B9414 /* BeatTheMonkeyIphoneViewController.xib in Resources */,
+				2BA98B18135DB543009E2D67 /* BeatTheMonkeyIphoneViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -320,16 +320,18 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_UNIVERSAL_IPHONE_OS)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Stefan Luptak (7W2VTSB3H4)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Stefan Luptak (7W2VTSB3H4)";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 3.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				PROVISIONING_PROFILE = "5B47FE09-0032-4A3E-9AA8-07685DEE1F5E";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "4E1C748B-541E-45B1-809F-867B98323F7B";
 				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = 2;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -337,15 +339,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_UNIVERSAL_IPHONE_OS)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Stefan Luptak (7W2VTSB3H4)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Stefan Luptak (7W2VTSB3H4)";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 3.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "4E1C748B-541E-45B1-809F-867B98323F7B";
+				PROVISIONING_PROFILE = "5B47FE09-0032-4A3E-9AA8-07685DEE1F5E";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "5B47FE09-0032-4A3E-9AA8-07685DEE1F5E";
 				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = 2;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
@@ -357,10 +361,10 @@
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "BeatTheMonkey/Dr.Ape-Prefix.pch";
-				INFOPLIST_FILE = "BeatTheMonkey/Dr.Ape-Info.plist";
+				GCC_PREFIX_HEADER = "BeatTheMonkey/drape-Prefix.pch";
+				INFOPLIST_FILE = "BeatTheMonkey/drape-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
-				PRODUCT_NAME = Dr.Ape;
+				PRODUCT_NAME = drape;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
@@ -373,10 +377,10 @@
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "BeatTheMonkey/Dr.Ape-Prefix.pch";
-				INFOPLIST_FILE = "BeatTheMonkey/Dr.Ape-Info.plist";
+				GCC_PREFIX_HEADER = "BeatTheMonkey/drape-Prefix.pch";
+				INFOPLIST_FILE = "BeatTheMonkey/drape-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
-				PRODUCT_NAME = Dr.Ape;
+				PRODUCT_NAME = drape;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;
@@ -386,7 +390,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		2BD0D84612E43E5F009DB2F3 /* Build configuration list for PBXProject "Dr.Ape" */ = {
+		2BD0D84612E43E5F009DB2F3 /* Build configuration list for PBXProject "drape" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2BD0D87F12E43E61009DB2F3 /* Debug */,
@@ -395,7 +399,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2BD0D88112E43E61009DB2F3 /* Build configuration list for PBXNativeTarget "Dr.Ape" */ = {
+		2BD0D88112E43E61009DB2F3 /* Build configuration list for PBXNativeTarget "drape" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2BD0D88212E43E61009DB2F3 /* Debug */,
