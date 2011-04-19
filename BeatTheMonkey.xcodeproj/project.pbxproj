@@ -13,6 +13,10 @@
 		2B29C54B13019A4200816C84 /* FlipSideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B29C54A13019A3900816C84 /* FlipSideViewController.m */; };
 		2B361F7312FC0BC400617427 /* BTMTile.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B361F7212FC0BC400617427 /* BTMTile.m */; };
 		2B3B2AE713013EF900AEB9D9 /* MainWindowIphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2B3B2AE613013EF900AEB9D9 /* MainWindowIphone.xib */; };
+		2B3C9344135D828F00F0C481 /* dr-ape_114x114.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B3C9343135D828F00F0C481 /* dr-ape_114x114.png */; };
+		2B3C9346135D832600F0C481 /* dr-ape_57x57.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B3C9345135D832500F0C481 /* dr-ape_57x57.png */; };
+		2B3C9348135D832C00F0C481 /* dr-ape_72x72.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B3C9347135D832C00F0C481 /* dr-ape_72x72.png */; };
+		2B3C934B135D839F00F0C481 /* AlertPrompt.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B3C934A135D839F00F0C481 /* AlertPrompt.m */; };
 		2B71C46713040CDF0058560B /* icon_ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B71C46613040CDF0058560B /* icon_ipad.png */; };
 		2B71C46A13040CFA0058560B /* icon_retina.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B71C46913040CFA0058560B /* icon_retina.png */; };
 		2B71C46C13040D010058560B /* icon_iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B71C46B13040D000058560B /* icon_iphone.png */; };
@@ -53,6 +57,11 @@
 		2B361F7112FC0BC400617427 /* BTMTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BTMTile.h; sourceTree = "<group>"; };
 		2B361F7212FC0BC400617427 /* BTMTile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BTMTile.m; sourceTree = "<group>"; };
 		2B3B2AE613013EF900AEB9D9 /* MainWindowIphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainWindowIphone.xib; sourceTree = "<group>"; };
+		2B3C9343135D828F00F0C481 /* dr-ape_114x114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dr-ape_114x114.png"; sourceTree = "<group>"; };
+		2B3C9345135D832500F0C481 /* dr-ape_57x57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dr-ape_57x57.png"; sourceTree = "<group>"; };
+		2B3C9347135D832C00F0C481 /* dr-ape_72x72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dr-ape_72x72.png"; sourceTree = "<group>"; };
+		2B3C9349135D839F00F0C481 /* AlertPrompt.h */ = {isa = PBXFileReference; fileEncoding = 4; name = AlertPrompt.h; path = ../AlertPrompt.h; sourceTree = "<group>"; };
+		2B3C934A135D839F00F0C481 /* AlertPrompt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AlertPrompt.m; path = ../AlertPrompt.m; sourceTree = "<group>"; };
 		2B71C46613040CDF0058560B /* icon_ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon_ipad.png; path = ../icon_ipad.png; sourceTree = "<group>"; };
 		2B71C46913040CFA0058560B /* icon_retina.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon_retina.png; path = ../icon_retina.png; sourceTree = "<group>"; };
 		2B71C46B13040D000058560B /* icon_iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon_iphone.png; path = ../icon_iphone.png; sourceTree = "<group>"; };
@@ -131,6 +140,9 @@
 		2BD0D84112E43E5F009DB2F3 = {
 			isa = PBXGroup;
 			children = (
+				2B3C9347135D832C00F0C481 /* dr-ape_72x72.png */,
+				2B3C9345135D832500F0C481 /* dr-ape_57x57.png */,
+				2B3C9343135D828F00F0C481 /* dr-ape_114x114.png */,
 				2BCCA40E13571E040084C965 /* Default-Landscape~ipad.png */,
 				2BCCA40C13571DFB0084C965 /* Default-Portrait~ipad.png */,
 				2BCCA40A13571DF00084C965 /* Default@2x.png */,
@@ -178,6 +190,8 @@
 				2B361F7212FC0BC400617427 /* BTMTile.m */,
 				2BCCA42913583DFA0084C965 /* Utils.h */,
 				2BCCA42A13583E640084C965 /* Utils.m */,
+				2B3C9349135D839F00F0C481 /* AlertPrompt.h */,
+				2B3C934A135D839F00F0C481 /* AlertPrompt.m */,
 				2BD0D86812E43E60009DB2F3 /* BeatTheMonkeyViewController.xib */,
 				2B29C50A13017D1C00816C84 /* BeatTheMonkeyIphoneViewController.xib */,
 				2B29C5471301997700816C84 /* FlipSideViewController.xib */,
@@ -306,6 +320,9 @@
 				2BCCA424135827CD0084C965 /* gears_highlighted@2x.png in Resources */,
 				2BCCA425135827CD0084C965 /* gears.png in Resources */,
 				2BCCA426135827CD0084C965 /* gears@2x.png in Resources */,
+				2B3C9344135D828F00F0C481 /* dr-ape_114x114.png in Resources */,
+				2B3C9346135D832600F0C481 /* dr-ape_57x57.png in Resources */,
+				2B3C9348135D832C00F0C481 /* dr-ape_72x72.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -349,6 +366,7 @@
 				2B29C507130160C200816C84 /* NSDictionary+BTM.m in Sources */,
 				2B29C54B13019A4200816C84 /* FlipSideViewController.m in Sources */,
 				2BCCA42B13583E640084C965 /* Utils.m in Sources */,
+				2B3C934B135D839F00F0C481 /* AlertPrompt.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

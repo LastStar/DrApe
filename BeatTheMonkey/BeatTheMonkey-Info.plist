@@ -14,9 +14,9 @@
 	<string></string>
 	<key>CFBundleIconFiles</key>
 	<array>
-		<string>icon_ipad.png</string>
-		<string>icon_retina.png</string>
-		<string>icon_iphone.png</string>
+		<string>dr-ape_72x72.png</string>
+		<string>dr-ape_114x114.png</string>
+		<string>dr-ape_57x57.png</string>
 	</array>
 	<key>CFBundleIdentifier</key>
 	<string>eu.laststar.${PRODUCT_NAME:rfc1034identifier}</string>

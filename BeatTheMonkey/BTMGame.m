@@ -36,9 +36,9 @@
      highestScoreAmount = _highestScoreAmount,
 automaticLevelUpgrading = _automaticLevelUpgrading;
 
-#define THIS_VERSION 3
+#define THIS_VERSION 5
 - (void)setupOptions {
-    NSLog(@"LastOptionsVersion %i", [UD integerForKey:@"LastOptionsVersion"]);
+    if (BTM_DEBUG) NSLog(@"LastOptionsVersion %i", [UD integerForKey:@"LastOptionsVersion"]);
     if (![UD objectForKey:@"LastOptionsVersion"] || [UD integerForKey:@"LastOptionsVersion"] < THIS_VERSION) {
         [UD setInteger:THIS_VERSION forKey:@"LastOptionsVersion"];
         [UD setBool:AUTOMATIC_LEVEL_UPGRADING forKey:@"AutomaticLevelUpgrading"];
@@ -48,6 +48,7 @@ automaticLevelUpgrading = _automaticLevelUpgrading;
         [UD setInteger:TILES_X forKey:@"TilesX"];
         [UD setInteger:TILES_Y forKey:@"TilesY"];
         [UD setInteger:DIFFICULTY forKey:@"Difficulty"];
+//        [UD setInteger:0 forKey:@"HighestScoreAmount"]; // todo disable
 
         if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad) {
             [UD setInteger:IPAD_FONT_SIZE forKey:@"FontSize"]; 
@@ -116,7 +117,7 @@ automaticLevelUpgrading = _automaticLevelUpgrading;
 }
 
 - (void)goToNextLevel {
-    NSLog(@"Going to next level.");
+    if (BTM_DEBUG) NSLog(@"Going to next level.");
     // TODO vyriesit, ze ak presiel komplet celu hru
     if (self.tilesCount == self.tilesCountMax) { // going to next difficulty
         [UD setInteger:(self.difficulty + 1) forKey:@"Difficulty"];
@@ -172,14 +173,14 @@ automaticLevelUpgrading = _automaticLevelUpgrading;
     double diffCoef = self.difficulty + 1;
     double timeCoef = gameTime;
     double tileCoef = self.tilesCount;
-    NSLog(@"%f %f %f", diffCoef, timeCoef, tileCoef);
+    if (BTM_DEBUG) NSLog(@"%f %f %f", diffCoef, timeCoef, tileCoef);
     return round((tileCoef / timeCoef) * diffCoef * 100);
 }
 
 - (void)finishGame {
     NSTimeInterval gameTime = -[self.startDate timeIntervalSinceNow];
     self.thisScore = [self calculateScoreFromTime:gameTime];
-    NSLog(@"self.thisScore = %d", self.thisScore);
+    if (BTM_DEBUG) NSLog(@"self.thisScore = %d", self.thisScore);
     if (self.mistake) {
         [self showMistakenTiles];
         if ([self.delegate respondsToSelector:@selector(btmGameHasFinished:mistake:)]) {
@@ -206,7 +207,7 @@ automaticLevelUpgrading = _automaticLevelUpgrading;
         case 1:
             return 1.3;
         case 2:
-            return 0.5;
+            return 0.9;
         default:
             return 2;
     }

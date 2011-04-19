@@ -8,6 +8,7 @@
 
 #import "BeatTheMonkeyViewController.h"
 #import "Utils.h"
+#import "AlertPrompt.h"
 
 @implementation BeatTheMonkeyViewController
 
@@ -82,26 +83,21 @@
 }
 
 - (void)btmGameHasNewHighScore:(BTMGame *)aGame {
-    NSString *alertMessage = [NSString stringWithFormat:@"New High Score %d. Please enter your name:", aGame.thisScore];
-    UIAlertView *prompt = [[UIAlertView alloc] initWithTitle:@"Congratulations" message:alertMessage delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Save", nil];
-    [prompt addTextFieldWithValue:@"" label:nil];
-    [[prompt textField] setText:[UD stringForKey:@"HighestScoreName"]];
+    AlertPrompt *prompt = [[AlertPrompt alloc] initWithTitle:[NSString stringWithFormat:@"New High Score: %d", aGame.thisScore] message:@"Enter your name please:\n\n\n" delegate:self cancelButtonTitle:@"Cancel" okButtonTitle:@"Save"];
+    prompt.textField.text = [UD stringForKey:@"HighestScoreName"];
     [prompt show];
     [prompt release];
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
-    if (buttonIndex == 1) {
-        [self.game addNewHighScoreWithName:[[alertView textField] text]];
+    if (buttonIndex != [alertView cancelButtonIndex]) {
+        [self.game addNewHighScoreWithName:((AlertPrompt *)alertView).textField.text];
     } 
 //    NSLog(@"Calling NSTimer 4");
     [NSTimer scheduledTimerWithTimeInterval:1 target:self.game selector:@selector(startGame) userInfo:nil repeats:NO];
 }
 
 #pragma mark - View lifecycle
-
-- (void)viewWillAppear:(BOOL)animated {
-}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
