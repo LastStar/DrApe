@@ -116,7 +116,6 @@ automaticLevelUpgrading = _automaticLevelUpgrading;
     if (BTM_DEBUG) NSLog(@"Going to next level.");
     if (self.tilesCount == TILES_COUNT_MAX) { // going to next difficulty
         if (self.difficulty == DIFFICULTY_MAX) {
-            // TODO vyriesit, ze ak presiel komplet celu hru
             UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Congratulations" message:@"You finished the whole game" delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
             [alertView show];
             [alertView release];
