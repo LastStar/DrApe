@@ -86,7 +86,7 @@
     if (self.game.highestScoreAmount == 0) {
         self.highScoreLabel.text = @"";
     } else {
-        self.highScoreLabel.text = [NSString stringWithFormat:@"Highest score %d by %@", self.game.highestScoreAmount, self.game.highestScoreName];
+        self.highScoreLabel.text = [NSString stringWithFormat:NSLocalizedString(@"Highest score %d by %@", nil), self.game.highestScoreAmount, self.game.highestScoreName];
     }
 }
 
