@@ -9,8 +9,6 @@
 #import <Foundation/Foundation.h>
 
 // zavibrovat, ked kliknem na odkryte cislo
-// pri shake-u nova hra
-// skore nech viac berie do uvahy pocet dlazdic ako cislo
 
 #define UD [NSUserDefaults standardUserDefaults]
 #define BTM_DEBUG 1
