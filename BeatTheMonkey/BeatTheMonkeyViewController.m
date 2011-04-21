@@ -84,7 +84,7 @@
 }
 
 - (void)btmGameHasNewHighScore:(BTMGame *)aGame {
-    AlertPrompt *prompt = [[AlertPrompt alloc] initWithTitle:[NSString stringWithFormat:@"New High Score: %d", aGame.thisScore] message:@"Enter your name please:\n\n\n" delegate:self cancelButtonTitle:@"Cancel" okButtonTitle:@"Save"];
+    AlertPrompt *prompt = [[AlertPrompt alloc] initWithTitle:[NSString stringWithFormat:NSLocalizedString(@"New High Score: %d", nil), aGame.thisScore] message:NSLocalizedString(@"Enter your name please:\n\n\n", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"Cancel", nil) okButtonTitle:NSLocalizedString(@"Save", nil)];
     prompt.textField.text = [UD stringForKey:@"HighestScoreName"];
     [prompt show];
     [prompt release];
@@ -116,7 +116,7 @@
     
     self.startGameButton = [UIButton buttonWithType:UIButtonTypeCustom];
     self.startGameButton.backgroundColor = [UIColor clearColor];
-    [self.startGameButton setTitle:@"Tap anywhere on screen to start new game." forState:UIControlStateNormal];
+    [self.startGameButton setTitle:NSLocalizedString(@"Tap anywhere on screen to start new game.", nil) forState:UIControlStateNormal];
     [self.startGameButton addTarget:self action:@selector(newGameButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
     self.startGameButton.hidden = YES;
     [self.view addSubview:self.startGameButton];
