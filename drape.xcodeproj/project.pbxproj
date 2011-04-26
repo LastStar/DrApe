@@ -43,6 +43,9 @@
 		2BD0D86112E43E60009DB2F3 /* BeatTheMonkeyAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BD0D86012E43E60009DB2F3 /* BeatTheMonkeyAppDelegate.m */; };
 		2BD0D86712E43E60009DB2F3 /* BeatTheMonkeyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BD0D86612E43E60009DB2F3 /* BeatTheMonkeyViewController.m */; };
 		2BD0D88912E485FC009DB2F3 /* BTMGame.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BD0D88812E485FC009DB2F3 /* BTMGame.m */; };
+		2BEE2BAA136709180026D5C5 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2BEE2BA8136709180026D5C5 /* Localizable.strings */; };
+		2BEE2BAC136709210026D5C5 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2BEE2BA8136709180026D5C5 /* Localizable.strings */; };
+		2BEE2BAE1367092B0026D5C5 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2BEE2BA8136709180026D5C5 /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -77,7 +80,7 @@
 		2BCCA420135827CD0084C965 /* gears_highlighted@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "gears_highlighted@2x.png"; path = "Images/gears_highlighted@2x.png"; sourceTree = SOURCE_ROOT; };
 		2BCCA421135827CD0084C965 /* gears.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = gears.png; path = Images/gears.png; sourceTree = SOURCE_ROOT; };
 		2BCCA422135827CD0084C965 /* gears@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "gears@2x.png"; path = "Images/gears@2x.png"; sourceTree = SOURCE_ROOT; };
-		2BCCA42913583DFA0084C965 /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = Utils.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		2BCCA42913583DFA0084C965 /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = Utils.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		2BCCA42A13583E640084C965 /* Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utils.m; sourceTree = "<group>"; };
 		2BD0D84C12E43E60009DB2F3 /* drape.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = drape.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2BD0D85012E43E60009DB2F3 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -92,6 +95,9 @@
 		2BD0D86612E43E60009DB2F3 /* BeatTheMonkeyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeatTheMonkeyViewController.m; sourceTree = "<group>"; };
 		2BD0D88712E485FC009DB2F3 /* BTMGame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BTMGame.h; sourceTree = "<group>"; };
 		2BD0D88812E485FC009DB2F3 /* BTMGame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = BTMGame.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		2BEE2BA9136709180026D5C5 /* sk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sk; path = BeatTheMonkey/sk.lproj/Localizable.strings; sourceTree = "<group>"; };
+		2BEE2BAB136709210026D5C5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = BeatTheMonkey/en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		2BEE2BAD1367092B0026D5C5 /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = BeatTheMonkey/cs.lproj/Localizable.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -190,6 +196,7 @@
 		2BD0D85712E43E60009DB2F3 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				2BEE2BA8136709180026D5C5 /* Localizable.strings */,
 				2B71C46813040CE90058560B /* Images */,
 				2BA98B4213605EB4009E2D67 /* InfoPlist.strings */,
 				2BD0D85812E43E60009DB2F3 /* drape-Info.plist */,
@@ -275,6 +282,9 @@
 				2BA98B3E13605E9E009E2D67 /* FlipSideViewController.xib in Resources */,
 				2BA98B4113605EAB009E2D67 /* MainWindow.xib in Resources */,
 				2BA98B4413605EB4009E2D67 /* InfoPlist.strings in Resources */,
+				2BEE2BAA136709180026D5C5 /* Localizable.strings in Resources */,
+				2BEE2BAC136709210026D5C5 /* Localizable.strings in Resources */,
+				2BEE2BAE1367092B0026D5C5 /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -342,6 +352,17 @@
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
+		2BEE2BA8136709180026D5C5 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2BEE2BA9136709180026D5C5 /* sk */,
+				2BEE2BAB136709210026D5C5 /* en */,
+				2BEE2BAD1367092B0026D5C5 /* cs */,
+			);
+			name = Localizable.strings;
+			path = ..;
+			sourceTree = "<group>";
+		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
@@ -376,7 +397,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				PROVISIONING_PROFILE = "5B47FE09-0032-4A3E-9AA8-07685DEE1F5E";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "5B47FE09-0032-4A3E-9AA8-07685DEE1F5E";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "4E1C748B-541E-45B1-809F-867B98323F7B";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -387,8 +408,8 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				CODE_SIGN_IDENTITY = "Don't Code Sign";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Don't Code Sign";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Stefan Luptak (7W2VTSB3H4)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Stefan Luptak (7W2VTSB3H4)";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -396,8 +417,8 @@
 				INFOPLIST_FILE = "BeatTheMonkey/drape-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				PRODUCT_NAME = drape;
-				PROVISIONING_PROFILE = "";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				PROVISIONING_PROFILE = "5B47FE09-0032-4A3E-9AA8-07685DEE1F5E";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "4E1C748B-541E-45B1-809F-867B98323F7B";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
@@ -408,16 +429,16 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				CODE_SIGN_IDENTITY = "Don't Code Sign";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Don't Code Sign";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Stefan Luptak (7W2VTSB3H4)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Stefan Luptak (7W2VTSB3H4)";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BeatTheMonkey/drape-Prefix.pch";
 				INFOPLIST_FILE = "BeatTheMonkey/drape-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				PRODUCT_NAME = drape;
-				PROVISIONING_PROFILE = "";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				PROVISIONING_PROFILE = "5B47FE09-0032-4A3E-9AA8-07685DEE1F5E";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "4E1C748B-541E-45B1-809F-867B98323F7B";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;
