@@ -19,3 +19,5 @@
 "Congratulations" = "Gratulujeme";
 
 "You finished the whole game" = "Dokončili ste celú hru";
+
+"TutorialText" = "<h1>Vitajte v Dr.Ape!</h1><li>Na začiatku uvidíte niekoľko čísel</li><li>Skúste si zapamätať ich pozície</li><li>Tapnite ich vo vzostupnom poradí</li><li>Novú hru začnete zatrasením</li>";
