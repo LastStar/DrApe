@@ -8,7 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-// zavibrovat, ked kliknem na odkryte cislo
 
 #define UD [NSUserDefaults standardUserDefaults]
 #define BTM_DEBUG 1

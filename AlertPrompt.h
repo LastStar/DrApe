@@ -6,9 +6,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface AlertPrompt : UIAlertView {
-    UITextField *textField;
-}
+@interface AlertPrompt : UIAlertView <UITextFieldDelegate> {}
 
 @property (nonatomic, retain) UITextField *textField;
 @property (readonly) NSString *enteredText;

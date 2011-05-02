@@ -72,6 +72,36 @@
 
 #pragma mark - BTMGame Delegate methods
 
+- (void)tutorialSeen:(id)sender {
+    [[self.view viewWithTag:1111] removeFromSuperview];
+    [[self.view viewWithTag:2222] removeFromSuperview];
+    [UD setBool:YES forKey:@"TutorialSeen"];
+    [self.game startGame];
+}
+
+- (void)btmGameIsPlayingForFirstTime:(BTMGame *)game  {
+    UIButton *tutorial = [UIButton buttonWithType:UIButtonTypeCustom];
+    tutorial.tag = 1111;
+    tutorial.titleLabel.numberOfLines = 0;
+    UIFont *tutFont = nil;
+    if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad) {
+        tutorial.frame = CGRectMake(0, 0, 1024, 768);
+        tutFont = [UIFont fontWithName:@"Helvetica" size:22];
+    } else {
+       tutorial.frame = CGRectMake(0, 0, 480, 320);
+       tutFont = [UIFont fontWithName:@"Helvetica" size:18];
+    }
+    UIWebView *tutText = [[UIWebView alloc] initWithFrame:tutorial.frame];
+    tutText.tag = 2222;
+    NSString *localizedString = NSLocalizedString(@"TutorialText", nil);
+    NSString *htmlString = [NSString stringWithFormat:@"<html><head><style>body {font-size:1.2em; background-color:black; color:#fff; font-family:courier-new;} li {list-style:circle;} div {margin:10%% auto; width:250pt; text-align:left;}</style></head><body><div>%@</div></body></html>", localizedString];
+    [tutText loadHTMLString:htmlString baseURL:nil];
+    [tutText addSubview:tutorial];
+    [tutorial addTarget:self action:@selector(tutorialSeen:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:tutText];
+    [tutText release];
+}
+
 - (void)btmGameHasFinished:(BTMGame *)aGame mistake:(BOOL)aMistake {
     if (!aMistake) {
         self.scoreLabel.text = [NSString stringWithFormat:@"%d", self.game.thisScore];
@@ -84,7 +114,7 @@
 }
 
 - (void)btmGameHasNewHighScore:(BTMGame *)aGame {
-    AlertPrompt *prompt = [[AlertPrompt alloc] initWithTitle:[NSString stringWithFormat:NSLocalizedString(@"New High Score: %d", nil), aGame.thisScore] message:NSLocalizedString(@"Enter your name please:\n\n\n", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"Cancel", nil) okButtonTitle:NSLocalizedString(@"Save", nil)];
+    AlertPrompt *prompt = [[AlertPrompt alloc] initWithTitle:[NSString stringWithFormat:NSLocalizedString(@"New High Score: %d", nil), aGame.thisScore] message:NSLocalizedString(@"Enter your name please:", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"Cancel", nil) okButtonTitle:NSLocalizedString(@"Save", nil)];
     prompt.textField.text = [UD stringForKey:@"HighestScoreName"];
     [prompt show];
     [prompt release];
@@ -135,7 +165,11 @@
         self.startGameButton.titleLabel.font = [UIFont fontWithName:@"Helvetica" size:14];
     }
     
-    [self.game startGame];
+    if ([self.game isPlayingForFirstTime]) {
+        [self btmGameIsPlayingForFirstTime:self.game];
+    } else {
+        [self.game startGame];
+    }
 }
 
 - (void)motionEnded:(UIEventSubtype)motion

@@ -36,8 +36,6 @@
 	<string>1.0</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
-	<key>NSMainNibFile</key>
-	<string>MainWindowIphone</string>
 	<key>NSMainNibFile~ipad</key>
 	<string>MainWindow</string>
 	<key>NSMainNibFile~iphone</key>

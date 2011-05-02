@@ -63,6 +63,10 @@ automaticLevelUpgrading = _automaticLevelUpgrading;
     }
 }
 
+- (BOOL)isPlayingForFirstTime {
+    return ![UD boolForKey:@"TutorialSeen"];
+}
+
 - (BTMGame *)initWithView:(UIView *)aView {
     [self setupOptions];
     self.gameView = aView;

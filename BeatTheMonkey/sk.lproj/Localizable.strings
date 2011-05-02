@@ -2,7 +2,7 @@
 "Cancel" = "Storno";
 
 /* No comment provided by engineer. */
-"Enter your name please:\n\n\n" = "Zadajte prosím svoje meno:\n\n\n";
+"Enter your name please:" = "Zadajte prosím svoje meno:";
 
 /* No comment provided by engineer. */
 "New High Score: %d" = "Nejlepšie skóre: %d";
@@ -20,4 +20,4 @@
 
 "You finished the whole game" = "Dokončili ste celú hru";
 
-"TutorialText" = "<h1>Vitajte v Dr.Ape!</h1><li>Na začiatku uvidíte niekoľko čísel</li><li>Skúste si zapamätať ich pozície</li><li>Tapnite ich vo vzostupnom poradí</li><li>Novú hru začnete zatrasením</li>";
+"TutorialText" = "<h1>Vitajte v Dr.Ape!</h1><li>Na začiatku uvidíte niekoľko čísel</li><li>Skúste si zapamätať ich pozície</li><li>Tapnite ich vo vzostupnom poradí</li><li>Novú hru začnete zatrasením</li><br /><br /><i>Tapnite kdekoľvek pre pokračovanie...</i>";

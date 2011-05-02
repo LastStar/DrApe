@@ -20,6 +20,7 @@
 - (void)showMistakenTiles;
 - (void)addNewHighScoreWithName:(NSString *)aName;
 - (double)difficultyToTime:(NSUInteger)aDifficulty;
+- (BOOL)isPlayingForFirstTime;
 
 @property (nonatomic, retain) BTMTile *nextTile;
 @property (nonatomic, retain) UIView *gameView;
@@ -38,7 +39,8 @@
 
 @end
 
-@protocol BTMGameDelegate
+@protocol BTMGameDelegate <NSObject>
 - (void)btmGameHasNewHighScore:(BTMGame *)aGame;
 - (void)btmGameHasFinished:(BTMGame *)aGame mistake:(BOOL)aMistake;
+- (void)btmGameIsPlayingForFirstTime:(BTMGame *)game;
 @end
