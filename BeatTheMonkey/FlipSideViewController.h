@@ -16,6 +16,8 @@
 @property (nonatomic, assign) id<FlipSideViewControllerDelegate> delegate;
 @property (nonatomic, retain) IBOutlet UIButton *infoButton;
 @property (nonatomic, retain) IBOutlet UILabel *highScoreLabel;
+@property (nonatomic, retain) IBOutlet UILabel *tilesCountLabel;
+@property (nonatomic, retain) IBOutlet UILabel *gameModeDescriptionLabel;
 @property (nonatomic, retain) IBOutlet UISegmentedControl *difficultyControl;
 @property (nonatomic, retain) IBOutlet UISegmentedControl *tilesCountControl;
 @property (nonatomic, retain) IBOutlet UISegmentedControl *gameModeControl;

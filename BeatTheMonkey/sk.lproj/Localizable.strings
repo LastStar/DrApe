@@ -1,18 +1,16 @@
-/* No comment provided by engineer. */
 "Cancel" = "Storno";
 
-/* No comment provided by engineer. */
 "Enter your name please:" = "Zadajte prosím svoje meno:";
 
-/* No comment provided by engineer. */
 "New High Score: %d" = "Nejlepšie skóre: %d";
 
-/* No comment provided by engineer. */
 "Save" = "Uložiť";
 
 "Highest score %d by %@" = "Nejlepšie skóre %d od %@";
 
-"Tap anywhere on screen to start new game." = "Dotknite se kdekoľvek obrazkovky pre začiatok novej hry.";
+"TapAnywhereToNewGame" = "Dotknite se kdekoľvek obrazkovky pre začiatok novej hry.";
+
+"TapAnywhereToContinue" = "Dotknite se kdekoľvek obrazkovky pre pokračovanie.";
 
 "Highest score %d by %@" = "Nejvyššie skóre %d od %@";
 
@@ -21,3 +19,5 @@
 "You finished the whole game" = "Dokončili ste celú hru";
 
 "TutorialText" = "<h1>Vitajte v Dr.Ape!</h1><li>Na začiatku uvidíte niekoľko čísel</li><li>Skúste si zapamätať ich pozície</li><li>Tapnite ich vo vzostupnom poradí</li><li>Novú hru začnete zatrasením</li><br /><br /><i>Tapnite kdekoľvek pre pokračovanie...</i>";
+
+"GameModeDescription" = "Hrajte kampaň, aby ste odomkli nové obtiažnosti.";

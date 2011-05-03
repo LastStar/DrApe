@@ -19,21 +19,21 @@ typedef enum { DAGameModeCampaign = 0,
 
 - (BTMGame *)initWithView:(UIView *)aView;
 - (void)startGame;
+- (void)cancelGame;
+- (void)resetCampaign;
 - (void)addNewHighScoreWithName:(NSString *)aName;
 - (BOOL)isPlayingForFirstTime;
 
-@property (nonatomic, retain) NSString *highestScoreName;
-@property (nonatomic, assign) NSUInteger highestScoreAmount;
-@property (nonatomic, assign) NSUInteger difficulty;
-@property (nonatomic, assign) NSUInteger tilesCount;
-@property (nonatomic, assign) NSUInteger thisScore;
 @property (nonatomic, assign) id<BTMGameDelegate> delegate;
-@property (nonatomic, assign) DAGameMode gameMode;
+@property (nonatomic, readonly) DAGameMode gameMode;
+@property (nonatomic, readonly) NSUInteger difficulty;
+@property (nonatomic, readonly) NSUInteger highestScoreAmount;
+@property (nonatomic, retain, readonly) NSString *highestScoreName;
 
 @end
 
 @protocol BTMGameDelegate <NSObject>
-- (void)btmGameHasNewHighScore:(BTMGame *)aGame;
-- (void)btmGameHasFinished:(BTMGame *)aGame mistake:(BOOL)aMistake;
+- (void)btmGame:(BTMGame *)aGame hasNewHighScore:(NSUInteger)score;
+- (void)btmGameHasFinished:(BTMGame *)aGame withScore:(NSUInteger)score totalScore:(NSUInteger)totalScore andMistake:(BOOL)aMistake;
 - (void)btmGameIsPlayingForFirstTime:(BTMGame *)game;
 @end

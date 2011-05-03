@@ -66,7 +66,7 @@
         }];    
     }
     self.startGameButton.hidden = YES;
-//    NSLog(@"Calling NSTimer 3");
+    self.infoButton.hidden = NO;
     [self.game startGame];
 }
 
@@ -102,19 +102,29 @@
     [tutText release];
 }
 
-- (void)btmGameHasFinished:(BTMGame *)aGame mistake:(BOOL)aMistake {
-    if (!aMistake) {
-        self.scoreLabel.text = [NSString stringWithFormat:@"%d", self.game.thisScore];
+- (void)btmGameHasFinished:(BTMGame *)game withScore:(NSUInteger)score totalScore:(NSUInteger)totalScore andMistake:(BOOL)mistake {
+    NSString *startGameButtonTitle = nil;
+    if (!mistake) {
+        if (score == totalScore) {
+            self.scoreLabel.text = [NSString stringWithFormat:@"%d", score];
+        } else {
+            self.scoreLabel.text = [NSString stringWithFormat:@"+%d=%d", score, totalScore];
+        }
         self.scoreLabel.alpha = 1;
         [self.view bringSubviewToFront:self.scoreLabel];
         self.scoreLabel.hidden = NO;
+        startGameButtonTitle = NSLocalizedString(@"TapAnywhereToContinue", nil);
+    } else {
+        startGameButtonTitle = NSLocalizedString(@"TapAnywhereToNewGame", nil);
     }
+    [self.startGameButton setTitle:startGameButtonTitle forState:UIControlStateNormal];
     [self.view bringSubviewToFront:self.startGameButton];
     self.startGameButton.hidden = NO;
+    self.infoButton.hidden = YES;
 }
 
-- (void)btmGameHasNewHighScore:(BTMGame *)aGame {
-    AlertPrompt *prompt = [[AlertPrompt alloc] initWithTitle:[NSString stringWithFormat:NSLocalizedString(@"New High Score: %d", nil), aGame.thisScore] message:NSLocalizedString(@"Enter your name please:", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"Cancel", nil) okButtonTitle:NSLocalizedString(@"Save", nil)];
+- (void)btmGame:(BTMGame *)game hasNewHighScore:(NSUInteger)score {
+    AlertPrompt *prompt = [[AlertPrompt alloc] initWithTitle:[NSString stringWithFormat:NSLocalizedString(@"New High Score: %d", nil), score] message:NSLocalizedString(@"Enter your name please:", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"Cancel", nil) okButtonTitle:NSLocalizedString(@"Save", nil)];
     prompt.textField.text = [UD stringForKey:@"HighestScoreName"];
     [prompt show];
     [prompt release];
@@ -124,8 +134,6 @@
     if (buttonIndex != [alertView cancelButtonIndex]) {
         [self.game addNewHighScoreWithName:((AlertPrompt *)alertView).textField.text];
     } 
-//    NSLog(@"Calling NSTimer 4");
-    [NSTimer scheduledTimerWithTimeInterval:1 target:self.game selector:@selector(startGame) userInfo:nil repeats:NO];
 }
 
 #pragma mark - View lifecycle
@@ -146,7 +154,6 @@
     
     self.startGameButton = [UIButton buttonWithType:UIButtonTypeCustom];
     self.startGameButton.backgroundColor = [UIColor clearColor];
-    [self.startGameButton setTitle:NSLocalizedString(@"Tap anywhere on screen to start new game.", nil) forState:UIControlStateNormal];
     [self.startGameButton addTarget:self action:@selector(newGameButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
     self.startGameButton.hidden = YES;
     [self.view addSubview:self.startGameButton];
@@ -176,7 +183,7 @@
 		  withEvent:(UIEvent *)event {
 	if (motion == UIEventSubtypeMotionShake) {
         AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
-        [self.game startGame];
+        [self.game cancelGame];
     }
 }
 

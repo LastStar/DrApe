@@ -25,8 +25,15 @@
 @property (nonatomic, retain) NSMutableArray *tiles;
 @property (nonatomic, retain) NSMutableArray *positions;
 @property (nonatomic, retain) NSDate *startDate;
-@property (nonatomic, assign) NSUInteger tilesPressed;
-@property (nonatomic, assign) BOOL mistake;
+@property (nonatomic, readwrite) DAGameMode gameMode;
+@property (nonatomic, retain, readwrite) NSString *highestScoreName;
+@property (nonatomic, readwrite) NSUInteger highestScoreAmount;
+@property (nonatomic, readwrite) NSUInteger difficulty;
+@property (nonatomic) NSUInteger tilesPressed;
+@property (nonatomic) NSUInteger tilesCount;
+@property (nonatomic) NSUInteger thisScore;
+@property (nonatomic) NSUInteger tempScore;
+@property (nonatomic) BOOL mistake;
 
 @end
 
@@ -43,11 +50,12 @@
                delegate = _delegate,
               startDate = _startDate,
               thisScore = _thisScore,
+              tempScore = _tempScore,
        highestScoreName = _highestScoreName,
      highestScoreAmount = _highestScoreAmount,
                gameMode = _gameMode;
 
-#define THIS_VERSION 5
+#define THIS_VERSION 6
 - (void)setupOptions {
     if (BTM_DEBUG) NSLog(@"LastOptionsVersion %i", [UD integerForKey:@"LastOptionsVersion"]);
     if (![UD objectForKey:@"LastOptionsVersion"] || [UD integerForKey:@"LastOptionsVersion"] < THIS_VERSION) {
@@ -57,6 +65,7 @@
         [UD setInteger:TILES_X forKey:@"TilesX"];
         [UD setInteger:TILES_Y forKey:@"TilesY"];
         [UD setInteger:DIFFICULTY forKey:@"Difficulty"];
+        [UD setInteger:DIFFICULTY_MAX_ACHIEVED forKey:@"DifficultyMaxAchieved"];
 //        [UD setInteger:0 forKey:@"HighestScoreAmount"]; // todo disable
 
         if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad) {
@@ -84,6 +93,7 @@
     if ((self = [super init])) {
         [self setupOptions];
         self.gameView = aView;
+        self.tempScore = 0;
         self.tiles = [NSMutableArray array];
         self.positions = [NSMutableArray array];
     }
@@ -144,6 +154,7 @@
             [alertView show];
             [alertView release];
         } else {
+            [UD setInteger:(self.difficulty + 1) forKey:@"DifficultyMaxAchieved"];
             [UD setInteger:(self.difficulty + 1) forKey:@"Difficulty"];
             [UD setInteger:TILES_COUNT_MIN forKey:@"TilesCount"];
             [UD synchronize];
@@ -156,7 +167,7 @@
 
 - (void)setup {
     self.tilesCount = [UD integerForKey:@"TilesCount"];
-    self.difficulty = [UD integerForKey:@"Difficulty"] ;
+    self.difficulty = [UD integerForKey:@"Difficulty"];
     self.gameMode = [UD boolForKey:@"GameMode"];
     self.highestScoreName = [UD stringForKey:@"HighestScoreName"];
     self.highestScoreAmount = [UD integerForKey:@"HighestScoreAmount"];
@@ -201,31 +212,51 @@
     return round((tileCoef / timeCoef) * diffCoef * 100);
 }
 
+- (void)cancelGame {
+    for (BTMTile *tile in self.tiles) {
+        tile.mistaken = YES;
+    }
+    
+    self.mistake = YES;
+    [self finishGame];
+}
+    
+- (void)resetCampaign {
+    [UD setInteger:TILES_COUNT_MIN forKey:@"TilesCount"];
+    [UD synchronize];
+}
+
 - (void)finishGame {
     NSTimeInterval gameTime = -[self.startDate timeIntervalSinceNow];
     self.thisScore = [self calculateScoreFromTime:gameTime];
+    
     if (BTM_DEBUG) NSLog(@"self.thisScore = %d", self.thisScore);
+    
     if (self.mistake) {
         [self showMistakenTiles];
-        if ([self.delegate respondsToSelector:@selector(btmGameHasFinished:mistake:)]) {
-            [self.delegate btmGameHasFinished:self mistake:YES];
+        if (self.gameMode == DAGameModeCampaign) {
+            [self resetCampaign];
         }
+        if (self.tempScore > self.highestScoreAmount) {
+            if ([self.delegate respondsToSelector:@selector(btmGame:hasNewHighScore:)]) {
+                [self.delegate btmGame:self hasNewHighScore:self.tempScore];
+            }
+        }
+        if ([self.delegate respondsToSelector:@selector(btmGameHasFinished:withScore:totalScore:andMistake:)]) {
+            [self.delegate btmGameHasFinished:self withScore:self.tempScore totalScore:self.tempScore andMistake:YES];
+        }
+        self.tempScore = 0;
     } else {
-        if (self.gameMode) { [self goToNextLevel]; }
-        if (self.thisScore > self.highestScoreAmount) {
-            if ([self.delegate respondsToSelector:@selector(btmGameHasNewHighScore:)]) {
-                [self.delegate btmGameHasNewHighScore:self];
-            }
-        } else {
-            if ([self.delegate respondsToSelector:@selector(btmGameHasFinished:mistake:)]) {
-                [self.delegate btmGameHasFinished:self mistake:NO];
-            }
+        self.tempScore += self.thisScore;
+        if (self.gameMode == DAGameModeCampaign) { [self goToNextLevel]; }
+        if ([self.delegate respondsToSelector:@selector(btmGameHasFinished:withScore:totalScore:andMistake:)]) {
+            [self.delegate btmGameHasFinished:self withScore:self.thisScore totalScore:self.tempScore andMistake:NO];
         }
     }
 }
 
-- (double)difficultyToTime:(NSUInteger)aDifficulty {
-    switch (aDifficulty) {
+- (double)difficultyToTime:(NSUInteger)difficulty {
+    switch (difficulty) {
         case 0:
             return 2;
         case 1:
