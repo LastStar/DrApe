@@ -11,10 +11,23 @@
 
 
 @interface BTMGame()
+
 - (void)updateNextTile;
 - (void)goToNextLevel;
 - (NSUInteger)calculateScoreFromTime:(NSTimeInterval)gameTime;
 - (void)setupOptions;
+- (void)finishGame;
+- (void)showMistakenTiles;
+- (double)difficultyToTime:(NSUInteger)aDifficulty;
+
+@property (nonatomic, retain) BTMTile *nextTile;
+@property (nonatomic, retain) UIView *gameView;
+@property (nonatomic, retain) NSMutableArray *tiles;
+@property (nonatomic, retain) NSMutableArray *positions;
+@property (nonatomic, retain) NSDate *startDate;
+@property (nonatomic, assign) NSUInteger tilesPressed;
+@property (nonatomic, assign) BOOL mistake;
+
 @end
 
 @implementation BTMGame
@@ -32,14 +45,14 @@
               thisScore = _thisScore,
        highestScoreName = _highestScoreName,
      highestScoreAmount = _highestScoreAmount,
-automaticLevelUpgrading = _automaticLevelUpgrading;
+               gameMode = _gameMode;
 
 #define THIS_VERSION 5
 - (void)setupOptions {
     if (BTM_DEBUG) NSLog(@"LastOptionsVersion %i", [UD integerForKey:@"LastOptionsVersion"]);
     if (![UD objectForKey:@"LastOptionsVersion"] || [UD integerForKey:@"LastOptionsVersion"] < THIS_VERSION) {
         [UD setInteger:THIS_VERSION forKey:@"LastOptionsVersion"];
-        [UD setBool:AUTOMATIC_LEVEL_UPGRADING forKey:@"AutomaticLevelUpgrading"];
+        [UD setInteger:GAME_MODE forKey:@"GameMode"];
         [UD setInteger:TILES_COUNT forKey:@"TilesCount"];
         [UD setInteger:TILES_X forKey:@"TilesX"];
         [UD setInteger:TILES_Y forKey:@"TilesY"];
@@ -68,10 +81,13 @@ automaticLevelUpgrading = _automaticLevelUpgrading;
 }
 
 - (BTMGame *)initWithView:(UIView *)aView {
-    [self setupOptions];
-    self.gameView = aView;
-    self.tiles = [NSMutableArray array];
-    self.positions = [NSMutableArray array];
+    if ((self = [super init])) {
+        [self setupOptions];
+        self.gameView = aView;
+        self.tiles = [NSMutableArray array];
+        self.positions = [NSMutableArray array];
+    }
+    
     return self;
 }
 
@@ -79,6 +95,7 @@ automaticLevelUpgrading = _automaticLevelUpgrading;
     int randomIndex = arc4random() % [self.positions count];
     int randomValue = [[self.positions objectAtIndex:randomIndex] intValue];
     [self.positions removeObjectAtIndex:randomIndex];
+    
     return randomValue;
 }
 
@@ -90,6 +107,7 @@ automaticLevelUpgrading = _automaticLevelUpgrading;
     int yPos = newPos / [UD integerForKey:@"TilesX"];
     CGFloat X = xPos * (tileSize + tileBorder) + tileBorder + [UD integerForKey:@"OffsetLeft"];
     CGFloat Y = yPos * (tileSize + tileBorder) + tileBorder + [UD integerForKey:@"OffsetTop"];
+    
     return CGRectMake(X, Y, tileSize, tileSize);
 }
 
@@ -113,7 +131,9 @@ automaticLevelUpgrading = _automaticLevelUpgrading;
         [tile setTag:i];
         [self.gameView addSubview:tile];
         [self.tiles addObject:tile];
-    }   [self updateNextTile];
+    }
+    
+    [self updateNextTile];
 }
 
 - (void)goToNextLevel {
@@ -137,7 +157,7 @@ automaticLevelUpgrading = _automaticLevelUpgrading;
 - (void)setup {
     self.tilesCount = [UD integerForKey:@"TilesCount"];
     self.difficulty = [UD integerForKey:@"Difficulty"] ;
-    self.automaticLevelUpgrading = [UD boolForKey:@"AutomaticLevelUpgrading"];
+    self.gameMode = [UD boolForKey:@"GameMode"];
     self.highestScoreName = [UD stringForKey:@"HighestScoreName"];
     self.highestScoreAmount = [UD integerForKey:@"HighestScoreAmount"];
     self.tilesPressed = 0;
@@ -177,6 +197,7 @@ automaticLevelUpgrading = _automaticLevelUpgrading;
     double timeCoef = gameTime;
     double tileCoef = self.tilesCount;
     if (BTM_DEBUG) NSLog(@"%f %f %f", diffCoef, timeCoef, tileCoef);
+    
     return round((tileCoef / timeCoef) * diffCoef * 100);
 }
 
@@ -190,7 +211,7 @@ automaticLevelUpgrading = _automaticLevelUpgrading;
             [self.delegate btmGameHasFinished:self mistake:YES];
         }
     } else {
-        if (self.automaticLevelUpgrading) { [self goToNextLevel]; }
+        if (self.gameMode) { [self goToNextLevel]; }
         if (self.thisScore > self.highestScoreAmount) {
             if ([self.delegate respondsToSelector:@selector(btmGameHasNewHighScore:)]) {
                 [self.delegate btmGameHasNewHighScore:self];

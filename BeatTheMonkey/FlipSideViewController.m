@@ -11,7 +11,7 @@
 
 @implementation FlipSideViewController
 
-@synthesize changed, delegate, game, infoButton, highScoreLabel, difficultyControl, tilesCountControl, levelUpgradingSwitch;
+@synthesize changed, delegate, game, infoButton, highScoreLabel, difficultyControl, tilesCountControl, gameModeControl;
 
 #pragma mark - Actions
 
@@ -23,8 +23,8 @@
     [self.delegate flipSideViewControllerDidFinish:self];
 }
 
-- (IBAction)automaticLevelUpgradingChanged:(id)sender {
-    [UD setBool:self.levelUpgradingSwitch.on forKey:@"AutomaticLevelUpgrading"];
+- (IBAction)gameModeChanged:(id)sender {
+    [UD setInteger:self.gameModeControl.selectedSegmentIndex forKey:@"GameMode"];
     [UD synchronize];
     self.changed = YES;
 }
@@ -81,7 +81,7 @@
     }
     self.difficultyControl.selectedSegmentIndex = self.game.difficulty;
     self.tilesCountControl.selectedSegmentIndex = [self segmentFromTilesCount];
-    self.levelUpgradingSwitch.on = self.game.automaticLevelUpgrading;
+    self.gameModeControl.selectedSegmentIndex = self.game.gameMode;
     self.changed = NO;
     if (self.game.highestScoreAmount == 0) {
         self.highScoreLabel.text = @"";
