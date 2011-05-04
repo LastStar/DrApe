@@ -176,6 +176,9 @@
     self.startDate = [NSDate date];
     self.mistake = NO;
     self.nextTile = nil;
+    if (self.gameMode == DAGameModeTraining) {
+        self.tempScore = 0;
+    }
     
     [self removeOldTiles];
     [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(addTiles) userInfo:nil repeats:NO];
@@ -233,6 +236,7 @@
     if (BTM_DEBUG) NSLog(@"self.thisScore = %d", self.thisScore);
     
     if (self.mistake) {
+        self.tempScore = 0;
         [self showMistakenTiles];
         if (self.gameMode == DAGameModeCampaign) {
             [self resetCampaign];
@@ -245,7 +249,6 @@
         if ([self.delegate respondsToSelector:@selector(btmGameHasFinished:withScore:totalScore:andMistake:)]) {
             [self.delegate btmGameHasFinished:self withScore:self.tempScore totalScore:self.tempScore andMistake:YES];
         }
-        self.tempScore = 0;
     } else {
         self.tempScore += self.thisScore;
         if (self.gameMode == DAGameModeCampaign) { [self goToNextLevel]; }

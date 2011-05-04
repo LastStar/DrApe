@@ -10,6 +10,8 @@
 #import "BeatTheMonkeyViewController.h"
 #import "Utils.h"
 #import "AlertPrompt.h"
+#import "SHK.h"
+
 
 @implementation BeatTheMonkeyViewController
 
@@ -17,6 +19,18 @@
       infoButton = _infoButton,
       scoreLabel = _scoreLabel,
  startGameButton = _startGameButton;
+
+- (void)shareOnTwitter:(id)sender {
+    // Create the item to share (in this example, a url)
+	SHKItem *item = [SHKItem text:@"I just played Dr.Ape and it's awesome!"];
+    
+	// Get the ShareKit action sheet
+	SHKActionSheet *actionSheet = [SHKActionSheet actionSheetForItem:item];
+    
+	// Display the action sheet
+	[actionSheet showInView:self.view];
+}
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -103,7 +117,7 @@
 }
 
 - (void)btmGameHasFinished:(BTMGame *)game withScore:(NSUInteger)score totalScore:(NSUInteger)totalScore andMistake:(BOOL)mistake {
-    NSString *startGameButtonTitle = nil;
+    NSString *startGameButtonTitle = NSLocalizedString(@"TapAnywhereToNewGame", nil);
     if (!mistake) {
         if (score == totalScore) {
             self.scoreLabel.text = [NSString stringWithFormat:@"%d", score];
@@ -113,10 +127,11 @@
         self.scoreLabel.alpha = 1;
         [self.view bringSubviewToFront:self.scoreLabel];
         self.scoreLabel.hidden = NO;
-        startGameButtonTitle = NSLocalizedString(@"TapAnywhereToContinue", nil);
-    } else {
-        startGameButtonTitle = NSLocalizedString(@"TapAnywhereToNewGame", nil);
+        if (self.game.gameMode == DAGameModeCampaign) {
+            startGameButtonTitle = NSLocalizedString(@"TapAnywhereToContinue", nil);
+        }
     }
+    
     [self.startGameButton setTitle:startGameButtonTitle forState:UIControlStateNormal];
     [self.view bringSubviewToFront:self.startGameButton];
     self.startGameButton.hidden = NO;
