@@ -17,8 +17,8 @@
     BTMTile *tile = [super buttonWithType:UIButtonTypeCustom];
     tile.frame = aFrame;
     tile.enabled = NO;
-    tile.titleLabel.textColor = [UIColor whiteColor];
-    tile.backgroundColor = [UIColor blackColor];
+    tile.titleLabel.textColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bg_tile.png"]];
+    tile.backgroundColor = [UIColor clearColor];
     return tile;
 }
 

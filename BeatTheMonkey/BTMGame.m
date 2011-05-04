@@ -190,7 +190,7 @@
 
 - (void)hideTiles {
 	for (BTMTile *tile in self.tiles) {
-		tile.backgroundColor = [UIColor whiteColor];
+		tile.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bg_tile.png"]];
         tile.enabled = YES;
         [tile setTitle:@"" forState:UIControlStateNormal];
 	 }
@@ -236,7 +236,6 @@
     if (BTM_DEBUG) NSLog(@"self.thisScore = %d", self.thisScore);
     
     if (self.mistake) {
-        self.tempScore = 0;
         [self showMistakenTiles];
         if (self.gameMode == DAGameModeCampaign) {
             [self resetCampaign];
@@ -249,6 +248,7 @@
         if ([self.delegate respondsToSelector:@selector(btmGameHasFinished:withScore:totalScore:andMistake:)]) {
             [self.delegate btmGameHasFinished:self withScore:self.tempScore totalScore:self.tempScore andMistake:YES];
         }
+        self.tempScore = 0;
     } else {
         self.tempScore += self.thisScore;
         if (self.gameMode == DAGameModeCampaign) { [self goToNextLevel]; }
@@ -282,16 +282,16 @@
         [tile setTitle:[NSString stringWithFormat:@"%d", tile.tag] forState:UIControlStateNormal];
         [tile setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         if (tile.mistaken) {
-            tile.backgroundColor = [UIColor redColor];
+            tile.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bg_tile_red.png"]];
         } else {
-            tile.backgroundColor = [UIColor greenColor];
+            tile.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bg_tile_green.png"]];
         }
     }
 }
 
 - (void)buttonPressed:(BTMTile *)sender {
     sender.enabled = NO;
-    [sender setBackgroundColor:[UIColor blackColor]];
+    [sender setBackgroundColor:[UIColor clearColor]];
     if (self.nextTile != sender) {
         self.mistake = YES;
         sender.mistaken = YES;

@@ -20,6 +20,5 @@
 @property (nonatomic, retain) UIButton *startGameButton;
 
 - (IBAction)infoPressed:(id)sender;
-- (IBAction)shareOnTwitter:(id)sender;
 
 @end

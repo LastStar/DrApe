@@ -21,3 +21,5 @@
 "TutorialText" = "<h1>Vitajte v Dr.Ape!</h1><li>Na začiatku uvidíte niekoľko čísel</li><li>Skúste si zapamätať ich pozície</li><li>Tapnite ich vo vzostupnom poradí</li><li>Novú hru začnete zatrasením</li><br /><br /><i>Tapnite kdekoľvek pre pokračovanie...</i>";
 
 "GameModeDescription" = "Hrajte kampaň, aby ste odomkli nové obtiažnosti.";
+
+"HighestScoreShare" = "Práve som nahral %i bodov hraním Dr.Ape a je to super! Vyskúšaj si to - http://bit.ly/DrApe";

@@ -16,6 +16,7 @@
 @property (nonatomic, assign) id<FlipSideViewControllerDelegate> delegate;
 @property (nonatomic, retain) IBOutlet UIButton *infoButton;
 @property (nonatomic, retain) IBOutlet UILabel *highScoreLabel;
+@property (nonatomic, retain) IBOutlet UIButton *shareHighestScoreButton;
 @property (nonatomic, retain) IBOutlet UILabel *tilesCountLabel;
 @property (nonatomic, retain) IBOutlet UILabel *gameModeDescriptionLabel;
 @property (nonatomic, retain) IBOutlet UISegmentedControl *difficultyControl;
@@ -28,6 +29,7 @@
 - (IBAction)difficultySwitched:(id)sender;
 - (IBAction)tilesCountSwitched:(id)sender;
 - (IBAction)gameModeChanged:(id)sender;
+- (IBAction)shareHighestScore:(id)sender;
 
 @end
 

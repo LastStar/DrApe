@@ -53,12 +53,12 @@
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<int key="IBUIContentHorizontalAlignment">0</int>
 						<int key="IBUIContentVerticalAlignment">0</int>
-						<object class="NSFont" key="IBUIFont">
+						<object class="NSFont" key="IBUIFont" id="893356069">
 							<string key="NSName">Helvetica-Bold</string>
 							<double key="NSSize">15</double>
 							<int key="NSfFlags">16</int>
 						</object>
-						<object class="NSColor" key="IBUIHighlightedTitleColor">
+						<object class="NSColor" key="IBUIHighlightedTitleColor" id="912102487">
 							<int key="NSColorSpace">3</int>
 							<bytes key="NSWhite">MQA</bytes>
 						</object>
@@ -66,7 +66,7 @@
 							<int key="NSColorSpace">1</int>
 							<bytes key="NSRGB">MC4xOTYwNzg0MzQ2IDAuMzA5ODAzOTMyOSAwLjUyMTU2ODY1NgA</bytes>
 						</object>
-						<object class="NSColor" key="IBUINormalTitleShadowColor">
+						<object class="NSColor" key="IBUINormalTitleShadowColor" id="403929286">
 							<int key="NSColorSpace">3</int>
 							<bytes key="NSWhite">MC41AA</bytes>
 						</object>
@@ -82,9 +82,9 @@
 					<object class="IBUILabel" id="695214076">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{20, 7}, {440, 37}}</string>
+						<string key="NSFrame">{{20, 7}, {360, 37}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
-						<reference key="NSNextKeyView" ref="326608271"/>
+						<reference key="NSNextKeyView" ref="376601637"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
 						<int key="IBUIContentMode">7</int>
@@ -93,7 +93,7 @@
 						<string key="IBUIText">Nejvyšší skóre</string>
 						<object class="NSFont" key="IBUIFont">
 							<string key="NSName">Helvetica</string>
-							<double key="NSSize">24</double>
+							<double key="NSSize">20</double>
 							<int key="NSfFlags">16</int>
 						</object>
 						<object class="NSColor" key="IBUITextColor" id="959917436">
@@ -113,7 +113,7 @@
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{20, 70}, {440, 20}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
-						<reference key="NSNextKeyView" ref="993156788"/>
+						<reference key="NSNextKeyView" ref="386827784"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
 						<int key="IBUIContentMode">7</int>
@@ -135,7 +135,7 @@
 						<float key="IBUIMinimumFontSize">10</float>
 						<int key="IBUITextAlignment">1</int>
 					</object>
-					<object class="IBUISegmentedControl" id="993156788">
+					<object class="IBUISegmentedControl" id="386827784">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{20, 90}, {440, 44}}</string>
@@ -195,7 +195,7 @@
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{20, 170}, {440, 44}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
-						<reference key="NSNextKeyView" ref="67584728"/>
+						<reference key="NSNextKeyView" ref="904289435"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<int key="IBNumberOfSegments">3</int>
@@ -285,11 +285,12 @@
 							<reference ref="4"/>
 						</object>
 					</object>
-					<object class="IBUILabel" id="379326093">
+					<object class="IBUILabel" id="904289435">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">-2147483356</int>
 						<string key="NSFrame">{{20, 229}, {440, 71}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
+						<reference key="NSNextKeyView" ref="67584728"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
 						<int key="IBUIContentMode">7</int>
@@ -310,6 +311,27 @@
 						<int key="IBUIBaselineAdjustment">1</int>
 						<bool key="IBUIAdjustsFontSizeToFit">NO</bool>
 						<float key="IBUIMinimumFontSize">10</float>
+					</object>
+					<object class="IBUIButton" id="376601637">
+						<reference key="NSNextResponder" ref="191373211"/>
+						<int key="NSvFlags">-2147483356</int>
+						<string key="NSFrame">{{388, 7}, {72, 37}}</string>
+						<reference key="NSSuperview" ref="191373211"/>
+						<reference key="NSNextKeyView" ref="326608271"/>
+						<bool key="IBUIOpaque">NO</bool>
+						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+						<int key="IBUIContentHorizontalAlignment">0</int>
+						<int key="IBUIContentVerticalAlignment">0</int>
+						<reference key="IBUIFont" ref="893356069"/>
+						<int key="IBUIButtonType">1</int>
+						<string key="IBUINormalTitle">Share</string>
+						<reference key="IBUIHighlightedTitleColor" ref="912102487"/>
+						<object class="NSColor" key="IBUINormalTitleColor">
+							<int key="NSColorSpace">3</int>
+							<bytes key="NSWhite">MAA</bytes>
+							<reference key="NSCustomColorSpace" ref="201728665"/>
+						</object>
+						<reference key="IBUINormalTitleShadowColor" ref="403929286"/>
 					</object>
 				</object>
 				<string key="NSFrameSize">{480, 320}</string>
@@ -399,14 +421,14 @@
 					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">gameModeControl</string>
 						<reference key="source" ref="372490531"/>
-						<reference key="destination" ref="993156788"/>
+						<reference key="destination" ref="386827784"/>
 					</object>
 					<int key="connectionID">28</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
 						<string key="label">gameModeChanged:</string>
-						<reference key="source" ref="993156788"/>
+						<reference key="source" ref="386827784"/>
 						<reference key="destination" ref="372490531"/>
 						<int key="IBEventType">13</int>
 					</object>
@@ -424,9 +446,26 @@
 					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">gameModeDescriptionLabel</string>
 						<reference key="source" ref="372490531"/>
-						<reference key="destination" ref="379326093"/>
+						<reference key="destination" ref="904289435"/>
 					</object>
 					<int key="connectionID">32</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">shareHighestScoreButton</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="376601637"/>
+					</object>
+					<int key="connectionID">34</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchEventConnection" key="connection">
+						<string key="label">shareHighestScore:</string>
+						<reference key="source" ref="376601637"/>
+						<reference key="destination" ref="372490531"/>
+						<int key="IBEventType">7</int>
+					</object>
+					<int key="connectionID">35</int>
 				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -449,9 +488,10 @@
 							<reference ref="695214076"/>
 							<reference ref="223867335"/>
 							<reference ref="326608271"/>
-							<reference ref="993156788"/>
+							<reference ref="386827784"/>
 							<reference ref="498765619"/>
-							<reference ref="379326093"/>
+							<reference ref="904289435"/>
+							<reference ref="376601637"/>
 						</object>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -503,12 +543,17 @@
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">27</int>
-						<reference key="object" ref="993156788"/>
+						<reference key="object" ref="386827784"/>
 						<reference key="parent" ref="191373211"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">31</int>
-						<reference key="object" ref="379326093"/>
+						<reference key="object" ref="904289435"/>
+						<reference key="parent" ref="191373211"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">33</int>
+						<reference key="object" ref="376601637"/>
 						<reference key="parent" ref="191373211"/>
 					</object>
 				</object>
@@ -531,6 +576,7 @@
 					<string>24.IBPluginDependency</string>
 					<string>27.IBPluginDependency</string>
 					<string>31.IBPluginDependency</string>
+					<string>33.IBPluginDependency</string>
 					<string>4.IBPluginDependency</string>
 					<string>4.IBUIButtonInspectorSelectedStateConfigurationMetadataKey</string>
 				</object>
@@ -551,6 +597,7 @@
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<real value="1"/>
 				</object>
 			</object>
@@ -566,7 +613,7 @@
 				<reference key="dict.values" ref="0"/>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">32</int>
+			<int key="maxID">35</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -581,10 +628,12 @@
 							<string>difficultySwitched:</string>
 							<string>done:</string>
 							<string>gameModeChanged:</string>
+							<string>shareHighestScore:</string>
 							<string>tilesCountSwitched:</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>id</string>
 							<string>id</string>
 							<string>id</string>
 							<string>id</string>
@@ -598,6 +647,7 @@
 							<string>difficultySwitched:</string>
 							<string>done:</string>
 							<string>gameModeChanged:</string>
+							<string>shareHighestScore:</string>
 							<string>tilesCountSwitched:</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
@@ -615,6 +665,10 @@
 								<string key="candidateClassName">id</string>
 							</object>
 							<object class="IBActionInfo">
+								<string key="name">shareHighestScore:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
 								<string key="name">tilesCountSwitched:</string>
 								<string key="candidateClassName">id</string>
 							</object>
@@ -629,6 +683,7 @@
 							<string>gameModeDescriptionLabel</string>
 							<string>highScoreLabel</string>
 							<string>infoButton</string>
+							<string>shareHighestScoreButton</string>
 							<string>tilesCountControl</string>
 							<string>tilesCountLabel</string>
 						</object>
@@ -638,6 +693,7 @@
 							<string>UISegmentedControl</string>
 							<string>UILabel</string>
 							<string>UILabel</string>
+							<string>UIButton</string>
 							<string>UIButton</string>
 							<string>UISegmentedControl</string>
 							<string>UILabel</string>
@@ -652,6 +708,7 @@
 							<string>gameModeDescriptionLabel</string>
 							<string>highScoreLabel</string>
 							<string>infoButton</string>
+							<string>shareHighestScoreButton</string>
 							<string>tilesCountControl</string>
 							<string>tilesCountLabel</string>
 						</object>
@@ -675,6 +732,10 @@
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">infoButton</string>
+								<string key="candidateClassName">UIButton</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">shareHighestScoreButton</string>
 								<string key="candidateClassName">UIButton</string>
 							</object>
 							<object class="IBToOneOutletInfo">

@@ -93,6 +93,10 @@
 		2BA9ADC413712F0A00C60958 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BA9ADC313712F0900C60958 /* SystemConfiguration.framework */; };
 		2BA9ADC613712F1000C60958 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BA9ADC513712F0F00C60958 /* Security.framework */; };
 		2BA9ADC813712F1800C60958 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BA9ADC713712F1700C60958 /* MessageUI.framework */; };
+		2BA9ADCB1371444800C60958 /* bg_screen.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BA9ADC91371444800C60958 /* bg_screen.png */; };
+		2BA9ADCC1371444800C60958 /* bg_tile.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BA9ADCA1371444800C60958 /* bg_tile.png */; };
+		2BA9ADCF137147CB00C60958 /* bg_tile_green.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BA9ADCD137147CB00C60958 /* bg_tile_green.png */; };
+		2BA9ADD0137147CB00C60958 /* bg_tile_red.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BA9ADCE137147CB00C60958 /* bg_tile_red.png */; };
 		2BCCA41013571E7B0084C965 /* Default-Portrait~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BCCA40C13571DFB0084C965 /* Default-Portrait~ipad.png */; };
 		2BCCA41213571EC40084C965 /* Default-Landscape~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BCCA40E13571E040084C965 /* Default-Landscape~ipad.png */; };
 		2BCCA417135720B10084C965 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BCCA40813571DE30084C965 /* Default.png */; };
@@ -269,6 +273,10 @@
 		2BA9ADC313712F0900C60958 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		2BA9ADC513712F0F00C60958 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		2BA9ADC713712F1700C60958 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		2BA9ADC91371444800C60958 /* bg_screen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bg_screen.png; path = Images/bg_screen.png; sourceTree = SOURCE_ROOT; };
+		2BA9ADCA1371444800C60958 /* bg_tile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bg_tile.png; path = Images/bg_tile.png; sourceTree = SOURCE_ROOT; };
+		2BA9ADCD137147CB00C60958 /* bg_tile_green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bg_tile_green.png; path = Images/bg_tile_green.png; sourceTree = SOURCE_ROOT; };
+		2BA9ADCE137147CB00C60958 /* bg_tile_red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bg_tile_red.png; path = Images/bg_tile_red.png; sourceTree = SOURCE_ROOT; };
 		2BCCA40813571DE30084C965 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = ../Default.png; sourceTree = "<group>"; };
 		2BCCA40A13571DF00084C965 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "../Default@2x.png"; sourceTree = "<group>"; };
 		2BCCA40C13571DFB0084C965 /* Default-Portrait~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-Portrait~ipad.png"; path = "../Default-Portrait~ipad.png"; sourceTree = "<group>"; };
@@ -318,6 +326,10 @@
 		2B71C46813040CE90058560B /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				2BA9ADCD137147CB00C60958 /* bg_tile_green.png */,
+				2BA9ADCE137147CB00C60958 /* bg_tile_red.png */,
+				2BA9ADC91371444800C60958 /* bg_screen.png */,
+				2BA9ADCA1371444800C60958 /* bg_tile.png */,
 				2B3C9347135D832C00F0C481 /* dr-ape_72x72.png */,
 				2B3C9345135D832500F0C481 /* dr-ape_57x57.png */,
 				2B3C9343135D828F00F0C481 /* dr-ape_114x114.png */,
@@ -851,6 +863,10 @@
 				2BA9AD9B1370615F00C60958 /* SHKSharers.plist in Resources */,
 				2BA9ADA01370615F00C60958 /* Localizable.strings in Resources */,
 				2BA9ADA71370615F00C60958 /* FBConnect.bundle in Resources */,
+				2BA9ADCB1371444800C60958 /* bg_screen.png in Resources */,
+				2BA9ADCC1371444800C60958 /* bg_tile.png in Resources */,
+				2BA9ADCF137147CB00C60958 /* bg_tile_green.png in Resources */,
+				2BA9ADD0137147CB00C60958 /* bg_tile_red.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

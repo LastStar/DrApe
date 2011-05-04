@@ -8,6 +8,8 @@
 
 #import "FlipSideViewController.h"
 #import "Utils.h"
+#import "SHK.h"
+
 
 @implementation FlipSideViewController
 
@@ -20,9 +22,21 @@
        tilesCountControl = _tilesCountControl,
          gameModeControl = _gameModeControl,
          tilesCountLabel = _tilesCountLabel,
-gameModeDescriptionLabel = _gameModeDescriptionLabel;
+gameModeDescriptionLabel = _gameModeDescriptionLabel,
+ shareHighestScoreButton = _shareHighestScoreButton;
 
 #pragma mark - Actions
+
+- (void)shareHighestScore:(id)sender {
+    // Create the item to share (in this example, a url)
+	SHKItem *item = [SHKItem text:[NSString stringWithFormat:NSLocalizedString(@"HighestScoreShare", nil), [UD integerForKey:@"HighestScoreAmount"]]];
+    
+	// Get the ShareKit action sheet
+	SHKActionSheet *actionSheet = [SHKActionSheet actionSheetForItem:item];
+    
+	// Display the action sheet
+	[actionSheet showInView:self.view];
+}
 
 - (NSUInteger)segmentFromTilesCount {
     return [UD integerForKey:@"TilesCount"] - TILES_COUNT_MIN;
@@ -64,6 +78,14 @@ gameModeDescriptionLabel = _gameModeDescriptionLabel;
     self.changed = YES;
 }
 
+- (void)keyboardWillShow:(NSNotification *)notification {
+    NSLog(@"KeyboardWillShow %@", notification);
+}
+
+- (void)keyboardWillHide:(NSNotification *)notification {
+    NSLog(@"KeyboardWillHide %@", notification);    
+}
+
 #pragma mark - View lifecycle
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
@@ -81,6 +103,7 @@ gameModeDescriptionLabel = _gameModeDescriptionLabel;
     [_tilesCountControl release];
     [_gameModeDescriptionLabel release];
     [_game release];
+    [_shareHighestScoreButton release];
     [super dealloc];
 }
 
@@ -117,8 +140,10 @@ gameModeDescriptionLabel = _gameModeDescriptionLabel;
     self.changed = NO;
     if (self.game.highestScoreAmount == 0) {
         self.highScoreLabel.text = @"";
+        self.shareHighestScoreButton.hidden = YES;
     } else {
         self.highScoreLabel.text = [NSString stringWithFormat:NSLocalizedString(@"Highest score %d by %@", nil), self.game.highestScoreAmount, self.game.highestScoreName];
+        self.shareHighestScoreButton.hidden = NO;
     }
 }
 
@@ -136,6 +161,7 @@ gameModeDescriptionLabel = _gameModeDescriptionLabel;
     self.tilesCountControl = nil;
     self.difficultyControl = nil;
     self.highScoreLabel = nil;
+    self.shareHighestScoreButton = nil;
     self.gameModeControl = nil;
     self.gameModeDescriptionLabel = nil;
     [super viewDidUnload];

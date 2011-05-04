@@ -10,7 +10,6 @@
 #import "BeatTheMonkeyViewController.h"
 #import "Utils.h"
 #import "AlertPrompt.h"
-#import "SHK.h"
 
 
 @implementation BeatTheMonkeyViewController
@@ -19,18 +18,6 @@
       infoButton = _infoButton,
       scoreLabel = _scoreLabel,
  startGameButton = _startGameButton;
-
-- (void)shareOnTwitter:(id)sender {
-    // Create the item to share (in this example, a url)
-	SHKItem *item = [SHKItem text:@"I just played Dr.Ape and it's awesome!"];
-    
-	// Get the ShareKit action sheet
-	SHKActionSheet *actionSheet = [SHKActionSheet actionSheetForItem:item];
-    
-	// Display the action sheet
-	[actionSheet showInView:self.view];
-}
-
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -61,6 +48,7 @@
         popover.popoverContentSize = controller.view.bounds.size;
         [popover presentPopoverFromRect:self.infoButton.frame inView:self.view permittedArrowDirections:UIPopoverArrowDirectionDown animated:YES];
     } else {
+        [self resignFirstResponder];
         controller.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
         [self presentModalViewController:controller animated:YES];
     }
@@ -69,6 +57,7 @@
 
 - (void)flipSideViewControllerDidFinish:(FlipSideViewController *)controller {
     [self dismissModalViewControllerAnimated:YES];
+    [self becomeFirstResponder];
 }
 
 - (void)newGameButtonPressed:(id)sender {
@@ -156,6 +145,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 //    NSLog(@"width, height = %f, %f", self.view.bounds.size.width, self.view.bounds.size.height);
+    
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bg_screen.png"]];
+    
     self.game = [[BTMGame alloc] initWithView:self.view];
     self.game.delegate = self;
     
@@ -178,7 +170,7 @@
         self.scoreLabel.font = [UIFont fontWithName:@"Helvetica" size:150];
         self.startGameButton.contentEdgeInsets = UIEdgeInsetsMake(730, 0, 0, 0);
         self.startGameButton.frame = CGRectMake(0, 0, 1024, 768);
-        self.startGameButton.titleLabel.font = [UIFont fontWithName:@"Helvetica" size:20];
+        self.startGameButton.titleLabel.font = [UIFont fontWithName:@"Helvetica" size:16];
     } else {
         self.scoreLabel.frame = CGRectMake(0, 110, 480, 100);
         self.scoreLabel.font = [UIFont fontWithName:@"Helvetica" size:90];

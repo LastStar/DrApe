@@ -252,7 +252,7 @@ static SHKActivityIndicator *currentIndicator = nil;
 
 - (void)setProperRotation:(BOOL)animated
 {
-	UIDeviceOrientation orientation = [[UIDevice currentDevice] orientation];
+	UIDeviceOrientation orientation = [UIApplication sharedApplication].statusBarOrientation;
 	
 	if (animated)
 	{
