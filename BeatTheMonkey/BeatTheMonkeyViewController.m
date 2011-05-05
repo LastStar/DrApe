@@ -97,7 +97,7 @@
     UIWebView *tutText = [[UIWebView alloc] initWithFrame:tutorial.frame];
     tutText.tag = 2222;
     NSString *localizedString = NSLocalizedString(@"TutorialText", nil);
-    NSString *htmlString = [NSString stringWithFormat:@"<html><head><style>body {font-size:1.2em; background-color:black; color:#fff; font-family:courier-new;} li {list-style:circle;} div {margin:10%% auto; width:250pt; text-align:left;}</style></head><body><div>%@</div></body></html>", localizedString];
+    NSString *htmlString = [NSString stringWithFormat:@"<html><head><style>body {font-size:1.05em; background-color:black; color:#fff; font-family:Helvetica;} li {list-style:circle;} div {margin:10%% auto; width:250pt; text-align:left;}</style></head><body><div>%@</div></body></html>", localizedString];
     [tutText loadHTMLString:htmlString baseURL:nil];
     [tutText addSubview:tutorial];
     [tutorial addTarget:self action:@selector(tutorialSeen:) forControlEvents:UIControlEventTouchUpInside];
