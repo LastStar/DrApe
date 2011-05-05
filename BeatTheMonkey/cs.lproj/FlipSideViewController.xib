@@ -119,7 +119,7 @@
 						<int key="IBUIContentMode">7</int>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-						<string key="IBUIText">Automaticky zvyšovat obtížnost</string>
+						<string key="IBUIText">Herní mód</string>
 						<object class="NSFont" key="IBUIFont" id="251467952">
 							<string key="NSName">Helvetica</string>
 							<double key="NSSize">17</double>
@@ -147,8 +147,8 @@
 						<int key="IBSelectedSegmentIndex">0</int>
 						<object class="NSArray" key="IBSegmentTitles">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>Campaign</string>
-							<string>Training</string>
+							<string>Kampaň</string>
+							<string>Tréning</string>
 						</object>
 						<object class="NSMutableArray" key="IBSegmentWidths">
 							<bool key="EncodedWithXMLCoder">YES</bool>
@@ -202,8 +202,8 @@
 						<int key="IBSelectedSegmentIndex">0</int>
 						<object class="NSArray" key="IBSegmentTitles">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>Little Chimp</string>
-							<string>Gorilla</string>
+							<string>Šimpanz</string>
+							<string>Gorila</string>
 							<string>King Kong</string>
 						</object>
 						<object class="NSMutableArray" key="IBSegmentWidths">
@@ -296,7 +296,7 @@
 						<int key="IBUIContentMode">7</int>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-						<string key="IBUIText">Game Mode Description</string>
+						<string key="IBUIText">Pro postup do další úrovně je nutno úspěšne zdolat 9 čísel na terejší úrovni.</string>
 						<object class="NSFont" key="IBUIFont">
 							<string key="NSName">Helvetica</string>
 							<double key="NSSize">14</double>
@@ -324,7 +324,7 @@
 						<int key="IBUIContentVerticalAlignment">0</int>
 						<reference key="IBUIFont" ref="893356069"/>
 						<int key="IBUIButtonType">1</int>
-						<string key="IBUINormalTitle">Share</string>
+						<string key="IBUINormalTitle">Sdílet</string>
 						<reference key="IBUIHighlightedTitleColor" ref="912102487"/>
 						<object class="NSColor" key="IBUINormalTitleColor">
 							<int key="NSColorSpace">3</int>

@@ -117,8 +117,17 @@ gameModeDescriptionLabel = _gameModeDescriptionLabel,
 - (void)setupDifficulties {
     for (int i = 0; i <= DIFFICULTY_MAX; i++) {
         [self.difficultyControl setEnabled:(i <= [UD integerForKey:@"DifficultyMaxAchieved"]) forSegmentAtIndex:i];
+        NSString *stringToLocalize = [NSString stringWithFormat:@"Difficulty%d", i];
+        [self.difficultyControl setTitle:NSLocalizedString(stringToLocalize, nil) forSegmentAtIndex:i];
     }
     self.difficultyControl.selectedSegmentIndex = self.game.difficulty;
+}
+
+- (void)setupGameMode {
+    [self.gameModeControl setTitle:NSLocalizedString(@"Campaign", nil) forSegmentAtIndex:0];
+    [self.gameModeControl setTitle:NSLocalizedString(@"Training", nil) forSegmentAtIndex:1];
+    self.gameModeControl.selectedSegmentIndex = self.game.gameMode;
+    self.gameModeDescriptionLabel.text = NSLocalizedString(@"GameModeDescription", nil);
 }
 
 - (void)viewDidLoad {
@@ -135,8 +144,7 @@ gameModeDescriptionLabel = _gameModeDescriptionLabel,
     }
     [self setupDifficulties];
     self.tilesCountControl.selectedSegmentIndex = [self segmentFromTilesCount];
-    self.gameModeControl.selectedSegmentIndex = self.game.gameMode;
-    self.gameModeDescriptionLabel.text = NSLocalizedString(@"GameModeDescription", nil);
+    [self setupGameMode];
     self.changed = NO;
     if ([BTMGame highestScoreAmount] == 0) {
         self.highScoreLabel.text = @"";
