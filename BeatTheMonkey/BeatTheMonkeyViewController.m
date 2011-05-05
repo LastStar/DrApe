@@ -129,14 +129,14 @@
 
 - (void)btmGame:(BTMGame *)game hasNewHighScore:(NSUInteger)score {
     AlertPrompt *prompt = [[AlertPrompt alloc] initWithTitle:[NSString stringWithFormat:NSLocalizedString(@"New High Score: %d", nil), score] message:NSLocalizedString(@"Enter your name please:", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"Cancel", nil) okButtonTitle:NSLocalizedString(@"Save", nil)];
-    prompt.textField.text = [UD stringForKey:@"HighestScoreName"];
+    prompt.textField.text = [BTMGame highestScoreName];
     [prompt show];
     [prompt release];
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
     if (buttonIndex != [alertView cancelButtonIndex]) {
-        [self.game addNewHighScoreWithName:((AlertPrompt *)alertView).textField.text];
+        [BTMGame setHighestScoreWithName:((AlertPrompt *)alertView).textField.text andAmount:self.game.tempScore];
     } 
 }
 

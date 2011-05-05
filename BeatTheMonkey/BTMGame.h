@@ -17,18 +17,20 @@ typedef enum { DAGameModeCampaign = 0,
 
 @interface BTMGame : NSObject {}
 
++ (NSUInteger)highestScoreAmount;
++ (NSString *)highestScoreName;
++ (void)setHighestScoreWithName:(NSString *)name andAmount:(int)highestscore;
+
 - (BTMGame *)initWithView:(UIView *)aView;
 - (void)startGame;
 - (void)cancelGame;
 - (void)resetCampaign;
-- (void)addNewHighScoreWithName:(NSString *)aName;
 - (BOOL)isPlayingForFirstTime;
 
 @property (nonatomic, assign) id<BTMGameDelegate> delegate;
 @property (nonatomic, readonly) DAGameMode gameMode;
 @property (nonatomic, readonly) NSUInteger difficulty;
-@property (nonatomic, readonly) NSUInteger highestScoreAmount;
-@property (nonatomic, retain, readonly) NSString *highestScoreName;
+@property (nonatomic, readonly) NSUInteger tempScore;
 
 @end
 

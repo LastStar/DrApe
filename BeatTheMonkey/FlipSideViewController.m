@@ -138,11 +138,11 @@ gameModeDescriptionLabel = _gameModeDescriptionLabel,
     self.gameModeControl.selectedSegmentIndex = self.game.gameMode;
     self.gameModeDescriptionLabel.text = NSLocalizedString(@"GameModeDescription", nil);
     self.changed = NO;
-    if (self.game.highestScoreAmount == 0) {
+    if ([BTMGame highestScoreAmount] == 0) {
         self.highScoreLabel.text = @"";
         self.shareHighestScoreButton.hidden = YES;
     } else {
-        self.highScoreLabel.text = [NSString stringWithFormat:NSLocalizedString(@"Highest score %d by %@", nil), self.game.highestScoreAmount, self.game.highestScoreName];
+        self.highScoreLabel.text = [NSString stringWithFormat:NSLocalizedString(@"Highest score %d by %@", nil), [BTMGame highestScoreAmount], [BTMGame highestScoreName]];
         self.shareHighestScoreButton.hidden = NO;
     }
 }

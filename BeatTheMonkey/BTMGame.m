@@ -26,8 +26,6 @@
 @property (nonatomic, retain) NSMutableArray *positions;
 @property (nonatomic, retain) NSDate *startDate;
 @property (nonatomic, readwrite) DAGameMode gameMode;
-@property (nonatomic, retain, readwrite) NSString *highestScoreName;
-@property (nonatomic, readwrite) NSUInteger highestScoreAmount;
 @property (nonatomic, readwrite) NSUInteger difficulty;
 @property (nonatomic) NSUInteger tilesPressed;
 @property (nonatomic) NSUInteger tilesCount;
@@ -51,9 +49,23 @@
               startDate = _startDate,
               thisScore = _thisScore,
               tempScore = _tempScore,
-       highestScoreName = _highestScoreName,
-     highestScoreAmount = _highestScoreAmount,
                gameMode = _gameMode;
+
+#pragma mark - Class methods
+
++ (NSUInteger)highestScoreAmount {
+    return [UD integerForKey:@"HighestScoreAmount"];
+}
+
++ (NSString *)highestScoreName {
+    return [UD stringForKey:@"HighestScoreName"];
+}
+
++ (void)setHighestScoreWithName:(NSString *)name andAmount:(int)highestscore {
+    [UD setObject:name forKey:@"HighestScoreName"];
+    [UD setInteger:highestscore forKey:@"HighestScoreAmount"];
+    [UD synchronize];
+}
 
 #define THIS_VERSION 6
 - (void)setupOptions {
@@ -169,14 +181,12 @@
     self.tilesCount = [UD integerForKey:@"TilesCount"];
     self.difficulty = [UD integerForKey:@"Difficulty"];
     self.gameMode = [UD boolForKey:@"GameMode"];
-    self.highestScoreName = [UD stringForKey:@"HighestScoreName"];
-    self.highestScoreAmount = [UD integerForKey:@"HighestScoreAmount"];
     self.tilesPressed = 0;
     self.thisScore = 0;
     self.startDate = [NSDate date];
     self.mistake = NO;
     self.nextTile = nil;
-    if (self.gameMode == DAGameModeTraining) {
+    if (self.gameMode == DAGameModeTraining || self.mistake) {
         self.tempScore = 0;
     }
     
@@ -200,10 +210,6 @@
     [self setup];
 	[NSTimer scheduledTimerWithTimeInterval:[self difficultyToTime:self.difficulty] target:self
                                    selector:@selector(hideTiles) userInfo:nil repeats:NO];
-}
-
-- (float)highestScore {
-    return [UD integerForKey:@"HighestScoreAmount"];
 }
 
 - (NSUInteger)calculateScoreFromTime:(NSTimeInterval)gameTime {
@@ -240,7 +246,7 @@
         if (self.gameMode == DAGameModeCampaign) {
             [self resetCampaign];
         }
-        if (self.tempScore > self.highestScoreAmount) {
+        if (self.tempScore > [BTMGame highestScoreAmount]) {
             if ([self.delegate respondsToSelector:@selector(btmGame:hasNewHighScore:)]) {
                 [self.delegate btmGame:self hasNewHighScore:self.tempScore];
             }
@@ -248,7 +254,6 @@
         if ([self.delegate respondsToSelector:@selector(btmGameHasFinished:withScore:totalScore:andMistake:)]) {
             [self.delegate btmGameHasFinished:self withScore:self.tempScore totalScore:self.tempScore andMistake:YES];
         }
-        self.tempScore = 0;
     } else {
         self.tempScore += self.thisScore;
         if (self.gameMode == DAGameModeCampaign) { [self goToNextLevel]; }
@@ -269,12 +274,6 @@
         default:
             return 2;
     }
-}
-
-- (void)addNewHighScoreWithName:(NSString *)aName {
-    [UD setObject:aName forKey:@"HighestScoreName"];
-    [UD setDouble:self.thisScore forKey:@"HighestScoreAmount"];
-    [UD synchronize];
 }
 
 - (void)showMistakenTiles {
