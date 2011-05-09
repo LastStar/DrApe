@@ -145,6 +145,8 @@ gameModeDescriptionLabel = _gameModeDescriptionLabel,
     self.tilesCountControl.selectedSegmentIndex = [self segmentFromTilesCount];
     [self setupGameMode];
     self.changed = NO;
+    [self.shareHighestScoreButton useSilverStyle];
+    self.shareHighestScoreButton.titleLabel.textColor = [UIColor colorWithWhite:0.25 alpha:1];
     if ([BTMGame highestScoreAmount] == 0) {
         self.highScoreLabel.text = @"";
         self.shareHighestScoreButton.hidden = YES;

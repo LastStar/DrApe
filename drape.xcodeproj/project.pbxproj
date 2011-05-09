@@ -167,6 +167,7 @@
 		2BDC1B521377DF5500D99AEE /* icon_iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B71C46B13040D000058560B /* icon_iphone.png */; };
 		2BDC1B531377DF5500D99AEE /* icon_retina.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B71C46913040CFA0058560B /* icon_retina.png */; };
 		2BDC1B541377DF5500D99AEE /* icon_ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B71C46613040CDF0058560B /* icon_ipad.png */; };
+		2BDC1B681377E7BA00D99AEE /* GradientButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BDC1B671377E7BA00D99AEE /* GradientButton.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -355,6 +356,8 @@
 		2BDC1B3E1377DF4600D99AEE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/FlipSideViewController.xib.strings; sourceTree = "<group>"; };
 		2BDC1B401377DF4D00D99AEE /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/FlipSideViewController.xib.strings; sourceTree = "<group>"; };
 		2BDC1B421377DF5500D99AEE /* sk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sk; path = sk.lproj/FlipSideViewController.xib.strings; sourceTree = "<group>"; };
+		2BDC1B661377E7BA00D99AEE /* GradientButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GradientButton.h; path = GradientButton/GradientButton.h; sourceTree = "<group>"; };
+		2BDC1B671377E7BA00D99AEE /* GradientButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GradientButton.m; path = GradientButton/GradientButton.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -752,6 +755,7 @@
 		2BD0D84112E43E5F009DB2F3 = {
 			isa = PBXGroup;
 			children = (
+				2BDC1B651377E79900D99AEE /* GradientButton */,
 				2BA9ACE61370615D00C60958 /* ShareKit */,
 				2BD0D85612E43E60009DB2F3 /* BeatTheMonkey */,
 				2BD0D84F12E43E60009DB2F3 /* Frameworks */,
@@ -822,6 +826,15 @@
 				2BD0D85D12E43E60009DB2F3 /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		2BDC1B651377E79900D99AEE /* GradientButton */ = {
+			isa = PBXGroup;
+			children = (
+				2BDC1B661377E7BA00D99AEE /* GradientButton.h */,
+				2BDC1B671377E7BA00D99AEE /* GradientButton.m */,
+			);
+			name = GradientButton;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1041,6 +1054,7 @@
 				2BA9ADC01370615F00C60958 /* SHKOAuthView.m in Sources */,
 				2BA9ADC11370615F00C60958 /* SHKShareMenu.m in Sources */,
 				2BA9ADC21370615F00C60958 /* SHKViewControllerWrapper.m in Sources */,
+				2BDC1B681377E7BA00D99AEE /* GradientButton.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "BTMGame.h"
+#import "GradientButton.h"
+
 
 @protocol FlipSideViewControllerDelegate;
 
@@ -16,7 +18,7 @@
 @property (nonatomic, assign) id<FlipSideViewControllerDelegate> delegate;
 @property (nonatomic, retain) IBOutlet UIButton *infoButton;
 @property (nonatomic, retain) IBOutlet UILabel *highScoreLabel;
-@property (nonatomic, retain) IBOutlet UIButton *shareHighestScoreButton;
+@property (nonatomic, retain) IBOutlet GradientButton *shareHighestScoreButton;
 @property (nonatomic, retain) IBOutlet UILabel *tilesCountLabel;
 @property (nonatomic, retain) IBOutlet UILabel *gameModeDescriptionLabel;
 @property (nonatomic, retain) IBOutlet UISegmentedControl *difficultyControl;
