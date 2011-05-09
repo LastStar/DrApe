@@ -127,7 +127,6 @@ gameModeDescriptionLabel = _gameModeDescriptionLabel,
     [self.gameModeControl setTitle:NSLocalizedString(@"Campaign", nil) forSegmentAtIndex:0];
     [self.gameModeControl setTitle:NSLocalizedString(@"Training", nil) forSegmentAtIndex:1];
     self.gameModeControl.selectedSegmentIndex = self.game.gameMode;
-    self.gameModeDescriptionLabel.text = NSLocalizedString(@"GameModeDescription", nil);
 }
 
 - (void)viewDidLoad {

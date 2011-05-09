@@ -147,6 +147,26 @@
 		2BD0D86112E43E60009DB2F3 /* BeatTheMonkeyAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BD0D86012E43E60009DB2F3 /* BeatTheMonkeyAppDelegate.m */; };
 		2BD0D86712E43E60009DB2F3 /* BeatTheMonkeyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BD0D86612E43E60009DB2F3 /* BeatTheMonkeyViewController.m */; };
 		2BD0D88912E485FC009DB2F3 /* BTMGame.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BD0D88812E485FC009DB2F3 /* BTMGame.m */; };
+		2BDC1B3F1377DF4600D99AEE /* FlipSideViewController.xib.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2BDC1B3D1377DF4600D99AEE /* FlipSideViewController.xib.strings */; };
+		2BDC1B411377DF4D00D99AEE /* FlipSideViewController.xib.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2BDC1B3D1377DF4600D99AEE /* FlipSideViewController.xib.strings */; };
+		2BDC1B431377DF5500D99AEE /* bg_tile_red.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B36E5F01372C5FE00E04E82 /* bg_tile_red.png */; };
+		2BDC1B441377DF5500D99AEE /* bg_tile_green.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BA9ADCD137147CB00C60958 /* bg_tile_green.png */; };
+		2BDC1B451377DF5500D99AEE /* bg_screen.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BA9ADC91371444800C60958 /* bg_screen.png */; };
+		2BDC1B461377DF5500D99AEE /* bg_tile.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BA9ADCA1371444800C60958 /* bg_tile.png */; };
+		2BDC1B471377DF5500D99AEE /* dr-ape_72x72.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B3C9347135D832C00F0C481 /* dr-ape_72x72.png */; };
+		2BDC1B481377DF5500D99AEE /* dr-ape_57x57.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B3C9345135D832500F0C481 /* dr-ape_57x57.png */; };
+		2BDC1B491377DF5500D99AEE /* dr-ape_114x114.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B3C9343135D828F00F0C481 /* dr-ape_114x114.png */; };
+		2BDC1B4A1377DF5500D99AEE /* Default-Landscape~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BCCA40E13571E040084C965 /* Default-Landscape~ipad.png */; };
+		2BDC1B4B1377DF5500D99AEE /* Default-Portrait~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BCCA40C13571DFB0084C965 /* Default-Portrait~ipad.png */; };
+		2BDC1B4C1377DF5500D99AEE /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BCCA40A13571DF00084C965 /* Default@2x.png */; };
+		2BDC1B4D1377DF5500D99AEE /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BCCA40813571DE30084C965 /* Default.png */; };
+		2BDC1B4E1377DF5500D99AEE /* gears_highlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BCCA41F135827CD0084C965 /* gears_highlighted.png */; };
+		2BDC1B4F1377DF5500D99AEE /* gears_highlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BCCA420135827CD0084C965 /* gears_highlighted@2x.png */; };
+		2BDC1B501377DF5500D99AEE /* gears.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BCCA421135827CD0084C965 /* gears.png */; };
+		2BDC1B511377DF5500D99AEE /* gears@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BCCA422135827CD0084C965 /* gears@2x.png */; };
+		2BDC1B521377DF5500D99AEE /* icon_iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B71C46B13040D000058560B /* icon_iphone.png */; };
+		2BDC1B531377DF5500D99AEE /* icon_retina.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B71C46913040CFA0058560B /* icon_retina.png */; };
+		2BDC1B541377DF5500D99AEE /* icon_ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B71C46613040CDF0058560B /* icon_ipad.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -332,6 +352,9 @@
 		2BD0D86612E43E60009DB2F3 /* BeatTheMonkeyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeatTheMonkeyViewController.m; sourceTree = "<group>"; };
 		2BD0D88712E485FC009DB2F3 /* BTMGame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BTMGame.h; sourceTree = "<group>"; };
 		2BD0D88812E485FC009DB2F3 /* BTMGame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = BTMGame.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		2BDC1B3E1377DF4600D99AEE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/FlipSideViewController.xib.strings; sourceTree = "<group>"; };
+		2BDC1B401377DF4D00D99AEE /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/FlipSideViewController.xib.strings; sourceTree = "<group>"; };
+		2BDC1B421377DF5500D99AEE /* sk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sk; path = sk.lproj/FlipSideViewController.xib.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -791,6 +814,7 @@
 			isa = PBXGroup;
 			children = (
 				2B344A2D1372DB3C009306F5 /* Localizable.strings */,
+				2BDC1B3D1377DF4600D99AEE /* FlipSideViewController.xib.strings */,
 				2B71C46813040CE90058560B /* Images */,
 				2BA98B4213605EB4009E2D67 /* InfoPlist.strings */,
 				2BD0D85812E43E60009DB2F3 /* drape-Info.plist */,
@@ -918,6 +942,26 @@
 				2B344A531372DB4D009306F5 /* icon_iphone.png in Resources */,
 				2B344A541372DB4D009306F5 /* icon_retina.png in Resources */,
 				2B344A551372DB4D009306F5 /* icon_ipad.png in Resources */,
+				2BDC1B3F1377DF4600D99AEE /* FlipSideViewController.xib.strings in Resources */,
+				2BDC1B411377DF4D00D99AEE /* FlipSideViewController.xib.strings in Resources */,
+				2BDC1B431377DF5500D99AEE /* bg_tile_red.png in Resources */,
+				2BDC1B441377DF5500D99AEE /* bg_tile_green.png in Resources */,
+				2BDC1B451377DF5500D99AEE /* bg_screen.png in Resources */,
+				2BDC1B461377DF5500D99AEE /* bg_tile.png in Resources */,
+				2BDC1B471377DF5500D99AEE /* dr-ape_72x72.png in Resources */,
+				2BDC1B481377DF5500D99AEE /* dr-ape_57x57.png in Resources */,
+				2BDC1B491377DF5500D99AEE /* dr-ape_114x114.png in Resources */,
+				2BDC1B4A1377DF5500D99AEE /* Default-Landscape~ipad.png in Resources */,
+				2BDC1B4B1377DF5500D99AEE /* Default-Portrait~ipad.png in Resources */,
+				2BDC1B4C1377DF5500D99AEE /* Default@2x.png in Resources */,
+				2BDC1B4D1377DF5500D99AEE /* Default.png in Resources */,
+				2BDC1B4E1377DF5500D99AEE /* gears_highlighted.png in Resources */,
+				2BDC1B4F1377DF5500D99AEE /* gears_highlighted@2x.png in Resources */,
+				2BDC1B501377DF5500D99AEE /* gears.png in Resources */,
+				2BDC1B511377DF5500D99AEE /* gears@2x.png in Resources */,
+				2BDC1B521377DF5500D99AEE /* icon_iphone.png in Resources */,
+				2BDC1B531377DF5500D99AEE /* icon_retina.png in Resources */,
+				2BDC1B541377DF5500D99AEE /* icon_ipad.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1055,6 +1099,16 @@
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
+		2BDC1B3D1377DF4600D99AEE /* FlipSideViewController.xib.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2BDC1B3E1377DF4600D99AEE /* en */,
+				2BDC1B401377DF4D00D99AEE /* cs */,
+				2BDC1B421377DF5500D99AEE /* sk */,
+			);
+			name = FlipSideViewController.xib.strings;
+			sourceTree = "<group>";
+		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
@@ -1109,8 +1163,8 @@
 				INFOPLIST_FILE = "BeatTheMonkey/drape-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				PRODUCT_NAME = drape;
-				PROVISIONING_PROFILE = "5B47FE09-0032-4A3E-9AA8-07685DEE1F5E";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "4E1C748B-541E-45B1-809F-867B98323F7B";
+				PROVISIONING_PROFILE = "F5E04CD1-6D06-49B3-8960-8CD804825AA6";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "F5E04CD1-6D06-49B3-8960-8CD804825AA6";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
@@ -1129,8 +1183,8 @@
 				INFOPLIST_FILE = "BeatTheMonkey/drape-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				PRODUCT_NAME = drape;
-				PROVISIONING_PROFILE = "5B47FE09-0032-4A3E-9AA8-07685DEE1F5E";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "4E1C748B-541E-45B1-809F-867B98323F7B";
+				PROVISIONING_PROFILE = "F5E04CD1-6D06-49B3-8960-8CD804825AA6";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "F5E04CD1-6D06-49B3-8960-8CD804825AA6";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;
