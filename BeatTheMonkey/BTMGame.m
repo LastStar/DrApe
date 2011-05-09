@@ -184,11 +184,11 @@
     self.tilesPressed = 0;
     self.thisScore = 0;
     self.startDate = [NSDate date];
-    self.mistake = NO;
     self.nextTile = nil;
     if (self.gameMode == DAGameModeTraining || self.mistake) {
         self.tempScore = 0;
     }
+    self.mistake = NO;
     
     [self removeOldTiles];
     [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(addTiles) userInfo:nil repeats:NO];
