@@ -279,7 +279,7 @@
 - (void)showMistakenTiles {
     for (BTMTile *tile in self.tiles) {
         [tile setTitle:[NSString stringWithFormat:@"%d", tile.tag] forState:UIControlStateNormal];
-        [tile setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        [tile setTitleColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"bg_screen.png"]] forState:UIControlStateNormal];
         if (tile.mistaken) {
             tile.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bg_tile_red.png"]];
         } else {

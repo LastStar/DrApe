@@ -152,7 +152,7 @@
     self.game.delegate = self;
     
     self.scoreLabel = [[UILabel alloc] init];
-    self.scoreLabel.textColor = [UIColor whiteColor];
+    self.scoreLabel.textColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bg_tile.png"]];
     self.scoreLabel.textAlignment = UITextAlignmentCenter;
     self.scoreLabel.backgroundColor = [UIColor clearColor];
     self.scoreLabel.hidden = YES;
@@ -161,6 +161,7 @@
     
     self.startGameButton = [UIButton buttonWithType:UIButtonTypeCustom];
     self.startGameButton.backgroundColor = [UIColor clearColor];
+    [self.startGameButton setTitleColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"bg_tile.png"]] forState:UIControlStateNormal];
     [self.startGameButton addTarget:self action:@selector(newGameButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
     self.startGameButton.hidden = YES;
     [self.view addSubview:self.startGameButton];

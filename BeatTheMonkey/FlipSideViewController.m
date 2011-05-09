@@ -61,6 +61,7 @@ gameModeDescriptionLabel = _gameModeDescriptionLabel,
 - (IBAction)gameModeChanged:(id)sender {
     [UD setInteger:self.gameModeControl.selectedSegmentIndex forKey:@"GameMode"];
     [UD synchronize];
+    [self.game resetCampaign];
     self.changed = YES;
     [self showHideTilesCount];
 }

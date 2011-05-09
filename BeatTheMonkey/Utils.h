@@ -12,7 +12,7 @@
 #define UD [NSUserDefaults standardUserDefaults]
 #define BTM_DEBUG 1
 #define GAME_MODE 0
-#define TILES_COUNT 3
+#define TILES_COUNT 4
 #define TILES_COUNT_MIN 4
 #define TILES_COUNT_MAX 8
 #define TILES_X 8
