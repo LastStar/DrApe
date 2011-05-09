@@ -67,7 +67,7 @@
     [UD synchronize];
 }
 
-#define THIS_VERSION 6
+#define THIS_VERSION 8
 - (void)setupOptions {
     if (BTM_DEBUG) NSLog(@"LastOptionsVersion %i", [UD integerForKey:@"LastOptionsVersion"]);
     if (![UD objectForKey:@"LastOptionsVersion"] || [UD integerForKey:@"LastOptionsVersion"] < THIS_VERSION) {
