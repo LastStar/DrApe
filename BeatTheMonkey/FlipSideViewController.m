@@ -48,7 +48,7 @@ gameModeDescriptionLabel = _gameModeDescriptionLabel,
 
 - (void)showHideTilesCount {
     if (self.gameModeControl.selectedSegmentIndex == DAGameModeCampaign) {
-        self.gameModeDescriptionLabel.hidden = NO;
+        if ([UD integerForKey:@"Difficulty"] < 2) self.gameModeDescriptionLabel.hidden = NO;
         self.tilesCountLabel.hidden = YES;
         self.tilesCountControl.hidden = YES;
     } else {
@@ -117,6 +117,7 @@ gameModeDescriptionLabel = _gameModeDescriptionLabel,
 
 - (void)setupDifficulties {
     for (int i = 0; i <= DIFFICULTY_MAX; i++) {
+//        [self.difficultyControl setEnabled:YES forSegmentAtIndex:i];
         [self.difficultyControl setEnabled:(i <= [UD integerForKey:@"DifficultyMaxAchieved"]) forSegmentAtIndex:i];
         NSString *stringToLocalize = [NSString stringWithFormat:@"Difficulty%d", i];
         [self.difficultyControl setTitle:NSLocalizedString(stringToLocalize, nil) forSegmentAtIndex:i];

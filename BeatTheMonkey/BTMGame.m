@@ -214,11 +214,11 @@
 
 - (NSUInteger)calculateScoreFromTime:(NSTimeInterval)gameTime {
     double diffCoef = self.difficulty + 1;
-    double timeCoef = gameTime;
     double tileCoef = self.tilesCount;
-    if (BTM_DEBUG) NSLog(@"%f %f %f", diffCoef, timeCoef, tileCoef);
+    double timeCoef = (gameTime + tileCoef) / tileCoef;
+    if (BTM_DEBUG) NSLog(@"diff: %f time: %f tiles: %f", diffCoef, timeCoef, tileCoef);
     
-    return round((tileCoef / timeCoef) * diffCoef * 100);
+    return round((tileCoef * tileCoef) / (timeCoef * timeCoef) * diffCoef * 10);
 }
 
 - (void)cancelGame {
