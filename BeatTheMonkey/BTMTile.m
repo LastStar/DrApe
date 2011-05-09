@@ -7,6 +7,7 @@
 //
 
 #import "BTMTile.h"
+#import <QuartzCore/QuartzCore.h>
 
 
 @implementation BTMTile
@@ -19,6 +20,8 @@
     tile.enabled = NO;
     tile.titleLabel.textColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bg_tile.png"]];
     tile.backgroundColor = [UIColor clearColor];
+    tile.layer.cornerRadius = 3.0;
+    tile.layer.masksToBounds = YES;
     return tile;
 }
 
