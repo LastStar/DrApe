@@ -80,11 +80,11 @@ gameModeDescriptionLabel = _gameModeDescriptionLabel,
 }
 
 - (void)keyboardWillShow:(NSNotification *)notification {
-    NSLog(@"KeyboardWillShow %@", notification);
+    if (BTM_DEBUG) NSLog(@"KeyboardWillShow %@", notification);
 }
 
 - (void)keyboardWillHide:(NSNotification *)notification {
-    NSLog(@"KeyboardWillHide %@", notification);    
+    if (BTM_DEBUG) NSLog(@"KeyboardWillHide %@", notification);    
 }
 
 #pragma mark - View lifecycle
