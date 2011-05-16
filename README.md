@@ -5,3 +5,7 @@
 * Goal of the game is to tap numbers in correct order after they hide. Difficulty increases after completing the level.
 
 * You can find this game in App Store - http://bit.ly/DrApe
+
+* It's designed as an universal application, so it runs on iPhone, iPod Touch and iPad.
+
+* Needs iOS 4.0 or higher.
