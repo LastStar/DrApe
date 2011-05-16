@@ -11,6 +11,31 @@
 #import "SHK.h"
 
 
+@interface FlipSideViewController ()
+
+@property (nonatomic, retain) IBOutlet UIButton *infoButton;
+@property (nonatomic, retain) IBOutlet UILabel *highScoreLabel;
+@property (nonatomic, retain) IBOutlet GradientButton *shareHighestScoreButton;
+@property (nonatomic, retain) IBOutlet UILabel *tilesCountLabel;
+@property (nonatomic, retain) IBOutlet UILabel *gameModeDescriptionLabel;
+@property (nonatomic, retain) IBOutlet UISegmentedControl *difficultyControl;
+@property (nonatomic, retain) IBOutlet UISegmentedControl *tilesCountControl;
+@property (nonatomic, retain) IBOutlet UISegmentedControl *gameModeControl;
+@property (nonatomic, assign) BOOL changed;
+
+- (void)setupTiles;
+- (void)setupDifficulties;
+- (void)setupGameMode;
+
+- (IBAction)done:(id)sender;
+- (IBAction)difficultySwitched:(id)sender;
+- (IBAction)tilesCountSwitched:(id)sender;
+- (IBAction)gameModeChanged:(id)sender;
+- (IBAction)shareHighestScore:(id)sender;
+
+@end
+
+
 @implementation FlipSideViewController
 
     @synthesize  changed = _changed,
@@ -28,13 +53,8 @@ gameModeDescriptionLabel = _gameModeDescriptionLabel,
 #pragma mark - Actions
 
 - (void)shareHighestScore:(id)sender {
-    // Create the item to share (in this example, a url)
 	SHKItem *item = [SHKItem text:[NSString stringWithFormat:NSLocalizedString(@"HighestScoreShare", nil), [UD integerForKey:@"HighestScoreAmount"]]];
-    
-	// Get the ShareKit action sheet
 	SHKActionSheet *actionSheet = [SHKActionSheet actionSheetForItem:item];
-    
-	// Display the action sheet
 	[actionSheet showInView:self.view];
 }
 
@@ -43,12 +63,14 @@ gameModeDescriptionLabel = _gameModeDescriptionLabel,
 }
 
 - (IBAction)done:(id)sender {
-    [self.delegate flipSideViewControllerDidFinish:self];
+    if ([self.delegate respondsToSelector:@selector(flipSideViewControllerDidFinish:)]) {
+        [self.delegate flipSideViewControllerDidFinish:self];
+    }
 }
 
 - (void)showHideTilesCount {
     if (self.gameModeControl.selectedSegmentIndex == DAGameModeCampaign) {
-        if ([UD integerForKey:@"Difficulty"] < 2) self.gameModeDescriptionLabel.hidden = NO;
+        if ([UD integerForKey:@"Difficulty"] < DIFFICULTY_MAX) self.gameModeDescriptionLabel.hidden = NO;
         self.tilesCountLabel.hidden = YES;
         self.tilesCountControl.hidden = YES;
     } else {
@@ -79,23 +101,7 @@ gameModeDescriptionLabel = _gameModeDescriptionLabel,
     self.changed = YES;
 }
 
-- (void)keyboardWillShow:(NSNotification *)notification {
-    if (BTM_DEBUG) NSLog(@"KeyboardWillShow %@", notification);
-}
-
-- (void)keyboardWillHide:(NSNotification *)notification {
-    if (BTM_DEBUG) NSLog(@"KeyboardWillHide %@", notification);    
-}
-
 #pragma mark - View lifecycle
-
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-// ...
-    }
-    return self;
-}
 
 - (void)dealloc {
     [_infoButton release];
@@ -117,7 +123,6 @@ gameModeDescriptionLabel = _gameModeDescriptionLabel,
 
 - (void)setupDifficulties {
     for (int i = 0; i <= DIFFICULTY_MAX; i++) {
-//        [self.difficultyControl setEnabled:YES forSegmentAtIndex:i];
         [self.difficultyControl setEnabled:(i <= [UD integerForKey:@"DifficultyMaxAchieved"]) forSegmentAtIndex:i];
         NSString *stringToLocalize = [NSString stringWithFormat:@"Difficulty%d", i];
         [self.difficultyControl setTitle:NSLocalizedString(stringToLocalize, nil) forSegmentAtIndex:i];
@@ -131,19 +136,23 @@ gameModeDescriptionLabel = _gameModeDescriptionLabel,
     self.gameModeControl.selectedSegmentIndex = self.game.gameMode;
 }
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    [self showHideTilesCount];
-    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
-        self.infoButton.hidden = YES;
-    }
+- (void)setupTiles {
     [self.tilesCountControl removeAllSegments];
     for (int i = TILES_COUNT_MIN; i <= TILES_COUNT_MAX; i++ ) {
         NSString *segmentTitle = [NSString stringWithFormat:@"%d", i];
         NSUInteger segmentIndex = (i - TILES_COUNT_MIN);
         [self.tilesCountControl insertSegmentWithTitle:segmentTitle atIndex:segmentIndex animated:NO];
     }
+}
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    [self showHideTilesCount];
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+        self.infoButton.hidden = YES;
+    }
     [self setupDifficulties];
+    [self setupTiles];
     self.tilesCountControl.selectedSegmentIndex = [self segmentFromTilesCount];
     [self setupGameMode];
     self.changed = NO;
@@ -161,8 +170,7 @@ gameModeDescriptionLabel = _gameModeDescriptionLabel,
 - (void)viewWillDisappear:(BOOL)animated {
     if (self.changed) {
         self.changed = NO;
-        [NSTimer scheduledTimerWithTimeInterval:0.7 target:self.game
-                                       selector:@selector(startGame) userInfo:nil repeats:NO];
+        [NSTimer scheduledTimerWithTimeInterval:0.7 target:self.game selector:@selector(startGame) userInfo:nil repeats:NO];
     }
 }
 

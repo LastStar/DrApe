@@ -78,7 +78,6 @@
         [UD setInteger:TILES_Y forKey:@"TilesY"];
         [UD setInteger:DIFFICULTY forKey:@"Difficulty"];
         [UD setInteger:DIFFICULTY_MAX_ACHIEVED forKey:@"DifficultyMaxAchieved"];
-//        [UD setInteger:0 forKey:@"HighestScoreAmount"]; // todo disable
 
         if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad) {
             [UD setInteger:IPAD_FONT_SIZE forKey:@"FontSize"]; 
@@ -111,6 +110,15 @@
     }
     
     return self;
+}
+
+- (void)dealloc {
+    [_gameView release];
+    [_tiles release];
+    [_positions release];
+    [_nextTile release];
+    [_startDate release];
+    [super dealloc];
 }
 
 - (int)getRandomFreePosition {
@@ -301,15 +309,6 @@
     } else {
         [self updateNextTile];
     }
-}   
-
-- (void)dealloc {
-    [_gameView release];
-    [_tiles release];
-    [_positions release];
-    [_nextTile release];
-    [_startDate release];
-    [super dealloc];
 }
 
 @end

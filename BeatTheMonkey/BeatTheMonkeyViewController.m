@@ -19,15 +19,10 @@
       scoreLabel = _scoreLabel,
  startGameButton = _startGameButton;
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-//    NSLog(@"nibNameOrNil = %@, nibBundleOrNil = %@", nibNameOrNil, nibBundleOrNil);
-    if (self) {
-    }
-    return self;
-}
-
 - (void)dealloc {
+    [_infoButton release];
+    [_scoreLabel release];
+    [_startGameButton release];
     [_game release];
     [super dealloc];
 }
@@ -40,7 +35,7 @@
 }
 
 - (IBAction)infoPressed:(id)sender {
-    FlipSideViewController *controller = [[FlipSideViewController alloc] initWithNibName:@"FlipSideViewController" bundle:nil];
+    FlipSideViewController *controller = [[FlipSideViewController alloc] initWithNibName:nil bundle:nil];
     controller.delegate = self;
     controller.game = self.game;
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {

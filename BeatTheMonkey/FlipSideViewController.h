@@ -16,25 +16,10 @@
 @interface FlipSideViewController : UIViewController {}
 
 @property (nonatomic, assign) id<FlipSideViewControllerDelegate> delegate;
-@property (nonatomic, retain) IBOutlet UIButton *infoButton;
-@property (nonatomic, retain) IBOutlet UILabel *highScoreLabel;
-@property (nonatomic, retain) IBOutlet GradientButton *shareHighestScoreButton;
-@property (nonatomic, retain) IBOutlet UILabel *tilesCountLabel;
-@property (nonatomic, retain) IBOutlet UILabel *gameModeDescriptionLabel;
-@property (nonatomic, retain) IBOutlet UISegmentedControl *difficultyControl;
-@property (nonatomic, retain) IBOutlet UISegmentedControl *tilesCountControl;
-@property (nonatomic, retain) IBOutlet UISegmentedControl *gameModeControl;
 @property (nonatomic, retain) BTMGame *game;
-@property (nonatomic, assign) BOOL changed;
-
-- (IBAction)done:(id)sender;
-- (IBAction)difficultySwitched:(id)sender;
-- (IBAction)tilesCountSwitched:(id)sender;
-- (IBAction)gameModeChanged:(id)sender;
-- (IBAction)shareHighestScore:(id)sender;
 
 @end
 
-@protocol FlipSideViewControllerDelegate
+@protocol FlipSideViewControllerDelegate <NSObject>
 - (void)flipSideViewControllerDidFinish:(FlipSideViewController *)controller;
 @end

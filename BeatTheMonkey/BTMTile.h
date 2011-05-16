@@ -9,8 +9,7 @@
 #import <Foundation/Foundation.h>
 
 
-@interface BTMTile : UIButton {
-}
+@interface BTMTile : UIButton {}
 
 @property (nonatomic, assign) int position;
 @property (nonatomic, assign) BOOL mistaken;
