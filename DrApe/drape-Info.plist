@@ -17,6 +17,9 @@
 		<string>dr-ape_72x72.png</string>
 		<string>dr-ape_114x114.png</string>
 		<string>dr-ape_57x57.png</string>
+		<string>dr-ape_57x57.png</string>
+		<string>dr-ape_114x114.png</string>
+		<string>dr-ape_72x72.png</string>
 	</array>
 	<key>CFBundleIdentifier</key>
 	<string>eu.laststar.${PRODUCT_NAME:rfc1034identifier}</string>
