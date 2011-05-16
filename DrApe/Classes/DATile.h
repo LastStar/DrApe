@@ -16,4 +16,6 @@
 
 + (DATile *)tileWithFrame:(CGRect)aFrame;
 
+- (void)hide;
+
 @end

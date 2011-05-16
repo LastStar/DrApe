@@ -81,6 +81,12 @@
     [self.view addSubview:tile];
 }
 
+- (void)DAGameDidComplete:(DAGame *)aGame {
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Congratulations" message:@"You finished the whole game" delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
+    [alertView show];
+    [alertView release];
+}
+
 - (void)DAGameIsPlayingForFirstTime:(DAGame *)game  {
     UIButton *tutorial = [UIButton buttonWithType:UIButtonTypeCustom];
     tutorial.tag = 1111;

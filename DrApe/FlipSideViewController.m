@@ -143,6 +143,7 @@ gameModeDescriptionLabel = _gameModeDescriptionLabel,
         NSUInteger segmentIndex = (i - TILES_COUNT_MIN);
         [self.tilesCountControl insertSegmentWithTitle:segmentTitle atIndex:segmentIndex animated:NO];
     }
+    self.tilesCountControl.selectedSegmentIndex = [self segmentFromTilesCount];
 }
 
 - (void)viewDidLoad {
@@ -153,7 +154,6 @@ gameModeDescriptionLabel = _gameModeDescriptionLabel,
     }
     [self setupDifficulties];
     [self setupTiles];
-    self.tilesCountControl.selectedSegmentIndex = [self segmentFromTilesCount];
     [self setupGameMode];
     self.changed = NO;
     [self.shareHighestScoreButton useSilverStyle];

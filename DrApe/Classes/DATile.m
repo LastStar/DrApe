@@ -8,6 +8,7 @@
 
 #import "DATile.h"
 #import <QuartzCore/QuartzCore.h>
+#import "Utils.h"
 
 
 @implementation DATile
@@ -17,6 +18,7 @@
 + (DATile *)tileWithFrame:(CGRect)aFrame {
     DATile *tile = [super buttonWithType:UIButtonTypeCustom];
     
+    tile.titleLabel.font = [UIFont fontWithName:@"Helvetica" size:[UD doubleForKey:@"FontSize"]];
     tile.frame = aFrame;
     tile.enabled = NO;
     [tile setTitleColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"bg_tile.png"]] forState:UIControlStateNormal];
@@ -25,6 +27,12 @@
     tile.layer.masksToBounds = YES;
     
     return tile;
+}
+
+- (void)hide {
+    self.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bg_tile.png"]];
+    self.enabled = YES;
+    [self setTitle:@"" forState:UIControlStateNormal];
 }
 
 @end

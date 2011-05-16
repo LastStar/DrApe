@@ -38,4 +38,5 @@ typedef enum { DAGameModeCampaign = 0,
 - (void)DAGameHasFinished:(DAGame *)aGame withScore:(NSUInteger)score totalScore:(NSUInteger)totalScore andMistake:(BOOL)aMistake;
 - (void)DAGameIsPlayingForFirstTime:(DAGame *)game;
 - (void)DAGame:(DAGame *)aGame addsNewTile:(DATile *)tile;
+- (void)DAGameDidComplete:(DAGame *)aGame;
 @end

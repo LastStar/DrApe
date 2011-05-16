@@ -36,18 +36,18 @@
 
 @implementation DAGame
 
-@synthesize    nextTile = _nextTile,
-             tilesCount = _tilesCount,
-             difficulty = _difficulty,
-                  tiles = _tiles,
-              positions = _positions,
-           tilesPressed = _tilesPressed,
-                mistake = _mistake,
-               delegate = _delegate,
-              startDate = _startDate,
-              thisScore = _thisScore,
-              tempScore = _tempScore,
-               gameMode = _gameMode;
+@synthesize nextTile = _nextTile,
+          tilesCount = _tilesCount,
+          difficulty = _difficulty,
+               tiles = _tiles,
+           positions = _positions,
+        tilesPressed = _tilesPressed,
+             mistake = _mistake,
+            delegate = _delegate,
+           startDate = _startDate,
+           thisScore = _thisScore,
+           tempScore = _tempScore,
+            gameMode = _gameMode;
 
 #pragma mark - Class methods
 
@@ -151,7 +151,6 @@
 - (void)addTiles {
     for (int i = 1; i <= self.tilesCount; i++) {
         DATile *tile = [DATile tileWithFrame:[self getRandomPosition]];
-        tile.titleLabel.font = [UIFont fontWithName:@"Helvetica" size:[UD doubleForKey:@"FontSize"]];
         [tile addTarget:self action:@selector(buttonPressed:) forControlEvents:UIControlEventTouchUpInside];
         [tile setTitle:[NSString stringWithFormat:@"%i", i] forState:UIControlStateNormal];
         [tile setTag:i];
@@ -168,9 +167,9 @@
     if (DA_DEBUG) NSLog(@"Going to next level.");
     if (self.tilesCount == TILES_COUNT_MAX) { // going to next difficulty
         if (self.difficulty == DIFFICULTY_MAX) {
-            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Congratulations" message:@"You finished the whole game" delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
-            [alertView show];
-            [alertView release];
+            if ([self.delegate respondsToSelector:@selector(DAGameDidComplete:)]) {
+                [self.delegate DAGameDidComplete:self];
+            }
         } else {
             [UD setInteger:(self.difficulty + 1) forKey:@"DifficultyMaxAchieved"];
             [UD setInteger:(self.difficulty + 1) forKey:@"Difficulty"];
@@ -206,10 +205,8 @@
 
 - (void)hideTiles {
 	for (DATile *tile in self.tiles) {
-		tile.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bg_tile.png"]];
-        tile.enabled = YES;
-        [tile setTitle:@"" forState:UIControlStateNormal];
-	 }
+        [tile hide];
+    }
 }
 
 - (void)startGame {
