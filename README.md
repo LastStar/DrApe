@@ -4,4 +4,4 @@
 
 * Goal of the game is to tap numbers in correct order after they hide. Difficulty increases after completing the level.
 
-* You can find this game in App Store - [[http://bit.ly/DrApe]]
+* You can find this game in App Store - http://bit.ly/DrApe
