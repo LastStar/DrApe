@@ -1,6 +1,6 @@
 //
 //  FlipSideViewController.m
-//  BeatTheMonkey
+//  DrApe
 //
 //  Created by EskiMag on 8.2.2011.
 //  Copyright 2011 LastStar.eu. All rights reserved.
@@ -158,11 +158,11 @@ gameModeDescriptionLabel = _gameModeDescriptionLabel,
     self.changed = NO;
     [self.shareHighestScoreButton useSilverStyle];
     self.shareHighestScoreButton.titleLabel.textColor = [UIColor colorWithWhite:0.25 alpha:1];
-    if ([BTMGame highestScoreAmount] == 0) {
+    if ([DAGame highestScoreAmount] == 0) {
         self.highScoreLabel.text = @"";
         self.shareHighestScoreButton.hidden = YES;
     } else {
-        self.highScoreLabel.text = [NSString stringWithFormat:NSLocalizedString(@"Highest score %d by %@", nil), [BTMGame highestScoreAmount], [BTMGame highestScoreName]];
+        self.highScoreLabel.text = [NSString stringWithFormat:NSLocalizedString(@"Highest score %d by %@", nil), [DAGame highestScoreAmount], [DAGame highestScoreName]];
         self.shareHighestScoreButton.hidden = NO;
     }
 }

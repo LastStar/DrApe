@@ -1,6 +1,6 @@
 //
 //  Options.h
-//  BeatTheMonkey
+//  DrApe
 //
 //  Created by EskiMag on 15.4.2011.
 //  Copyright 2011 LastStar.eu. All rights reserved.
@@ -10,7 +10,7 @@
 
 
 #define UD [NSUserDefaults standardUserDefaults]
-#define BTM_DEBUG 0
+#define DA_DEBUG 0
 #define GAME_MODE 0
 #define TILES_COUNT 4
 #define TILES_COUNT_MIN 4

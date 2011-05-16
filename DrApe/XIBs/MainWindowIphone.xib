@@ -61,7 +61,7 @@
 				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 			</object>
 			<object class="IBUIViewController" id="599607104">
-				<string key="IBUINibName">BeatTheMonkeyIphoneViewController</string>
+				<string key="IBUINibName">DrApeIphoneViewController</string>
 				<object class="IBUISimulatedOrientationMetrics" key="IBUISimulatedOrientationMetrics">
 					<int key="IBUIInterfaceOrientation">1</int>
 					<int key="interfaceOrientation">1</int>
@@ -122,7 +122,7 @@
 						<int key="objectID">4</int>
 						<reference key="object" ref="987256611"/>
 						<reference key="parent" ref="0"/>
-						<string key="objectName">BeatTheMonkey App Delegate</string>
+						<string key="objectName">DrApe App Delegate</string>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">-2</int>
@@ -163,9 +163,9 @@
 					<string>{{341, 676}, {320, 480}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<integer value="1"/>
-					<string>BeatTheMonkeyAppDelegate</string>
+					<string>DrApeAppDelegate</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-					<string>BeatTheMonkeyViewController</string>
+					<string>DrApeViewController</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				</object>
 			</object>
@@ -187,7 +187,7 @@
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
 				<bool key="EncodedWithXMLCoder">YES</bool>
 				<object class="IBPartialClassDescription">
-					<string key="className">BeatTheMonkeyAppDelegate</string>
+					<string key="className">DrApeAppDelegate</string>
 					<string key="superclassName">NSObject</string>
 					<object class="NSMutableDictionary" key="outlets">
 						<bool key="EncodedWithXMLCoder">YES</bool>
@@ -198,7 +198,7 @@
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>BeatTheMonkeyViewController</string>
+							<string>DrApeViewController</string>
 							<string>UIWindow</string>
 						</object>
 					</object>
@@ -213,7 +213,7 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<object class="IBToOneOutletInfo">
 								<string key="name">viewController</string>
-								<string key="candidateClassName">BeatTheMonkeyViewController</string>
+								<string key="candidateClassName">DrApeViewController</string>
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">window</string>
@@ -223,11 +223,11 @@
 					</object>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/BeatTheMonkeyAppDelegate.h</string>
+						<string key="minorKey">./Classes/DrApeAppDelegate.h</string>
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">
-					<string key="className">BeatTheMonkeyViewController</string>
+					<string key="className">DrApeViewController</string>
 					<string key="superclassName">UIViewController</string>
 					<object class="NSMutableDictionary" key="actions">
 						<string key="NS.key.0">infoPressed:</string>
@@ -242,7 +242,7 @@
 					</object>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/BeatTheMonkeyViewController.h</string>
+						<string key="minorKey">./Classes/DrApeViewController.h</string>
 					</object>
 				</object>
 			</object>

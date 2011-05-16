@@ -1,21 +1,21 @@
 //
-//  BTMTile.m
-//  BeatTheMonkey
+//  DATile.m
+//  DrApe
 //
 //  Created by EskiMag on 4.2.2011.
 //  Copyright 2011 LastStar.eu. All rights reserved.
 //
 
-#import "BTMTile.h"
+#import "DATile.h"
 #import <QuartzCore/QuartzCore.h>
 
 
-@implementation BTMTile
+@implementation DATile
 
 @synthesize position, mistaken;
 
-+ (BTMTile *)tileWithFrame:(CGRect)aFrame {
-    BTMTile *tile = [super buttonWithType:UIButtonTypeCustom];
++ (DATile *)tileWithFrame:(CGRect)aFrame {
+    DATile *tile = [super buttonWithType:UIButtonTypeCustom];
     
     tile.frame = aFrame;
     tile.enabled = NO;

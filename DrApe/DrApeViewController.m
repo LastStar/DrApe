@@ -1,18 +1,18 @@
 //
-//  BeatTheMonkeyViewController.m
-//  BeatTheMonkey
+//  DrApeViewController.m
+//  DrApe
 //
 //  Created by EskiMag on 17.1.2011.
 //  Copyright 2011 LastStar.eu. All rights reserved.
 //
 
 #import <AudioToolbox/AudioToolbox.h>
-#import "BeatTheMonkeyViewController.h"
+#import "DrApeViewController.h"
 #import "Utils.h"
 #import "AlertPrompt.h"
 
 
-@implementation BeatTheMonkeyViewController
+@implementation DrApeViewController
 
 @synthesize game = _game,
       infoButton = _infoButton,
@@ -68,7 +68,7 @@
     [self.game startGame];
 }
 
-#pragma mark - BTMGame Delegate methods
+#pragma mark - DAGame Delegate methods
 
 - (void)tutorialSeen:(id)sender {
     [[self.view viewWithTag:1111] removeFromSuperview];
@@ -77,11 +77,11 @@
     [self.game startGame];
 }
 
-- (void)btmGame:(BTMGame *)aGame addsNewTile:(BTMTile *)tile {
+- (void)DAGame:(DAGame *)aGame addsNewTile:(DATile *)tile {
     [self.view addSubview:tile];
 }
 
-- (void)btmGameIsPlayingForFirstTime:(BTMGame *)game  {
+- (void)DAGameIsPlayingForFirstTime:(DAGame *)game  {
     UIButton *tutorial = [UIButton buttonWithType:UIButtonTypeCustom];
     tutorial.tag = 1111;
     tutorial.titleLabel.numberOfLines = 0;
@@ -101,7 +101,7 @@
     [tutText release];
 }
 
-- (void)btmGameHasFinished:(BTMGame *)game withScore:(NSUInteger)score totalScore:(NSUInteger)totalScore andMistake:(BOOL)mistake {
+- (void)DAGameHasFinished:(DAGame *)game withScore:(NSUInteger)score totalScore:(NSUInteger)totalScore andMistake:(BOOL)mistake {
     NSString *startGameButtonTitle = NSLocalizedString(@"TapAnywhereToNewGame", nil);
     if (!mistake) {
         if (score == totalScore) {
@@ -123,16 +123,16 @@
     self.infoButton.hidden = YES;
 }
 
-- (void)btmGame:(BTMGame *)game hasNewHighScore:(NSUInteger)score {
+- (void)DAGame:(DAGame *)game hasNewHighScore:(NSUInteger)score {
     AlertPrompt *prompt = [[AlertPrompt alloc] initWithTitle:[NSString stringWithFormat:NSLocalizedString(@"New High Score: %d", nil), score] message:NSLocalizedString(@"Enter your name please:", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"Cancel", nil) okButtonTitle:NSLocalizedString(@"Save", nil)];
-    prompt.textField.text = [BTMGame highestScoreName];
+    prompt.textField.text = [DAGame highestScoreName];
     [prompt show];
     [prompt release];
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
     if (buttonIndex != [alertView cancelButtonIndex]) {
-        [BTMGame setHighestScoreWithName:((AlertPrompt *)alertView).textField.text andAmount:self.game.tempScore];
+        [DAGame setHighestScoreWithName:((AlertPrompt *)alertView).textField.text andAmount:self.game.tempScore];
     } 
 }
 
@@ -144,7 +144,7 @@
     
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bg_screen.png"]];
     
-    self.game = [[BTMGame alloc] init];
+    self.game = [[DAGame alloc] init];
     self.game.delegate = self;
     
     self.scoreLabel = [[UILabel alloc] init];
@@ -177,7 +177,7 @@
     }
     
     if ([self.game isPlayingForFirstTime]) {
-        [self btmGameIsPlayingForFirstTime:self.game];
+        [self DAGameIsPlayingForFirstTime:self.game];
     } else {
         [self.game startGame];
     }

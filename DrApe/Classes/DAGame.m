@@ -1,16 +1,16 @@
 //
-//  BTMGame.m
-//  BeatTheMonkey
+//  DAGame.m
+//  DrApe
 //
 //  Created by EskiMag on 17.1.2011.
 //  Copyright 2011 LastStar.eu. All rights reserved.
 //
 
-#import "BTMGame.h"
+#import "DAGame.h"
 #import "Utils.h"
 
 
-@interface BTMGame()
+@interface DAGame()
 
 - (void)updateNextTile;
 - (void)goToNextLevel;
@@ -20,7 +20,7 @@
 - (void)showMistakenTiles;
 - (double)difficultyToTime:(NSUInteger)aDifficulty;
 
-@property (nonatomic, retain) BTMTile *nextTile;
+@property (nonatomic, retain) DATile *nextTile;
 @property (nonatomic, retain) NSMutableArray *tiles;
 @property (nonatomic, retain) NSMutableArray *positions;
 @property (nonatomic, retain) NSDate *startDate;
@@ -34,7 +34,7 @@
 
 @end
 
-@implementation BTMGame
+@implementation DAGame
 
 @synthesize    nextTile = _nextTile,
              tilesCount = _tilesCount,
@@ -67,7 +67,7 @@
 
 #define THIS_VERSION 11
 - (void)setupOptions {
-    if (BTM_DEBUG) NSLog(@"LastOptionsVersion %i", [UD integerForKey:@"LastOptionsVersion"]);
+    if (DA_DEBUG) NSLog(@"LastOptionsVersion %i", [UD integerForKey:@"LastOptionsVersion"]);
     if (![UD objectForKey:@"LastOptionsVersion"] || [UD integerForKey:@"LastOptionsVersion"] < THIS_VERSION) {
         [UD setInteger:THIS_VERSION forKey:@"LastOptionsVersion"];
         [UD setInteger:GAME_MODE forKey:@"GameMode"];
@@ -139,7 +139,7 @@
 
 - (void)removeOldTiles {
     [self.positions removeAllObjects];
-    for (BTMTile *tile in self.tiles) {
+    for (DATile *tile in self.tiles) {
         [tile removeFromSuperview];
     }   [self.tiles removeAllObjects];
     NSUInteger positionsCount = [UD integerForKey:@"TilesX"] * [UD integerForKey:@"TilesY"];
@@ -150,13 +150,13 @@
 
 - (void)addTiles {
     for (int i = 1; i <= self.tilesCount; i++) {
-        BTMTile *tile = [BTMTile tileWithFrame:[self getRandomPosition]];
+        DATile *tile = [DATile tileWithFrame:[self getRandomPosition]];
         tile.titleLabel.font = [UIFont fontWithName:@"Helvetica" size:[UD doubleForKey:@"FontSize"]];
         [tile addTarget:self action:@selector(buttonPressed:) forControlEvents:UIControlEventTouchUpInside];
         [tile setTitle:[NSString stringWithFormat:@"%i", i] forState:UIControlStateNormal];
         [tile setTag:i];
-        if ([self.delegate respondsToSelector:@selector(btmGame:addsNewTile:)]) {
-            [self.delegate btmGame:self addsNewTile:tile];
+        if ([self.delegate respondsToSelector:@selector(DAGame:addsNewTile:)]) {
+            [self.delegate DAGame:self addsNewTile:tile];
         }
         [self.tiles addObject:tile];
     }
@@ -165,7 +165,7 @@
 }
 
 - (void)goToNextLevel {
-    if (BTM_DEBUG) NSLog(@"Going to next level.");
+    if (DA_DEBUG) NSLog(@"Going to next level.");
     if (self.tilesCount == TILES_COUNT_MAX) { // going to next difficulty
         if (self.difficulty == DIFFICULTY_MAX) {
             UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Congratulations" message:@"You finished the whole game" delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
@@ -205,7 +205,7 @@
 }
 
 - (void)hideTiles {
-	for (BTMTile *tile in self.tiles) {
+	for (DATile *tile in self.tiles) {
 		tile.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bg_tile.png"]];
         tile.enabled = YES;
         [tile setTitle:@"" forState:UIControlStateNormal];
@@ -222,13 +222,13 @@
     double diffCoef = self.difficulty + 1;
     double tileCoef = self.tilesCount;
     double timeCoef = (gameTime + tileCoef) / tileCoef;
-    if (BTM_DEBUG) NSLog(@"diff: %f time: %f tiles: %f", diffCoef, timeCoef, tileCoef);
+    if (DA_DEBUG) NSLog(@"diff: %f time: %f tiles: %f", diffCoef, timeCoef, tileCoef);
     
     return round((tileCoef * tileCoef) / (timeCoef * timeCoef) * diffCoef * 10);
 }
 
 - (void)cancelGame {
-    for (BTMTile *tile in self.tiles) {
+    for (DATile *tile in self.tiles) {
         tile.mistaken = YES;
     }
     
@@ -245,26 +245,26 @@
     NSTimeInterval gameTime = -[self.startDate timeIntervalSinceNow];
     self.thisScore = [self calculateScoreFromTime:gameTime];
     
-    if (BTM_DEBUG) NSLog(@"self.thisScore = %d", self.thisScore);
+    if (DA_DEBUG) NSLog(@"self.thisScore = %d", self.thisScore);
     
     if (self.mistake) {
         [self showMistakenTiles];
         if (self.gameMode == DAGameModeCampaign) {
             [self resetCampaign];
         }
-        if (self.tempScore > [BTMGame highestScoreAmount]) {
-            if ([self.delegate respondsToSelector:@selector(btmGame:hasNewHighScore:)]) {
-                [self.delegate btmGame:self hasNewHighScore:self.tempScore];
+        if (self.tempScore > [DAGame highestScoreAmount]) {
+            if ([self.delegate respondsToSelector:@selector(DAGame:hasNewHighScore:)]) {
+                [self.delegate DAGame:self hasNewHighScore:self.tempScore];
             }
         }
-        if ([self.delegate respondsToSelector:@selector(btmGameHasFinished:withScore:totalScore:andMistake:)]) {
-            [self.delegate btmGameHasFinished:self withScore:self.tempScore totalScore:self.tempScore andMistake:YES];
+        if ([self.delegate respondsToSelector:@selector(DAGameHasFinished:withScore:totalScore:andMistake:)]) {
+            [self.delegate DAGameHasFinished:self withScore:self.tempScore totalScore:self.tempScore andMistake:YES];
         }
     } else {
         self.tempScore += self.thisScore;
         if (self.gameMode == DAGameModeCampaign) { [self goToNextLevel]; }
-        if ([self.delegate respondsToSelector:@selector(btmGameHasFinished:withScore:totalScore:andMistake:)]) {
-            [self.delegate btmGameHasFinished:self withScore:self.thisScore totalScore:self.tempScore andMistake:NO];
+        if ([self.delegate respondsToSelector:@selector(DAGameHasFinished:withScore:totalScore:andMistake:)]) {
+            [self.delegate DAGameHasFinished:self withScore:self.thisScore totalScore:self.tempScore andMistake:NO];
         }
     }
 }
@@ -283,7 +283,7 @@
 }
 
 - (void)showMistakenTiles {
-    for (BTMTile *tile in self.tiles) {
+    for (DATile *tile in self.tiles) {
         [tile setTitle:[NSString stringWithFormat:@"%d", tile.tag] forState:UIControlStateNormal];
         [tile setTitleColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"bg_screen.png"]] forState:UIControlStateNormal];
         if (tile.mistaken) {
@@ -294,7 +294,7 @@
     }
 }
 
-- (void)buttonPressed:(BTMTile *)sender {
+- (void)buttonPressed:(DATile *)sender {
     sender.enabled = NO;
     [sender setBackgroundColor:[UIColor clearColor]];
     if (self.nextTile != sender) {
