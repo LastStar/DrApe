@@ -77,17 +77,18 @@
     [self.game startGame];
 }
 
+- (void)btmGame:(BTMGame *)aGame addsNewTile:(BTMTile *)tile {
+    [self.view addSubview:tile];
+}
+
 - (void)btmGameIsPlayingForFirstTime:(BTMGame *)game  {
     UIButton *tutorial = [UIButton buttonWithType:UIButtonTypeCustom];
     tutorial.tag = 1111;
     tutorial.titleLabel.numberOfLines = 0;
-    UIFont *tutFont = nil;
     if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad) {
         tutorial.frame = CGRectMake(0, 0, 1024, 768);
-        tutFont = [UIFont fontWithName:@"Helvetica" size:22];
     } else {
        tutorial.frame = CGRectMake(0, 0, 480, 320);
-       tutFont = [UIFont fontWithName:@"Helvetica" size:18];
     }
     UIWebView *tutText = [[UIWebView alloc] initWithFrame:tutorial.frame];
     tutText.tag = 2222;
@@ -143,7 +144,7 @@
     
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bg_screen.png"]];
     
-    self.game = [[BTMGame alloc] initWithView:self.view];
+    self.game = [[BTMGame alloc] init];
     self.game.delegate = self;
     
     self.scoreLabel = [[UILabel alloc] init];

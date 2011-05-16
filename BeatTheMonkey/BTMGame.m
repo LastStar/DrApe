@@ -21,7 +21,6 @@
 - (double)difficultyToTime:(NSUInteger)aDifficulty;
 
 @property (nonatomic, retain) BTMTile *nextTile;
-@property (nonatomic, retain) UIView *gameView;
 @property (nonatomic, retain) NSMutableArray *tiles;
 @property (nonatomic, retain) NSMutableArray *positions;
 @property (nonatomic, retain) NSDate *startDate;
@@ -38,7 +37,6 @@
 @implementation BTMGame
 
 @synthesize    nextTile = _nextTile,
-               gameView = _gameView,
              tilesCount = _tilesCount,
              difficulty = _difficulty,
                   tiles = _tiles,
@@ -100,10 +98,9 @@
     return ![UD boolForKey:@"TutorialSeen"];
 }
 
-- (BTMGame *)initWithView:(UIView *)aView {
+- (id)init {
     if ((self = [super init])) {
         [self setupOptions];
-        self.gameView = aView;
         self.tempScore = 0;
         self.tiles = [NSMutableArray array];
         self.positions = [NSMutableArray array];
@@ -113,7 +110,6 @@
 }
 
 - (void)dealloc {
-    [_gameView release];
     [_tiles release];
     [_positions release];
     [_nextTile release];
@@ -159,7 +155,9 @@
         [tile addTarget:self action:@selector(buttonPressed:) forControlEvents:UIControlEventTouchUpInside];
         [tile setTitle:[NSString stringWithFormat:@"%i", i] forState:UIControlStateNormal];
         [tile setTag:i];
-        [self.gameView addSubview:tile];
+        if ([self.delegate respondsToSelector:@selector(btmGame:addsNewTile:)]) {
+            [self.delegate btmGame:self addsNewTile:tile];
+        }
         [self.tiles addObject:tile];
     }
     

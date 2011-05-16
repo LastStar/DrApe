@@ -13,7 +13,6 @@
 
 @property (nonatomic, assign) int position;
 @property (nonatomic, assign) BOOL mistaken;
-@property (nonatomic, copy) NSString *label;
 
 + (BTMTile *)tileWithFrame:(CGRect)aFrame;
 

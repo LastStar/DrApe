@@ -21,7 +21,6 @@ typedef enum { DAGameModeCampaign = 0,
 + (NSString *)highestScoreName;
 + (void)setHighestScoreWithName:(NSString *)name andAmount:(int)highestscore;
 
-- (BTMGame *)initWithView:(UIView *)aView;
 - (void)startGame;
 - (void)cancelGame;
 - (void)resetCampaign;
@@ -38,4 +37,5 @@ typedef enum { DAGameModeCampaign = 0,
 - (void)btmGame:(BTMGame *)aGame hasNewHighScore:(NSUInteger)score;
 - (void)btmGameHasFinished:(BTMGame *)aGame withScore:(NSUInteger)score totalScore:(NSUInteger)totalScore andMistake:(BOOL)aMistake;
 - (void)btmGameIsPlayingForFirstTime:(BTMGame *)game;
+- (void)btmGame:(BTMGame *)aGame addsNewTile:(BTMTile *)tile;
 @end
