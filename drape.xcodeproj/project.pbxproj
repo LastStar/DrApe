@@ -34,6 +34,10 @@
 		2B65B61F1381526A00BD8813 /* dr-ape_114x114.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B65B6171381526A00BD8813 /* dr-ape_114x114.png */; };
 		2B848C1813815844000B6AC8 /* DrApeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B848C1713815844000B6AC8 /* DrApeViewController.m */; };
 		2B848C2213815858000B6AC8 /* DrApeAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B848C2113815858000B6AC8 /* DrApeAppDelegate.m */; };
+		2B848C2F1383A930000B6AC8 /* GCHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B848C2E1383A930000B6AC8 /* GCHelper.m */; };
+		2B848C311383A95F000B6AC8 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B848C301383A95F000B6AC8 /* GameKit.framework */; };
+		2B848C331383B070000B6AC8 /* DrApeIphoneViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2B848C321383B070000B6AC8 /* DrApeIphoneViewController.xib */; };
+		2B848C351383B0C6000B6AC8 /* MainWindowIphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2B848C341383B0C6000B6AC8 /* MainWindowIphone.xib */; };
 		2BA98B3313605D80009E2D67 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2BA98B3013605D80009E2D67 /* MainWindow.xib */; };
 		2BA9AD841370615F00C60958 /* SHKOAuthSharer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BA9ACEA1370615E00C60958 /* SHKOAuthSharer.m */; };
 		2BA9AD851370615F00C60958 /* SHKSharer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BA9ACEC1370615E00C60958 /* SHKSharer.m */; };
@@ -118,7 +122,7 @@
 		2B3C9352135D8F3900F0C481 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		2B65B5B513814F5D00BD8813 /* AlertPrompt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertPrompt.h; sourceTree = "<group>"; };
 		2B65B5B613814F5D00BD8813 /* AlertPrompt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlertPrompt.m; sourceTree = "<group>"; };
-		2B65B5DC1381518200BD8813 /* NSDictionary+intForKey.h */ = {isa = PBXFileReference; fileEncoding = 4; lineEnding = 0; name = "NSDictionary+intForKey.h"; path = "DrApe/Categories/NSDictionary+intForKey.h"; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		2B65B5DC1381518200BD8813 /* NSDictionary+intForKey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; name = "NSDictionary+intForKey.h"; path = "DrApe/Categories/NSDictionary+intForKey.h"; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		2B65B5DD1381518200BD8813 /* NSDictionary+intForKey.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = "NSDictionary+intForKey.m"; path = "DrApe/Categories/NSDictionary+intForKey.m"; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		2B65B5DF1381519600BD8813 /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; name = Utils.h; path = DrApe/Misc/Utils.h; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		2B65B5E01381519600BD8813 /* Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Utils.m; path = DrApe/Misc/Utils.m; sourceTree = SOURCE_ROOT; };
@@ -129,9 +133,9 @@
 		2B65B5ED138151DD00BD8813 /* DrApeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; name = DrApeViewController.h; path = DrApe/DrApeViewController.h; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		2B65B5EF138151DD00BD8813 /* FlipSideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; name = FlipSideViewController.h; path = DrApe/FlipSideViewController.h; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		2B65B5F0138151DD00BD8813 /* FlipSideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = FlipSideViewController.m; path = DrApe/FlipSideViewController.m; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
-		2B65B5F4138151EB00BD8813 /* DAGame.h */ = {isa = PBXFileReference; fileEncoding = 4; lineEnding = 0; name = DAGame.h; path = DrApe/Classes/DAGame.h; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		2B65B5F4138151EB00BD8813 /* DAGame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; name = DAGame.h; path = DrApe/Classes/DAGame.h; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		2B65B5F5138151EB00BD8813 /* DAGame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = DAGame.m; path = DrApe/Classes/DAGame.m; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
-		2B65B5F6138151EB00BD8813 /* DATile.h */ = {isa = PBXFileReference; fileEncoding = 4; lineEnding = 0; name = DATile.h; path = DrApe/Classes/DATile.h; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		2B65B5F6138151EB00BD8813 /* DATile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; name = DATile.h; path = DrApe/Classes/DATile.h; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		2B65B5F7138151EB00BD8813 /* DATile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = DATile.m; path = DrApe/Classes/DATile.m; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		2B65B5FA1381520500BD8813 /* drape-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "drape-Info.plist"; path = "DrApe/drape-Info.plist"; sourceTree = SOURCE_ROOT; };
 		2B65B5FB1381520500BD8813 /* drape-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "drape-Prefix.pch"; path = "DrApe/drape-Prefix.pch"; sourceTree = SOURCE_ROOT; };
@@ -155,7 +159,11 @@
 		2B65B6171381526A00BD8813 /* dr-ape_114x114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "dr-ape_114x114.png"; path = "Images/dr-ape_114x114.png"; sourceTree = SOURCE_ROOT; };
 		2B848C1713815844000B6AC8 /* DrApeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = DrApeViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		2B848C2113815858000B6AC8 /* DrApeAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrApeAppDelegate.m; sourceTree = "<group>"; };
-		2BA98B17135DB543009E2D67 /* DrApeIphoneViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DrApeIphoneViewController.xib; path = DrApe.xcodeproj/DrApeIphoneViewController.xib; sourceTree = SOURCE_ROOT; };
+		2B848C2D1383A930000B6AC8 /* GCHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCHelper.h; sourceTree = "<group>"; };
+		2B848C2E1383A930000B6AC8 /* GCHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCHelper.m; sourceTree = "<group>"; };
+		2B848C301383A95F000B6AC8 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
+		2B848C321383B070000B6AC8 /* DrApeIphoneViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DrApeIphoneViewController.xib; path = drape.xcodeproj/DrApeIphoneViewController.xib; sourceTree = SOURCE_ROOT; };
+		2B848C341383B0C6000B6AC8 /* MainWindowIphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MainWindowIphone.xib; path = XIBs/MainWindowIphone.xib; sourceTree = "<group>"; };
 		2BA9ACE91370615E00C60958 /* SHKOAuthSharer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHKOAuthSharer.h; sourceTree = "<group>"; };
 		2BA9ACEA1370615E00C60958 /* SHKOAuthSharer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHKOAuthSharer.m; sourceTree = "<group>"; };
 		2BA9ACEB1370615E00C60958 /* SHKSharer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHKSharer.h; sourceTree = "<group>"; };
@@ -305,6 +313,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2B848C311383A95F000B6AC8 /* GameKit.framework in Frameworks */,
 				2BA9ADC813712F1800C60958 /* MessageUI.framework in Frameworks */,
 				2BA9ADC613712F1000C60958 /* Security.framework in Frameworks */,
 				2BA9ADC413712F0A00C60958 /* SystemConfiguration.framework in Frameworks */,
@@ -715,6 +724,8 @@
 				2B65B5F5138151EB00BD8813 /* DAGame.m */,
 				2B65B5F6138151EB00BD8813 /* DATile.h */,
 				2B65B5F7138151EB00BD8813 /* DATile.m */,
+				2B848C2D1383A930000B6AC8 /* GCHelper.h */,
+				2B848C2E1383A930000B6AC8 /* GCHelper.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -723,9 +734,10 @@
 			isa = PBXGroup;
 			children = (
 				2B65B5E2138151B800BD8813 /* DrApeViewController.xib */,
+				2B848C321383B070000B6AC8 /* DrApeIphoneViewController.xib */,
 				2B65B5E4138151B800BD8813 /* FlipSideViewController.xib */,
 				2B65B5E6138151B800BD8813 /* MainWindow.xib */,
-				2BA98B17135DB543009E2D67 /* DrApeIphoneViewController.xib */,
+				2B848C341383B0C6000B6AC8 /* MainWindowIphone.xib */,
 			);
 			name = XIBs;
 			sourceTree = "<group>";
@@ -762,6 +774,7 @@
 		2BD0D84F12E43E60009DB2F3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2B848C301383A95F000B6AC8 /* GameKit.framework */,
 				2BA9ADC713712F1700C60958 /* MessageUI.framework */,
 				2BA9ADC513712F0F00C60958 /* Security.framework */,
 				2BA9ADC313712F0900C60958 /* SystemConfiguration.framework */,
@@ -895,6 +908,8 @@
 				2B65B61D1381526A00BD8813 /* dr-ape_57x57.png in Resources */,
 				2B65B61E1381526A00BD8813 /* dr-ape_72x72.png in Resources */,
 				2B65B61F1381526A00BD8813 /* dr-ape_114x114.png in Resources */,
+				2B848C331383B070000B6AC8 /* DrApeIphoneViewController.xib in Resources */,
+				2B848C351383B0C6000B6AC8 /* MainWindowIphone.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -975,6 +990,7 @@
 				2B65B5FE1381520500BD8813 /* main.m in Sources */,
 				2B848C1813815844000B6AC8 /* DrApeViewController.m in Sources */,
 				2B848C2213815858000B6AC8 /* DrApeAppDelegate.m in Sources */,
+				2B848C2F1383A930000B6AC8 /* GCHelper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
