@@ -11,8 +11,8 @@
 #import "DAGame.h"
 
 @interface DrApeViewController : UIViewController <FlipSideViewControllerDelegate,
-                                                           DAGameDelegate,
-                                                           UIAlertViewDelegate> {}
+                                                   DAGameDelegate,
+                                                   UIAlertViewDelegate> {}
 
 @property (nonatomic, retain) DAGame *game;
 @property (nonatomic, retain) IBOutlet UIButton *infoButton;

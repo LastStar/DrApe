@@ -13,7 +13,8 @@
 
 @implementation DATile
 
-@synthesize position, mistaken;
+@synthesize position = _position,
+            mistaken = _mistaken;
 
 + (DATile *)tileWithFrame:(CGRect)aFrame {
     DATile *tile = [super buttonWithType:UIButtonTypeCustom];
