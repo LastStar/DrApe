@@ -9,10 +9,13 @@
 #import <UIKit/UIKit.h>
 #import "FlipSideViewController.h"
 #import "DAGame.h"
+#import "GCHelper.h"
+
 
 @interface DrApeViewController : UIViewController <FlipSideViewControllerDelegate,
                                                    DAGameDelegate,
-                                                   UIAlertViewDelegate> {}
+                                                   UIAlertViewDelegate,
+                                                   GCHelperDelegate> {}
 
 @property (nonatomic, retain) DAGame *game;
 @property (nonatomic, retain) IBOutlet UIButton *infoButton;

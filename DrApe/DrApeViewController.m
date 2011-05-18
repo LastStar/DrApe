@@ -68,6 +68,20 @@
     [self.game startGame];
 }
 
+#pragma mark - Game Center delegated methods
+
+- (void)matchStarted {    
+    NSLog(@"Match started");        
+}
+
+- (void)matchEnded {    
+    NSLog(@"Match ended");    
+}
+
+- (void)match:(GKMatch *)match didReceiveData:(NSData *)data fromPlayer:(NSString *)playerID {
+    NSLog(@"Received data");
+}
+
 #pragma mark - DAGame Delegate methods
 
 - (void)tutorialSeen:(id)sender {
@@ -146,6 +160,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [[GCHelper sharedInstance] authenticateLocalUserWithCompletionHandler:^(NSError *error) {
+        [[GCHelper sharedInstance] findMatchWithMinPlayers:2 maxPlayers:2 viewController:self delegate:self];
+    }];
+    
 //    NSLog(@"width, height = %f, %f", self.view.bounds.size.width, self.view.bounds.size.height);
     
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bg_screen.png"]];
