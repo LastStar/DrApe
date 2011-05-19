@@ -34,7 +34,6 @@
 		2B65B61F1381526A00BD8813 /* dr-ape_114x114.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B65B6171381526A00BD8813 /* dr-ape_114x114.png */; };
 		2B848C1813815844000B6AC8 /* DrApeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B848C1713815844000B6AC8 /* DrApeViewController.m */; };
 		2B848C2213815858000B6AC8 /* DrApeAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B848C2113815858000B6AC8 /* DrApeAppDelegate.m */; };
-		2B848C2F1383A930000B6AC8 /* GCHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B848C2E1383A930000B6AC8 /* GCHelper.m */; };
 		2B848C311383A95F000B6AC8 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B848C301383A95F000B6AC8 /* GameKit.framework */; };
 		2B848C331383B070000B6AC8 /* DrApeIphoneViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2B848C321383B070000B6AC8 /* DrApeIphoneViewController.xib */; };
 		2B848C351383B0C6000B6AC8 /* MainWindowIphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2B848C341383B0C6000B6AC8 /* MainWindowIphone.xib */; };
@@ -159,8 +158,6 @@
 		2B65B6171381526A00BD8813 /* dr-ape_114x114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "dr-ape_114x114.png"; path = "Images/dr-ape_114x114.png"; sourceTree = SOURCE_ROOT; };
 		2B848C1713815844000B6AC8 /* DrApeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = DrApeViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		2B848C2113815858000B6AC8 /* DrApeAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrApeAppDelegate.m; sourceTree = "<group>"; };
-		2B848C2D1383A930000B6AC8 /* GCHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCHelper.h; sourceTree = "<group>"; };
-		2B848C2E1383A930000B6AC8 /* GCHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCHelper.m; sourceTree = "<group>"; };
 		2B848C301383A95F000B6AC8 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		2B848C321383B070000B6AC8 /* DrApeIphoneViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DrApeIphoneViewController.xib; path = drape.xcodeproj/DrApeIphoneViewController.xib; sourceTree = SOURCE_ROOT; };
 		2B848C341383B0C6000B6AC8 /* MainWindowIphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MainWindowIphone.xib; path = XIBs/MainWindowIphone.xib; sourceTree = "<group>"; };
@@ -724,8 +721,6 @@
 				2B65B5F5138151EB00BD8813 /* DAGame.m */,
 				2B65B5F6138151EB00BD8813 /* DATile.h */,
 				2B65B5F7138151EB00BD8813 /* DATile.m */,
-				2B848C2D1383A930000B6AC8 /* GCHelper.h */,
-				2B848C2E1383A930000B6AC8 /* GCHelper.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -990,7 +985,6 @@
 				2B65B5FE1381520500BD8813 /* main.m in Sources */,
 				2B848C1813815844000B6AC8 /* DrApeViewController.m in Sources */,
 				2B848C2213815858000B6AC8 /* DrApeAppDelegate.m in Sources */,
-				2B848C2F1383A930000B6AC8 /* GCHelper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
