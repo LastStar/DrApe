@@ -87,12 +87,14 @@ static GCHelper *sharedHelper = nil;
     GKMatchmakerViewController *mmvc = [[[GKMatchmakerViewController alloc] initWithMatchRequest:request] autorelease];
     mmvc.matchmakerDelegate = self;
     
+    [presentingViewController resignFirstResponder];
     [presentingViewController presentModalViewController:mmvc animated:YES];
 }
 
 // The user has cancelled matchmaking
 - (void)matchmakerViewControllerWasCancelled:(GKMatchmakerViewController *)viewController {
     [presentingViewController dismissModalViewControllerAnimated:YES];
+    [presentingViewController becomeFirstResponder];
 }
 
 // Matchmaking has failed with an error
