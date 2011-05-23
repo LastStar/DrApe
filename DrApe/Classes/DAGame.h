@@ -10,8 +10,10 @@
 #import "NSDictionary+intForKey.h"
 #import "DATile.h"
 
-typedef enum { DAGameModeCampaign = 0,
-               DAGameModeTraining = 1 } DAGameMode;
+typedef enum {
+    DAGameModeCampaign = 0,
+    DAGameModeTraining = 1
+} DAGameMode;
 
 @protocol DAGameDelegate;
 

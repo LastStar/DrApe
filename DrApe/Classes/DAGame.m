@@ -171,7 +171,7 @@
                 [self.delegate DAGameDidComplete:self];
             }
         } else {
-            [UD setInteger:(self.difficulty + 1) forKey:@"DifficultyMaxAchieved"];
+            [UD setInteger:(self.difficulty + 1) forKey:@"DifficultyMaxAchieved"]; // TODO nastavovat len v pripade, ze este som vo vyssom leveli nebol
             [UD setInteger:(self.difficulty + 1) forKey:@"Difficulty"];
             [UD setInteger:TILES_COUNT_MIN forKey:@"TilesCount"];
             [UD synchronize];

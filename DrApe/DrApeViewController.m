@@ -19,12 +19,15 @@
       scoreLabel = _scoreLabel,
  startGameButton = _startGameButton;
 
-- (void)dealloc {
+- (void)NSLogoc {
+    [otherPlayerID release];
+    otherPlayerID = nil;
+    
     [_infoButton release];
     [_scoreLabel release];
     [_startGameButton release];
     [_game release];
-    [super dealloc];
+//    [super NSLogoc];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -66,20 +69,6 @@
     self.startGameButton.hidden = YES;
     self.infoButton.hidden = NO;
     [self.game startGame];
-}
-
-#pragma mark - Game Center delegated methods
-
-- (void)matchStarted {    
-    NSLog(@"Match started");        
-}
-
-- (void)matchEnded {    
-    NSLog(@"Match ended");    
-}
-
-- (void)match:(GKMatch *)match didReceiveData:(NSData *)data fromPlayer:(NSString *)playerID {
-    NSLog(@"Received data");
 }
 
 #pragma mark - DAGame Delegate methods
@@ -165,6 +154,9 @@
         [[GCHelper sharedInstance] findMatchWithMinPlayers:2 maxPlayers:2 viewController:self delegate:self];
     }];
     
+    ourRandom = arc4random();
+    [self setGameState:kGameStateWaitingForMatch];
+    
 //    NSLog(@"width, height = %f, %f", self.view.bounds.size.width, self.view.bounds.size.height);
     
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bg_screen.png"]];
@@ -227,5 +219,172 @@
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
     return UIInterfaceOrientationIsLandscape(interfaceOrientation);
 }
+
+#pragma mark - Game Center methods
+
+- (void)setGameState:(GameState)state {
+    
+    gameState = state;
+    if (gameState == kGameStateWaitingForMatch) {
+        NSLog(@"Waiting for match");
+    } else if (gameState == kGameStateWaitingForRandomNumber) {
+        NSLog(@"Waiting for rand #");
+    } else if (gameState == kGameStateWaitingForStart) {
+        NSLog(@"Waiting for start");
+    } else if (gameState == kGameStateActive) {
+        NSLog(@"Active");
+    } else if (gameState == kGameStateDone) {
+        NSLog(@"Done");
+    } 
+    
+}
+
+- (void)sendData:(NSData *)data {
+    NSError *error;
+    BOOL success = [[GCHelper sharedInstance].match sendDataToAllPlayers:data withDataMode:GKMatchSendDataReliable error:&error];
+    if (!success) {
+        NSLog(@"Error sending init packet");
+        [self matchEnded];
+    }
+}
+
+- (void)sendRandomNumber {
+    
+    MessageRandomNumber message;
+    message.message.messageType = kMessageTypeRandomNumber;
+    message.randomNumber = ourRandom;
+    NSData *data = [NSData dataWithBytes:&message length:sizeof(MessageRandomNumber)];    
+    [self sendData:data];
+}
+
+- (void)sendGameBegin {
+    
+    MessageGameBegin message;
+    message.message.messageType = kMessageTypeGameBegin;
+    NSData *data = [NSData dataWithBytes:&message length:sizeof(MessageGameBegin)];    
+    [self sendData:data];
+    
+}
+
+- (void)sendMove {
+    
+    MessageMove message;
+    message.message.messageType = kMessageTypeMove;
+    NSData *data = [NSData dataWithBytes:&message length:sizeof(MessageMove)];    
+    [self sendData:data];
+    
+}
+
+- (void)sendGameOver:(BOOL)player1Won {
+    
+    MessageGameOver message;
+    message.message.messageType = kMessageTypeGameOver;
+    message.player1Won = player1Won;
+    NSData *data = [NSData dataWithBytes:&message length:sizeof(MessageGameOver)];    
+    [self sendData:data];
+    
+}
+
+    // Reload the current scene
+    // [[CCDirector sharedDirector] replaceScene:[CCTransitionZoomFlipX transitionWithDuration:0.5 scene:[HelloWorldLayer scene]]];
+
+- (void)tryStartGame {
+    
+    if (isPlayer1 && gameState == kGameStateWaitingForStart) {
+        [self setGameState:kGameStateActive];
+        [self sendGameBegin];
+//        [self setupStringsWithOtherPlayerId:otherPlayerID];
+    }
+    
+}
+
+#pragma mark GCHelperDelegate
+
+- (void)matchStarted {    
+    NSLog(@"Match started");        
+    if (receivedRandom) {
+        [self setGameState:kGameStateWaitingForStart];
+    } else {
+        [self setGameState:kGameStateWaitingForRandomNumber];
+    }
+    [self sendRandomNumber];
+    [self tryStartGame];
+}
+
+- (void)inviteReceived {
+//    [self restartTapped:nil];    
+    NSLog(@"Invite received.");
+}
+
+- (void)matchEnded {    
+    NSLog(@"Match ended");    
+    [[GCHelper sharedInstance].match disconnect];
+    [GCHelper sharedInstance].match = nil;
+//    [self endScene:kEndReasonDisconnect];
+}
+
+- (void)match:(GKMatch *)match didReceiveData:(NSData *)data fromPlayer:(NSString *)playerID {
+    
+    // Store away other player ID for later
+    if (otherPlayerID == nil) {
+        otherPlayerID = [playerID retain];
+    }
+    
+    Message *message = (Message *) [data bytes];
+    if (message->messageType == kMessageTypeRandomNumber) {
+        
+        MessageRandomNumber * messageInit = (MessageRandomNumber *) [data bytes];
+        NSLog(@"Received random number: %ud, ours %ud", messageInit->randomNumber, ourRandom);
+        bool tie = false;
+        
+        if (messageInit->randomNumber == ourRandom) {
+            NSLog(@"TIE!");
+            tie = true;
+            ourRandom = arc4random();
+            [self sendRandomNumber];
+        } else if (ourRandom > messageInit->randomNumber) {            
+            NSLog(@"We are player 1");
+            isPlayer1 = YES;            
+        } else {
+            NSLog(@"We are player 2");
+            isPlayer1 = NO;
+        }
+        
+        if (!tie) {
+            receivedRandom = YES;    
+            if (gameState == kGameStateWaitingForRandomNumber) {
+                [self setGameState:kGameStateWaitingForStart];
+            }
+            [self tryStartGame];        
+        }
+        
+    } else if (message->messageType == kMessageTypeGameBegin) {        
+        
+        [self setGameState:kGameStateActive];
+//        [self setupStringsWithOtherPlayerId:playerID];
+        
+    } else if (message->messageType == kMessageTypeMove) {     
+        
+        NSLog(@"Received move");
+        
+        if (isPlayer1) {
+//            [player2 moveForward];
+        } else {
+//            [player1 moveForward];
+        }        
+    } else if (message->messageType == kMessageTypeGameOver) {        
+        
+        MessageGameOver * messageGameOver = (MessageGameOver *) [data bytes];
+        NSLog(@"Received game over with player 1 won: %d", messageGameOver->player1Won);
+        
+        if (messageGameOver->player1Won) {
+//            [self endScene:kEndReasonLose];    
+        } else {
+//            [self endScene:kEndReasonWin];    
+        }
+        
+    }    
+}
+
 
 @end

@@ -1,41 +1,45 @@
 //
 //  GCHelper.h
-//  drape
+//  CatRace
 //
-//  Created by EskiMag on 18.5.2011.
-//  Copyright 2011 LastStar.eu. All rights reserved.
+//  Created by Ray Wenderlich on 4/23/11.
+//  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 #import <GameKit/GameKit.h>
 
-
-@protocol GCHelperDelegate <NSObject>
+@protocol GCHelperDelegate 
 - (void)matchStarted;
 - (void)matchEnded;
-- (void)match:(GKMatch *)match didReceiveData:(NSData *)data 
-   fromPlayer:(NSString *)playerID;
+- (void)match:(GKMatch *)match didReceiveData:(NSData *)data fromPlayer:(NSString *)playerID;
+- (void)inviteReceived;
 @end
-
 
 @interface GCHelper : NSObject <GKMatchmakerViewControllerDelegate, GKMatchDelegate> {
     BOOL gameCenterAvailable;
     BOOL userAuthenticated;
-    BOOL matchStarted;
+    
     UIViewController *presentingViewController;
     GKMatch *match;
+    BOOL matchStarted;
     id <GCHelperDelegate> delegate;
+    NSMutableDictionary *playersDict;
+    GKInvite *pendingInvite;
+    NSArray *pendingPlayersToInvite;
+    
 }
 
 @property (assign, readonly) BOOL gameCenterAvailable;
 @property (retain) UIViewController *presentingViewController;
 @property (retain) GKMatch *match;
 @property (assign) id <GCHelperDelegate> delegate;
+@property (retain) NSMutableDictionary *playersDict;
+@property (retain) GKInvite *pendingInvite;
+@property (retain) NSArray *pendingPlayersToInvite;
 
 + (GCHelper *)sharedInstance;
 - (void)authenticateLocalUserWithCompletionHandler:(void(^)(NSError *error))completionHandler;
-- (void)findMatchWithMinPlayers:(int)minPlayers maxPlayers:(int)maxPlayers 
-                 viewController:(UIViewController *)viewController 
-                       delegate:(id<GCHelperDelegate>)theDelegate;
+- (void)findMatchWithMinPlayers:(int)minPlayers maxPlayers:(int)maxPlayers viewController:(UIViewController *)viewController delegate:(id<GCHelperDelegate>)theDelegate;
 
 @end

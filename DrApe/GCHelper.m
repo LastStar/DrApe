@@ -1,23 +1,26 @@
 //
 //  GCHelper.m
-//  drape
+//  CatRace
 //
-//  Created by EskiMag on 18.5.2011.
-//  Copyright 2011 LastStar.eu. All rights reserved.
+//  Created by Ray Wenderlich on 4/23/11.
+//  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
 
 #import "GCHelper.h"
 
-
 @implementation GCHelper
-
 @synthesize gameCenterAvailable;
+@synthesize presentingViewController;
 @synthesize match;
 @synthesize delegate;
-@synthesize presentingViewController;
+@synthesize playersDict;
+@synthesize pendingInvite;
+@synthesize pendingPlayersToInvite;
+
+#pragma mark Initialization
 
 static GCHelper *sharedHelper = nil;
-+ (GCHelper *)sharedInstance {
++ (GCHelper *) sharedInstance {
     if (!sharedHelper) {
         sharedHelper = [[GCHelper alloc] init];
     }
@@ -25,37 +28,85 @@ static GCHelper *sharedHelper = nil;
 }
 
 - (BOOL)isGameCenterAvailable {
-    Class gcClass = (NSClassFromString(@"GKLocalPlayer"));
-    NSString *reqSysVer = @"4.1";
-    NSString *currSysVer = [[UIDevice currentDevice] systemVersion];
-    BOOL osVersionSupported = ([currSysVer compare:reqSysVer options:NSNumericSearch] != NSOrderedAscending);
-    
-    return (gcClass && osVersionSupported);
+	// check for presence of GKLocalPlayer API
+	Class gcClass = (NSClassFromString(@"GKLocalPlayer"));
+	
+	// check if the device is running iOS 4.1 or later
+	NSString *reqSysVer = @"4.1";
+	NSString *currSysVer = [[UIDevice currentDevice] systemVersion];
+	BOOL osVersionSupported = ([currSysVer compare:reqSysVer 
+                                           options:NSNumericSearch] != NSOrderedAscending);
+	
+	return (gcClass && osVersionSupported);
 }
 
 - (id)init {
     if ((self = [super init])) {
         gameCenterAvailable = [self isGameCenterAvailable];
         if (gameCenterAvailable) {
-            NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
-            [nc addObserver:self
-                   selector:@selector(authenticationChanged)
-                       name:GKPlayerAuthenticationDidChangeNotificationName
+            NSNotificationCenter *nc = 
+            [NSNotificationCenter defaultCenter];
+            [nc addObserver:self 
+                   selector:@selector(authenticationChanged) 
+                       name:GKPlayerAuthenticationDidChangeNotificationName 
                      object:nil];
         }
     }
     return self;
 }
 
-- (void)authenticationChanged {
+#pragma mark Internal functions
+
+- (void)authenticationChanged {    
+    
     if ([GKLocalPlayer localPlayer].isAuthenticated && !userAuthenticated) {
         NSLog(@"Authentication changed: player authenticated.");
-        userAuthenticated = YES;
+        userAuthenticated = TRUE;  
+        
+        [GKMatchmaker sharedMatchmaker].inviteHandler = ^(GKInvite *acceptedInvite, NSArray *playersToInvite) {
+            
+            NSLog(@"Received invite");
+            self.pendingInvite = acceptedInvite;
+            self.pendingPlayersToInvite = playersToInvite;
+            [delegate inviteReceived];
+            
+        };
+        
     } else if (![GKLocalPlayer localPlayer].isAuthenticated && userAuthenticated) {
-        NSLog(@"Authentication changed: player not authenticated.");
-        userAuthenticated = NO;
+        NSLog(@"Authentication changed: player not authenticated");
+        userAuthenticated = FALSE;
     }
+    
 }
+
+- (void)lookupPlayers {
+    
+    NSLog(@"Looking up %d players...", match.playerIDs.count);
+    [GKPlayer loadPlayersForIdentifiers:match.playerIDs withCompletionHandler:^(NSArray *players, NSError *error) {
+        
+        if (error != nil) {
+            NSLog(@"Error retrieving player info: %@", error.localizedDescription);
+            matchStarted = NO;
+            [delegate matchEnded];
+        } else {
+            
+            // Populate players dict
+            self.playersDict = [NSMutableDictionary dictionaryWithCapacity:players.count];
+            for (GKPlayer *player in players) {
+                NSLog(@"Found player: %@", player.alias);
+                [playersDict setObject:player forKey:player.playerID];
+            }
+            
+            // Notify delegate match can begin
+            matchStarted = YES;
+            [delegate matchStarted];
+            
+        }
+    }];
+    
+}
+
+#pragma mark User functions
 
 - (void)authenticateLocalUserWithCompletionHandler:(void(^)(NSError *error))completionHandler {
     if (!gameCenterAvailable) return;
@@ -69,32 +120,50 @@ static GCHelper *sharedHelper = nil;
     }
 }
 
-- (void)findMatchWithMinPlayers:(int)minPlayers maxPlayers:(int)maxPlayers
-                 viewController:(UIViewController *)viewController 
-                       delegate:(id<GCHelperDelegate>)theDelegate {
+- (void)findMatchWithMinPlayers:(int)minPlayers maxPlayers:(int)maxPlayers viewController:(UIViewController *)viewController delegate:(id<GCHelperDelegate>)theDelegate {
+    
     if (!gameCenterAvailable) return;
     
     matchStarted = NO;
     self.match = nil;
     self.presentingViewController = viewController;
     delegate = theDelegate;
-    [presentingViewController dismissModalViewControllerAnimated:NO];
     
-    GKMatchRequest *request = [[[GKMatchRequest alloc] init] autorelease];
-    request.minPlayers = minPlayers;
-    request.maxPlayers = maxPlayers;
+    if (pendingInvite != nil) {
+        
+        [presentingViewController dismissModalViewControllerAnimated:NO];
+        GKMatchmakerViewController *mmvc = [[[GKMatchmakerViewController alloc] initWithInvite:pendingInvite] autorelease];
+        mmvc.matchmakerDelegate = self;
+        [presentingViewController presentModalViewController:mmvc animated:YES];
+        
+        self.pendingInvite = nil;
+        self.pendingPlayersToInvite = nil;
+        
+    } else {
+        
+        [presentingViewController dismissModalViewControllerAnimated:NO];
+        GKMatchRequest *request = [[[GKMatchRequest alloc] init] autorelease]; 
+        request.minPlayers = minPlayers;     
+        request.maxPlayers = maxPlayers;
+        request.playersToInvite = pendingPlayersToInvite;
+        
+        GKMatchmakerViewController *mmvc = [[[GKMatchmakerViewController alloc] initWithMatchRequest:request] autorelease];    
+        mmvc.matchmakerDelegate = self;
+        
+        [presentingViewController presentModalViewController:mmvc animated:YES];
+        
+        self.pendingInvite = nil;
+        self.pendingPlayersToInvite = nil;
+        
+    }
     
-    GKMatchmakerViewController *mmvc = [[[GKMatchmakerViewController alloc] initWithMatchRequest:request] autorelease];
-    mmvc.matchmakerDelegate = self;
-    
-    [presentingViewController resignFirstResponder];
-    [presentingViewController presentModalViewController:mmvc animated:YES];
 }
+
+#pragma mark GKMatchmakerViewControllerDelegate
 
 // The user has cancelled matchmaking
 - (void)matchmakerViewControllerWasCancelled:(GKMatchmakerViewController *)viewController {
     [presentingViewController dismissModalViewControllerAnimated:YES];
-    [presentingViewController becomeFirstResponder];
 }
 
 // Matchmaking has failed with an error
@@ -110,18 +179,23 @@ static GCHelper *sharedHelper = nil;
     match.delegate = self;
     if (!matchStarted && match.expectedPlayerCount == 0) {
         NSLog(@"Ready to start match!");
+        [self lookupPlayers];
     }
 }
 
+#pragma mark GKMatchDelegate
+
 // The match received data sent from the player.
-- (void)match:(GKMatch *)theMatch didReceiveData:(NSData *)data fromPlayer:(NSString *)playerID {    
+- (void)match:(GKMatch *)theMatch didReceiveData:(NSData *)data fromPlayer:(NSString *)playerID {
+    
     if (match != theMatch) return;
     
     [delegate match:theMatch didReceiveData:data fromPlayer:playerID];
 }
 
 // The player state changed (eg. connected or disconnected)
-- (void)match:(GKMatch *)theMatch player:(NSString *)playerID didChangeState:(GKPlayerConnectionState)state {   
+- (void)match:(GKMatch *)theMatch player:(NSString *)playerID didChangeState:(GKPlayerConnectionState)state {
+    
     if (match != theMatch) return;
     
     switch (state) {
@@ -131,6 +205,7 @@ static GCHelper *sharedHelper = nil;
             
             if (!matchStarted && theMatch.expectedPlayerCount == 0) {
                 NSLog(@"Ready to start match!");
+                [self lookupPlayers];
             }
             
             break; 
@@ -140,7 +215,8 @@ static GCHelper *sharedHelper = nil;
             matchStarted = NO;
             [delegate matchEnded];
             break;
-    }                     
+    }                 
+    
 }
 
 // The match was unable to connect with the player due to an error.
