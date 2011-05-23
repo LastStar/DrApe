@@ -24,6 +24,7 @@ typedef enum {
 + (void)setHighestScoreWithName:(NSString *)name andAmount:(int)highestscore;
 
 - (void)startGame;
+- (void)startMultiplayerGame;
 - (void)cancelGame;
 - (void)resetCampaign;
 - (BOOL)isPlayingForFirstTime;
@@ -32,6 +33,7 @@ typedef enum {
 @property (nonatomic, readonly) DAGameMode gameMode;
 @property (nonatomic, readonly) NSUInteger difficulty;
 @property (nonatomic, readonly) NSUInteger tempScore;
+@property (nonatomic, assign) BOOL multiplayer;
 
 @end
 
@@ -40,5 +42,6 @@ typedef enum {
 - (void)DAGameHasFinished:(DAGame *)aGame withScore:(NSUInteger)score totalScore:(NSUInteger)totalScore andMistake:(BOOL)aMistake;
 - (void)DAGameIsPlayingForFirstTime:(DAGame *)game;
 - (void)DAGame:(DAGame *)aGame addsNewTile:(DATile *)tile;
+- (void)DAGame:(DAGame *)aGame tileHasBeenPressed:(DATile *)tile;
 - (void)DAGameDidComplete:(DAGame *)aGame;
 @end

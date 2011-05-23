@@ -19,6 +19,8 @@
 - (void)finishGame;
 - (void)showMistakenTiles;
 - (double)difficultyToTime:(NSUInteger)aDifficulty;
+- (void)addTilesAfterTimeout;
+- (void)hideTilesAfterTimeout;
 
 @property (nonatomic, retain) DATile *nextTile;
 @property (nonatomic, retain) NSMutableArray *tiles;
@@ -47,7 +49,8 @@
            startDate = _startDate,
            thisScore = _thisScore,
            tempScore = _tempScore,
-            gameMode = _gameMode;
+            gameMode = _gameMode,
+         multiplayer = _multiplayer;
 
 #pragma mark - Class methods
 
@@ -161,6 +164,7 @@
     }
     
     [self updateNextTile];
+    [self hideTilesAfterTimeout];
 }
 
 - (void)goToNextLevel {
@@ -183,6 +187,7 @@
 }
 
 - (void)setup {
+    [self removeOldTiles];
     self.tilesCount = [UD integerForKey:@"TilesCount"];
     self.difficulty = [UD integerForKey:@"Difficulty"];
     self.gameMode = [UD boolForKey:@"GameMode"];
@@ -194,9 +199,6 @@
         self.tempScore = 0;
     }
     self.mistake = NO;
-    
-    [self removeOldTiles];
-    [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(addTiles) userInfo:nil repeats:NO];
 }
 
 - (void)updateNextTile {
@@ -209,10 +211,26 @@
     }
 }
 
+- (void)addTilesAfterTimeout {
+    [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(addTiles) userInfo:nil repeats:NO];
+}
+
+- (void)hideTilesAfterTimeout {
+    [NSTimer scheduledTimerWithTimeInterval:[self difficultyToTime:self.difficulty] target:self
+                                   selector:@selector(hideTiles) userInfo:nil repeats:NO];
+}
+
 - (void)startGame {
     [self setup];
-	[NSTimer scheduledTimerWithTimeInterval:[self difficultyToTime:self.difficulty] target:self
-                                   selector:@selector(hideTiles) userInfo:nil repeats:NO];
+    [self addTilesAfterTimeout];
+}
+
+- (void)startMultiplayerGame {
+    [self setup];
+    self.tilesCount = 4;
+    self.gameMode = DAGameModeTraining;
+    self.difficulty = 0;
+    [self addTilesAfterTimeout];
 }
 
 - (NSUInteger)calculateScoreFromTime:(NSTimeInterval)gameTime {
@@ -292,6 +310,9 @@
 }
 
 - (void)buttonPressed:(DATile *)sender {
+    if ([self.delegate respondsToSelector:@selector(DAGame:tileHasBeenPressed:)]) {
+        [self.delegate DAGame:self tileHasBeenPressed:sender];
+    }
     sender.enabled = NO;
     [sender setBackgroundColor:[UIColor clearColor]];
     if (self.nextTile != sender) {

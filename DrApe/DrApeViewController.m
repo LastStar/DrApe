@@ -11,6 +11,11 @@
 #import "Utils.h"
 #import "AlertPrompt.h"
 
+@interface DrApeViewController ()
+- (void)sendMove;
+- (void)sendGameOver:(BOOL)player1Won;
+@end
+
 
 @implementation DrApeViewController
 
@@ -73,6 +78,10 @@
 
 #pragma mark - DAGame Delegate methods
 
+- (void)DAGame:(DAGame *)aGame tileHasBeenPressed:(DATile *)tile {
+    [self sendMove];
+}
+
 - (void)tutorialSeen:(id)sender {
     [[self.view viewWithTag:1111] removeFromSuperview];
     [[self.view viewWithTag:2222] removeFromSuperview];
@@ -112,6 +121,7 @@
 
 - (void)DAGameHasFinished:(DAGame *)game withScore:(NSUInteger)score totalScore:(NSUInteger)totalScore andMistake:(BOOL)mistake {
     NSString *startGameButtonTitle = NSLocalizedString(@"TapAnywhereToNewGame", nil);
+    [self sendGameOver:isPlayer1];
     if (!mistake) {
         if (score == totalScore) {
             self.scoreLabel.text = [NSString stringWithFormat:@"%d", score];
@@ -293,6 +303,7 @@
     if (isPlayer1 && gameState == kGameStateWaitingForStart) {
         [self setGameState:kGameStateActive];
         [self sendGameBegin];
+//        starting the game
 //        [self setupStringsWithOtherPlayerId:otherPlayerID];
     }
     
@@ -363,7 +374,7 @@
         [self setGameState:kGameStateActive];
 //        [self setupStringsWithOtherPlayerId:playerID];
         
-    } else if (message->messageType == kMessageTypeMove) {     
+    } else if (message->messageType == kMessageTypeMove) {
         
         NSLog(@"Received move");
         
