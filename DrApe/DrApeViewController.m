@@ -12,7 +12,7 @@
 #import "AlertPrompt.h"
 
 @interface DrApeViewController ()
-- (void)sendMove;
+- (void)sendMove:(int)tile;
 - (void)sendGameOver:(BOOL)player1Won;
 @end
 
@@ -32,7 +32,6 @@
     [_scoreLabel release];
     [_startGameButton release];
     [_game release];
-//    [super NSLogoc];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -79,7 +78,7 @@
 #pragma mark - DAGame Delegate methods
 
 - (void)DAGame:(DAGame *)aGame tileHasBeenPressed:(DATile *)tile {
-    [self sendMove];
+    [self sendMove:[tile.titleLabel.text intValue]];
 }
 
 - (void)tutorialSeen:(id)sender {
@@ -276,10 +275,11 @@
     
 }
 
-- (void)sendMove {
+- (void)sendMove:(int)tile {
     
     MessageMove message;
     message.message.messageType = kMessageTypeMove;
+    message.tile = tile;
     NSData *data = [NSData dataWithBytes:&message length:sizeof(MessageMove)];    
     [self sendData:data];
     
@@ -376,7 +376,7 @@
         
     } else if (message->messageType == kMessageTypeMove) {
         
-        NSLog(@"Received move");
+        NSLog(@"Received move %i", ((MessageMove *)[data bytes])->tile);
         
         if (isPlayer1) {
 //            [player2 moveForward];

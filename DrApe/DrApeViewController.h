@@ -33,6 +33,7 @@ typedef struct {
 
 typedef struct {
     Message message;
+    int tile;
 } MessageMove;
 
 typedef struct {
