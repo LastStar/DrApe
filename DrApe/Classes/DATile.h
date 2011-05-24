@@ -11,7 +11,6 @@
 
 @interface DATile : UIButton {}
 
-@property (nonatomic, assign) int position;
 @property (nonatomic, assign) BOOL mistaken;
 
 + (DATile *)tileWithFrame:(CGRect)aFrame;
