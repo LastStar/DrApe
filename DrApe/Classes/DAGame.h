@@ -9,15 +9,15 @@
 #import <Foundation/Foundation.h>
 #import "NSDictionary+intForKey.h"
 #import "DATile.h"
+#import "Protocols.h"
+
 
 typedef enum {
     DAGameModeCampaign = 0,
     DAGameModeTraining = 1
 } DAGameMode;
 
-@protocol DAGameDelegate;
-
-@interface DAGame : NSObject {}
+@interface DAGame : NSObject <DATileDelegate> {}
 
 + (NSUInteger)highestScoreAmount;
 + (NSString *)highestScoreName;
@@ -35,13 +35,4 @@ typedef enum {
 @property (nonatomic, readonly) NSUInteger tempScore;
 @property (nonatomic, assign) BOOL multiplayer;
 
-@end
-
-@protocol DAGameDelegate <NSObject>
-- (void)DAGame:(DAGame *)aGame hasNewHighScore:(NSUInteger)score;
-- (void)DAGameHasFinished:(DAGame *)aGame withScore:(NSUInteger)score totalScore:(NSUInteger)totalScore andMistake:(BOOL)aMistake;
-- (void)DAGameIsPlayingForFirstTime:(DAGame *)game;
-- (void)DAGame:(DAGame *)aGame addsNewTile:(DATile *)tile;
-- (void)DAGame:(DAGame *)aGame tileHasBeenPressed:(DATile *)tile;
-- (void)DAGameDidComplete:(DAGame *)aGame;
 @end

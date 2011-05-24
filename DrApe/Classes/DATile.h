@@ -7,14 +7,24 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Protocols.h"
 
 
 @interface DATile : UIButton {}
 
 @property (nonatomic, assign) BOOL mistaken;
+@property (nonatomic, assign) NSUInteger position;
 
-+ (DATile *)tileWithFrame:(CGRect)aFrame;
++ (void)setDelegate:(id<DATileDelegate>)delegate;
++ (NSMutableArray *)tiles;
++ (NSMutableArray *)positions;
++ (void)reset;
++ (void)removeAllTiles;
++ (void)hideAllTiles;
++ (void)mistakeAllTiles;
++ (void)showMistakenTiles;
 
 - (void)hide;
+- (void)flip;
 
 @end

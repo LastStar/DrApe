@@ -159,12 +159,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [[GCHelper sharedInstance] authenticateLocalUserWithCompletionHandler:^(NSError *error) {
-        [[GCHelper sharedInstance] findMatchWithMinPlayers:2 maxPlayers:2 viewController:self delegate:self];
-    }];
-    
-    ourRandom = arc4random();
-    [self setGameState:kGameStateWaitingForMatch];
+//    [[GCHelper sharedInstance] authenticateLocalUserWithCompletionHandler:^(NSError *error) {
+//        [[GCHelper sharedInstance] findMatchWithMinPlayers:2 maxPlayers:2 viewController:self delegate:self];
+//    }];
+//    
+//    ourRandom = arc4random();
+//    [self setGameState:kGameStateWaitingForMatch];
     
 //    NSLog(@"width, height = %f, %f", self.view.bounds.size.width, self.view.bounds.size.height);
     

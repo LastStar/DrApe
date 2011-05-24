@@ -120,6 +120,7 @@
 /* Begin PBXFileReference section */
 		2B36E5F01372C5FE00E04E82 /* bg_tile_red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bg_tile_red.png; path = Images/bg_tile_red.png; sourceTree = SOURCE_ROOT; };
 		2B3C9352135D8F3900F0C481 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		2B630F04138BB85E00F814FA /* Protocols.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Protocols.h; sourceTree = "<group>"; };
 		2B65B5B513814F5D00BD8813 /* AlertPrompt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertPrompt.h; sourceTree = "<group>"; };
 		2B65B5B613814F5D00BD8813 /* AlertPrompt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlertPrompt.m; sourceTree = "<group>"; };
 		2B65B5DC1381518200BD8813 /* NSDictionary+intForKey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; name = "NSDictionary+intForKey.h"; path = "DrApe/Categories/NSDictionary+intForKey.h"; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
@@ -747,6 +748,7 @@
 			children = (
 				2B65B5DF1381519600BD8813 /* Utils.h */,
 				2B65B5E01381519600BD8813 /* Utils.m */,
+				2B630F04138BB85E00F814FA /* Protocols.h */,
 			);
 			name = Misc;
 			sourceTree = "<group>";
